@@ -13,6 +13,20 @@ import {
 import { cn } from '@/lib/utils';
 import { useDashboardLayout } from '@/context/dashboardLayout';
 import Link from 'next/link';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { Check, Moon, Sun } from 'lucide-react';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
@@ -170,16 +184,42 @@ const Sidebar = () => {
               </li>
 
               <li className="mt-auto">
-                <Link
-                  href="#"
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
-                >
-                  <Cog6ToothIcon
-                    className="h-6 w-6 shrink-0"
-                    aria-hidden="true"
-                  />
-                  Settings
-                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <p className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white cursor-pointer">
+                      <Cog6ToothIcon
+                        className="h-6 w-6 shrink-0"
+                        aria-hidden="true"
+                      />
+                      Settings
+                    </p>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56">
+                    <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuSub>
+                      <DropdownMenuSubTrigger>
+                        <Moon className="mr-2 h-4 w-4" />
+                        <span>Theme mode</span>
+                      </DropdownMenuSubTrigger>
+                      <DropdownMenuPortal>
+                        <DropdownMenuSubContent>
+                          <DropdownMenuItem>
+                            <Moon className="mr-2 h-4 w-4" />
+                            <span>Dark</span>
+                            <DropdownMenuShortcut>
+                              <Check className="mr-2 h-4 w-4" />
+                            </DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <Sun className="mr-2 h-4 w-4" />
+                            <span>Light</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </li>
             </ul>
           </nav>
