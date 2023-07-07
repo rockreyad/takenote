@@ -29,6 +29,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Cpu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
@@ -38,6 +39,7 @@ const navigation = [
 ];
 
 const Sidebar = () => {
+  const path = usePathname();
   const { setSidebarOpen, sidebarOpen } = useDashboardLayout();
   return (
     <>
@@ -111,7 +113,7 @@ const Sidebar = () => {
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  item.current
+                                  path === item.href
                                     ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
                                     : 'text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 hover:dark:bg-gray-700',
                                   'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
@@ -159,7 +161,7 @@ const Sidebar = () => {
                       <Link
                         href={item.href}
                         className={cn(
-                          item.current
+                          path === item.href
                             ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
                             : 'text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 hover:dark:bg-gray-700',
                           'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
