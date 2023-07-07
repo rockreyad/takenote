@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { Fragment } from 'react';
@@ -15,8 +16,8 @@ import { useDashboardLayout } from '@/context/dashboardLayout';
 import Link from 'next/link';
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
@@ -26,7 +27,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Check, Moon, Sun } from 'lucide-react';
+import { Cpu, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
@@ -92,7 +94,7 @@ const Sidebar = () => {
                   </div>
                 </Transition.Child>
                 {/* Sidebar component, swap this element with another sidebar if you like */}
-                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
+                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-secondary px-6 pb-4 ring-1 ring-white/10">
                   <div className="flex h-16 shrink-0 items-center">
                     <img
                       className="h-8 w-auto"
@@ -110,8 +112,8 @@ const Sidebar = () => {
                                 href={item.href}
                                 className={cn(
                                   item.current
-                                    ? 'bg-gray-800 text-white'
-                                    : 'text-gray-400 hover:text-white hover:bg-gray-800',
+                                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
+                                    : 'text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 hover:dark:bg-gray-700',
                                   'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                 )}
                               >
@@ -127,16 +129,7 @@ const Sidebar = () => {
                       </li>
 
                       <li className="mt-auto">
-                        <Link
-                          href="#"
-                          className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
-                        >
-                          <Cog6ToothIcon
-                            className="h-6 w-6 shrink-0"
-                            aria-hidden="true"
-                          />
-                          Settings
-                        </Link>
+                        <SidebarSettings />
                       </li>
                     </ul>
                   </nav>
@@ -149,7 +142,7 @@ const Sidebar = () => {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-primary px-6 pb-4">
+        <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-secondary px-6 pb-4">
           <div className="flex h-16 shrink-0 items-center">
             <img
               className="h-8 w-auto"
@@ -167,8 +160,8 @@ const Sidebar = () => {
                         href={item.href}
                         className={cn(
                           item.current
-                            ? 'bg-gray-800 text-white'
-                            : 'text-gray-400 hover:text-white hover:bg-gray-800',
+                            ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
+                            : 'text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 hover:dark:bg-gray-700',
                           'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                         )}
                       >
@@ -184,47 +177,69 @@ const Sidebar = () => {
               </li>
 
               <li className="mt-auto">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <p className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white cursor-pointer">
-                      <Cog6ToothIcon
-                        className="h-6 w-6 shrink-0"
-                        aria-hidden="true"
-                      />
-                      Settings
-                    </p>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56">
-                    <DropdownMenuLabel>Settings</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuSub>
-                      <DropdownMenuSubTrigger>
-                        <Moon className="mr-2 h-4 w-4" />
-                        <span>Theme mode</span>
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuItem>
-                            <Moon className="mr-2 h-4 w-4" />
-                            <span>Dark</span>
-                            <DropdownMenuShortcut>
-                              <Check className="mr-2 h-4 w-4" />
-                            </DropdownMenuShortcut>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Sun className="mr-2 h-4 w-4" />
-                            <span>Light</span>
-                          </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                <SidebarSettings />
               </li>
             </ul>
           </nav>
         </div>
       </div>
+    </>
+  );
+};
+
+const SidebarSettings = () => {
+  const { theme, setTheme } = useTheme();
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <p className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 hover:dark:bg-gray-700 cursor-pointer">
+            <Cog6ToothIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
+            Settings
+          </p>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-60">
+          <DropdownMenuLabel>Settings</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <Moon className="mr-2 h-4 w-4" />
+              <span>Theme mode</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuCheckboxItem
+                  checked={theme === 'dark'}
+                  onCheckedChange={() => setTheme('dark')}
+                >
+                  <span>Dark</span>
+                  <DropdownMenuShortcut>
+                    <Moon className="mr-2 h-4 w-4" />
+                  </DropdownMenuShortcut>
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={theme === 'light'}
+                  onCheckedChange={() => setTheme('light')}
+                >
+                  <span>Light</span>
+                  <DropdownMenuShortcut>
+                    <Sun className="mr-2 h-4 w-4" />
+                  </DropdownMenuShortcut>
+                </DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem
+                  checked={theme === 'system'}
+                  onCheckedChange={() => setTheme('system')}
+                >
+                  <span>System</span>
+                  <DropdownMenuShortcut>
+                    <Cpu className="mr-2 h-4 w-4" />
+                  </DropdownMenuShortcut>
+                </DropdownMenuCheckboxItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </>
   );
 };
