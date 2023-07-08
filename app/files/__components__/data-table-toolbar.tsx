@@ -5,10 +5,10 @@ import { Table } from '@tanstack/react-table';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { DataTableViewOptions } from './data-table-view-options';
 
 import { priorities, statuses } from '../__data__/data';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
+import Link from 'next/link';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -23,7 +23,7 @@ export function DataTableToolbar<TData>({
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Filter tasks..."
+          placeholder="Filter File Name..."
           value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
             table.getColumn('title')?.setFilterValue(event.target.value)
@@ -55,7 +55,9 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      <Link href="/files/create">
+        <Button className="px-12 py-6 text-lg font-bold"> Create new</Button>
+      </Link>
     </div>
   );
 }

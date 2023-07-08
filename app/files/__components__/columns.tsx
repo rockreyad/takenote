@@ -4,11 +4,19 @@ import { ColumnDef } from '@tanstack/react-table';
 
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
 
-import { labels, priorities, statuses } from '../__data__/data';
+import { labels, statuses } from '../__data__/data';
 import { Task } from '../__data__/schema';
 import { DataTableColumnHeader } from './data-table-column-header';
 import { DataTableRowActions } from './data-table-row-actions';
+import moment from 'moment';
+import Link from 'next/link';
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -33,28 +41,50 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'id',
+    accessorKey: 'create_at',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
+      <DataTableColumnHeader column={column} title="Created" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue('id')}</div>,
-    enableSorting: false,
+    cell: ({ row }) => (
+      <div className="w-[150px]">
+        {moment(row.getValue('create_at')).format('LL')}
+      </div>
+    ),
+    enableSorting: true,
     enableHiding: false
   },
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="File Name" />
     ),
     cell: ({ row }) => {
       const label = labels.find((label) => label.value === row.original.label);
 
       return (
         <div className="flex space-x-2">
-          {label && <Badge variant="outline">{label.label}</Badge>}
-          <span className="max-w-[500px] truncate font-medium">
+          {label && (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Badge variant="outline">
+                    {label.icon && (
+                      <label.icon className="h-4 w-4 text-muted-foreground" />
+                    )}
+                  </Badge>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{label.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
+          <Link
+            href="#"
+            className="max-w-[500px] truncate font-medium hover:underline"
+          >
             {row.getValue('title')}
-          </span>
+          </Link>
         </div>
       );
     }
@@ -84,34 +114,8 @@ export const columns: ColumnDef<Task>[] = [
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
-    }
-  },
-  {
-    accessorKey: 'priority',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
-    ),
-    cell: ({ row }) => {
-      const priority = priorities.find(
-        (priority) => priority.value === row.getValue('priority')
-      );
-
-      if (!priority) {
-        return null;
-      }
-
-      return (
-        <div className="flex items-center">
-          {priority.icon && (
-            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
-          <span>{priority.label}</span>
-        </div>
-      );
     },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    }
+    enableSorting: false
   },
   {
     id: 'actions',
