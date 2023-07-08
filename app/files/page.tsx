@@ -1,12 +1,9 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 import { Metadata } from 'next';
-import { z } from 'zod';
 
 import { FunctionComponent } from 'react';
 import { DataTable } from './__components__/data-table';
-import { taskSchema } from './__data__/schema';
 import { columns } from './__components__/columns';
+import { generateFakeTabledata } from '@/lib/utils';
 
 interface MyFilesProps {}
 
@@ -17,13 +14,7 @@ export const metadata: Metadata = {
 
 // Simulate a database read for tasks.
 async function getTasks() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), 'app/files/__data__/tasks.json')
-  );
-
-  const tasks = JSON.parse(data.toString());
-
-  return z.array(taskSchema).parse(tasks);
+  return generateFakeTabledata(1000);
 }
 
 const MyFiles: FunctionComponent<MyFilesProps> = async () => {
@@ -34,7 +25,9 @@ const MyFiles: FunctionComponent<MyFilesProps> = async () => {
         <h1 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           My Files
         </h1>
-        <DataTable data={tasks} columns={columns} />
+        <div className="w-full">
+          <DataTable data={tasks} columns={columns} />
+        </div>
       </div>
     </>
   );

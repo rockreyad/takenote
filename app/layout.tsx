@@ -1,7 +1,5 @@
 import DashboardLayoutProvider from '@/context/dashboardLayout';
 import './globals.css';
-
-import { Analytics } from '@vercel/analytics/react';
 import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import ThemeProviderWrapper from '@/context/ThemeProvider';
@@ -27,17 +25,16 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`h-full bg-gray-50 ${inter.className}`}>
       <ThemeProviderWrapper>
-        <body className="h-full font-sans">
+        <body className="font-sans">
           <DashboardLayoutProvider>
             <Sidebar />
             <div className="lg:pl-72">
               <Header />
               <main className="py-10">
-                <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+                <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>
               </main>
             </div>
           </DashboardLayoutProvider>
-          <Analytics />
         </body>
       </ThemeProviderWrapper>
     </html>
