@@ -4,6 +4,15 @@ import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import ThemeProviderWrapper from '@/context/ThemeProvider';
 import { Inter } from 'next/font/google';
+import 'nprogress/nprogress.css';
+import dynamic from 'next/dynamic';
+
+const TopProgressBar = dynamic(
+  () => {
+    return import('@/components/TopProgressBar');
+  },
+  { ssr: false }
+);
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -26,6 +35,7 @@ export default async function RootLayout({
     <html lang="en" className={`h-full bg-gray-50 ${inter.className}`}>
       <ThemeProviderWrapper>
         <body className="font-sans">
+          <TopProgressBar />
           <DashboardLayoutProvider>
             <Sidebar />
             <div className="lg:pl-72">
