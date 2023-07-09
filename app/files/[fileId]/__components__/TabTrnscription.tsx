@@ -19,7 +19,20 @@ export default function TabTranscription() {
           you&apos;re given a TED Talk, keep it quick. I&apos;m doing mine in
           under a minute. I&apos;m at 44 seconds right now. That means
           we&apos;ve got time for one final joke. Why are balloons so expensive
-          Inflation
+          Inflation. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Dolorum blanditiis doloremque laudantium fugiat deserunt itaque
+          incidunt eius aspernatur perferendis voluptatibus, quam facilis sunt,
+          ullam hic qui ex, iure repellat quasi. Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Autem culpa excepturi enim odio ea dolor
+          repellendus tempora, illo laboriosam? Sed excepturi voluptate
+          assumenda laboriosam ratione ut quas impedit provident illum! Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Illo eos autem
+          sequi mollitia provident, veniam nam optio saepe aut officia ratione,
+          nostrum minus libero unde fugit aperiam aliquid, repellendus facere.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab facilis
+          quis animi vel ratione, cumque eos. Modi, nihil itaque aperiam fugit
+          adipisci veritatis debitis laborum repellendus doloremque quos impedit
+          magnam!
         </p>
       </div>
     </>
