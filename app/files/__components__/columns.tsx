@@ -81,7 +81,7 @@ export const columns: ColumnDef<Task>[] = [
             </TooltipProvider>
           )}
           <Link
-            href="#"
+            href="/files/123"
             className="max-w-[500px] truncate font-medium hover:underline"
           >
             {row.getValue('title')}

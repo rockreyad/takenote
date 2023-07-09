@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import 'nprogress/nprogress.css';
 import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
+import { AudioProvider } from '@/context/AudioProvider';
 
 const TopProgressBar = dynamic(
   () => {
@@ -38,13 +39,15 @@ export default async function RootLayout({
         <body className="font-sans">
           <TopProgressBar />
           <DashboardLayoutProvider>
-            <Sidebar />
-            <div className="lg:pl-52">
-              <Header />
-              <main className="py-10">
-                <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>
-              </main>
-            </div>
+            <AudioProvider>
+              <Sidebar />
+              <div className="lg:pl-52">
+                <Header />
+                <main className="py-10">
+                  <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>
+                </main>
+              </div>
+            </AudioProvider>
           </DashboardLayoutProvider>
         </body>
       </ThemeProviderWrapper>
