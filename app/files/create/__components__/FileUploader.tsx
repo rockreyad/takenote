@@ -30,14 +30,14 @@ export const FileUploader = ({
         })}
       >
         <div className="flex flex-col space-y-4">
-          <Icon className="w-8 h-8 text-indigo-600" />
+          <Icon className="w-8 h-8 text-primary" />
           <Label className="text-lg  font-light text-black text-opacity-40">
             {label}
           </Label>
         </div>
         {type === 'upload' && (
           <Button
-            className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer hover:bg-indigo-700 transition-all w-full"
+            className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer transition-all w-full"
             onClick={onClick || (() => {})}
           >
             {buttonName}

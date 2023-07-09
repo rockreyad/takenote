@@ -108,7 +108,7 @@ const Sidebar = () => {
                 <div className="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4 ring-1 bg-primary-foreground ring-white/10">
                   <div className="flex h-16 shrink-0 items-center">
                     <img
-                      className="h-8 w-auto"
+                      className="h-16 w-auto"
                       src="/logo.png"
                       alt="takenote"
                     />
@@ -259,7 +259,7 @@ const SidebarSettings = () => {
 
 const SidebarUpgradeContainer = () => {
   return (
-    <div className="p-3 bg-white rounded-lg drop-shadow space-y-4 text-xs font-semibold text-center">
+    <div className="p-3 bg-white dark:bg-secondary rounded-lg drop-shadow space-y-4 text-xs font-semibold text-center">
       <p className="">5 videos remaining on your {plans[0].name} plan</p>
       <Separator />
       <Button
