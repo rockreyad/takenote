@@ -9,7 +9,7 @@ import { FolderOpenIcon } from 'lucide-react';
 interface MyFilesProps {}
 
 export const metadata: Metadata = {
-  title: 'My Files',
+  title: 'My Files - TakeNote',
   description: 'A list of files that I have uploaded.'
 };
 

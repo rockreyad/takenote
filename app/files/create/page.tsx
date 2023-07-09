@@ -1,5 +1,11 @@
+import { Metadata } from 'next';
 import FileUploaderList from './__components__/FileUploaderList';
 import { TopSection } from './__components__/TopSection';
+
+export const metadata: Metadata = {
+  title: 'Upload - TakeNote',
+  description: ''
+};
 
 export default function Index() {
   return (

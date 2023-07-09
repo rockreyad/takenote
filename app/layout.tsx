@@ -6,6 +6,7 @@ import ThemeProviderWrapper from '@/context/ThemeProvider';
 import { Inter } from 'next/font/google';
 import 'nprogress/nprogress.css';
 import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
 
 const TopProgressBar = dynamic(
   () => {
@@ -20,8 +21,8 @@ const inter = Inter({
   display: 'swap'
 });
 
-export const metadata = {
-  title: 'Next.js 13 + PlanetScale + NextAuth + Tailwind CSS',
+export const metadata: Metadata = {
+  title: 'Home - TakeNote',
   description:
     'A user admin dashboard configured with Next.js, PlanetScale, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
 };
