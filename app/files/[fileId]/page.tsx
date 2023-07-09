@@ -66,6 +66,7 @@ async function SingleFile() {
           </TabsContent>
         </Tabs>
       </div>
+
       <div className="fixed bottom-40 right-0 px-4 sm:px-6 lg:pr-8 bg-white">
         <video
           src="/videos/example.mp4"
