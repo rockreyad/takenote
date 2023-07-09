@@ -25,7 +25,7 @@ const MyFiles: FunctionComponent<MyFilesProps> = async () => {
     <>
       <div className="space-y-8">
         <div className="scroll-m-20 border-b pb-2 first:mt-0 flex justify-between items-center">
-          <h1 className="text-3xl font-bold  transition-colors flex items-center gap-2">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold  transition-colors flex items-center gap-2">
             <FolderOpenIcon className="w-6 h-6 text-primary" />
             <span>My Files</span>
           </h1>

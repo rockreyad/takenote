@@ -5,8 +5,8 @@ export default function PrimaryButton(props: { buttonName: string }) {
   return (
     <Link href="/files/create">
       <Button
-        size={'lg'}
-        className="bg-primary hover:bg-primary/80 py-8 text-lg font-medium uppercase tracking-wider"
+        size="lg"
+        className="bg-primary hover:bg-primary/80 text-sm lg:text-lg px-2 lg:px-4 lg:py-8 font-medium uppercase tracking-wider"
       >
         {props.buttonName}
       </Button>

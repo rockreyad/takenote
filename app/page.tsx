@@ -1,7 +1,7 @@
 export default async function IndexPage() {
   return (
     <div className="space-y-2 h-screen">
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-wide lg:text-5xl">
         THE NEXT GENERATION SPEECH TO TEXT AI
       </h1>
       <p>
