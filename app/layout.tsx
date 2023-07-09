@@ -38,7 +38,7 @@ export default async function RootLayout({
           <TopProgressBar />
           <DashboardLayoutProvider>
             <Sidebar />
-            <div className="lg:pl-72">
+            <div className="lg:pl-52">
               <Header />
               <main className="py-10">
                 <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>

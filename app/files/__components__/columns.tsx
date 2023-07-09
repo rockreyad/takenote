@@ -17,6 +17,7 @@ import { DataTableColumnHeader } from './data-table-column-header';
 import { DataTableRowActions } from './data-table-row-actions';
 import moment from 'moment';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -69,7 +70,7 @@ export const columns: ColumnDef<Task>[] = [
                 <TooltipTrigger>
                   <Badge variant="outline">
                     {label.icon && (
-                      <label.icon className="h-4 w-4 text-muted-foreground" />
+                      <label.icon className="h-4 w-4 text-primary" />
                     )}
                   </Badge>
                 </TooltipTrigger>
@@ -106,7 +107,13 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex w-[100px] items-center">
           {status.icon && (
-            <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+            <status.icon
+              className={cn('mr-2 h-4 w-4', {
+                'text-blue-700/60': status.value === 'in progress',
+                'text-green-700/60': status.value === 'done',
+                'text-red-700/60': status.value === 'cancelled'
+              })}
+            />
           )}
           <span>{status.label}</span>
         </div>

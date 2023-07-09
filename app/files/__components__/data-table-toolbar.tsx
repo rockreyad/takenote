@@ -28,7 +28,7 @@ export function DataTableToolbar<TData>({
           onChange={(event) =>
             table.getColumn('title')?.setFilterValue(event.target.value)
           }
-          className="h-8 w-[150px] lg:w-[250px]"
+          className="h-10 w-[150px] lg:w-[250px] focus-visible:ring-primary"
         />
         {table.getColumn('status') && (
           <DataTableFacetedFilter
@@ -56,7 +56,12 @@ export function DataTableToolbar<TData>({
         )}
       </div>
       <Link href="/files/create">
-        <Button className="px-12 py-6 text-lg font-bold"> Create new</Button>
+        <Button
+          size={'lg'}
+          className="bg-primary hover:bg-primary/80 py-8 text-lg font-medium uppercase tracking-wider"
+        >
+          Place new Order
+        </Button>
       </Link>
     </div>
   );
