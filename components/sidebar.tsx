@@ -32,13 +32,13 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
-import { InfoCircledIcon } from '@radix-ui/react-icons';
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger
+// } from '@/components/ui/tooltip';
+// import { InfoCircledIcon } from '@radix-ui/react-icons';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
@@ -289,19 +289,19 @@ const plans = [
   }
 ];
 
-const TooltipInfo = (props: { info: string }) => {
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <InfoCircledIcon className="" />
-        </TooltipTrigger>
-        <TooltipContent className="z-50">
-          <p>{props.info}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-};
+// const TooltipInfo = (props: { info: string }) => {
+//   return (
+//     <TooltipProvider>
+//       <Tooltip>
+//         <TooltipTrigger asChild>
+//           <InfoCircledIcon className="" />
+//         </TooltipTrigger>
+//         <TooltipContent className="z-50">
+//           <p>{props.info}</p>
+//         </TooltipContent>
+//       </Tooltip>
+//     </TooltipProvider>
+//   );
+// };
 
 export default Sidebar;

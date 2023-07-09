@@ -4,7 +4,6 @@ import { FunctionComponent } from 'react';
 import { DataTable } from './__components__/data-table';
 import { columns } from './__components__/columns';
 import { generateFakeTabledata } from '@/lib/utils';
-import { File, Folder } from 'lucide-react';
 import { FolderOpenIcon } from 'lucide-react';
 
 interface MyFilesProps {}
