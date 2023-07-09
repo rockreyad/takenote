@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { FileUploader } from './FileUploader';
-import { UploadIcon } from '@radix-ui/react-icons';
-import { GrLink } from 'react-icons/gr';
+import { RiLink, RiUploadCloud2Line } from 'react-icons/ri';
 import * as filestack from 'filestack-js';
 
 const filestackClient = filestack.init(
@@ -42,14 +41,14 @@ const FilePickerOptions: FileUploader[] = [
     type: 'upload',
     label: 'Upload files from your computer or drag and drop',
     buttonName: 'upload files',
-    Icon: UploadIcon,
+    Icon: RiUploadCloud2Line,
     variant: 'outline'
   },
   {
     type: 'link',
     label: 'Share a link to public web address',
     buttonName: 'paste a url',
-    Icon: GrLink,
+    Icon: RiLink,
     variant: 'solid'
   }
 ];

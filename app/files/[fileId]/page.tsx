@@ -29,7 +29,7 @@ async function SingleFile() {
     <div className="min-h-screen relative">
       <div className="">
         <Tabs
-          defaultValue="sentiment"
+          defaultValue="transcription"
           className="max-w-4xl 3xl:max-w-7xl space-y-8"
         >
           <TabsList className="grid max-w-4xl grid-cols-2 lg:grid-cols-4 gap-2 bg-primary/10 h-auto text-gray-800">

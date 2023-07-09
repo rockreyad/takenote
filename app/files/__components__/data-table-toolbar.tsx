@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 
 import { statuses } from '../__data__/data';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
-import Link from 'next/link';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -48,14 +47,6 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <Link href="/files/create">
-        <Button
-          size={'lg'}
-          className="bg-primary hover:bg-primary/80 py-8 text-lg font-medium uppercase tracking-wider"
-        >
-          Place new Order
-        </Button>
-      </Link>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function FileUploaderURLDialog(props: { buttonName: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer hover:bg-indigo-700 transition-all w-full">
+        <Button className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer transition-all w-full">
           {props.buttonName}
         </Button>
       </DialogTrigger>
@@ -31,7 +31,7 @@ export default function FileUploaderURLDialog(props: { buttonName: string }) {
         </div>
         <DialogFooter>
           <Button
-            className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer hover:bg-indigo-700 transition-all"
+            className="flex mx-auto items-center justify-center bg-primary py-4 rounded-sm text-white uppercase tracking-widest cursor-pointer transition-all w-full"
             type="submit"
           >
             Add
