@@ -14,7 +14,7 @@ export const generateFakeTabledata = (length: number) => {
     const fakeTask = {
       id: faker.string.uuid(),
       title: faker.lorem.sentence(),
-      status: faker.helpers.arrayElement(['in progress', 'done', 'canceled']),
+      status: faker.helpers.arrayElement(['in progress', 'done', 'cancelled']),
       label: faker.helpers.arrayElement([
         'Human Transcripts',
         'Auto Transcripts',
