@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import Link from 'next/link';
 
 import { useAudioPlayer } from '@/context/AudioProvider';
 import { ForwardButton } from '@/components/player/ForwardButton';
@@ -38,7 +37,7 @@ export function AudioPlayer({ episode }) {
   );
   let player = useAudioPlayer(audioPlayerData);
   useEffect(() => {
-    player.play();
+    player.ready();
     return () => player.pause();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -61,13 +60,12 @@ export function AudioPlayer({ episode }) {
         <PlayButton player={player} size="medium" />
       </div>
       <div className="mb-[env(safe-area-inset-bottom)] flex flex-1 flex-col gap-3 overflow-hidden p-1">
-        <Link
-          href={player.meta.link}
+        <p
           className="truncate text-center text-sm font-bold leading-6 md:text-left"
           title={player.meta.title}
         >
           {player.meta.title}
-        </Link>
+        </p>
         <div className="flex justify-between gap-6">
           <div className="flex items-center md:hidden">
             <MuteButton player={player} />

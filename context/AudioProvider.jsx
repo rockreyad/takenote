@@ -40,6 +40,11 @@ export function AudioProvider({ children }) {
 
   let actions = useMemo(() => {
     return {
+      ready(data) {
+        if (data) {
+          dispatch({ type: 'SET_META', payload: data });
+        }
+      },
       play(data) {
         if (data) {
           dispatch({ type: 'SET_META', payload: data });
@@ -117,6 +122,9 @@ export function useAudioPlayer(data) {
   return useMemo(
     () => ({
       ...player,
+      ready() {
+        player.ready(data);
+      },
       play() {
         player.play(data);
       },

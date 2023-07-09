@@ -6,7 +6,7 @@ import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-import { priorities, statuses } from '../__data__/data';
+import { statuses } from '../__data__/data';
 import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import Link from 'next/link';
 
@@ -35,13 +35,6 @@ export function DataTableToolbar<TData>({
             column={table.getColumn('status')}
             title="Status"
             options={statuses}
-          />
-        )}
-        {table.getColumn('priority') && (
-          <DataTableFacetedFilter
-            column={table.getColumn('priority')}
-            title="Priority"
-            options={priorities}
           />
         )}
         {isFiltered && (

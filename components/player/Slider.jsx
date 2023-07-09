@@ -54,8 +54,8 @@ function Thumb(props) {
         className={clsx(
           'h-4 rounded-full',
           isFocusVisible || state.isThumbDragging(index)
-            ? 'w-1.5 bg-slate-900'
-            : 'w-1 bg-slate-700'
+            ? 'w-1.5 bg-primary'
+            : 'w-1 bg-primary/80'
         )}
       >
         <VisuallyHidden>
@@ -106,8 +106,8 @@ export function Slider(props) {
           className={clsx(
             'h-2 md:rounded-l-xl md:rounded-r-md',
             isFocusVisible || state.isThumbDragging(0)
-              ? 'bg-slate-900'
-              : 'bg-slate-700'
+              ? 'bg-primary'
+              : 'bg-primary/80'
           )}
           style={{
             width:
@@ -137,7 +137,7 @@ export function Slider(props) {
             'hidden rounded-md px-1 py-0.5 font-mono text-sm leading-6 md:block',
             state.getThumbMaxValue(0) === 0 && 'opacity-0',
             isFocusVisible || state.isThumbDragging(0)
-              ? 'bg-slate-100 text-slate-900'
+              ? 'bg-primary/10 text-slate-900'
               : 'text-slate-500'
           )}
         >

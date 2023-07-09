@@ -25,7 +25,7 @@ export function PlayButton({ player, size = 'large' }) {
     <button
       type="button"
       className={clsx(
-        'group relative flex flex-shrink-0 items-center justify-center rounded-full bg-slate-700 hover:bg-slate-900 focus:outline-none focus:ring-slate-700',
+        'group relative flex flex-shrink-0 items-center justify-center rounded-full bg-primary hover:bg-primary/80 focus:outline-none focus:ring-primary',
         {
           large: 'h-18 w-18 focus:ring focus:ring-offset-4',
           medium: 'h-14 w-14 focus:ring-2 focus:ring-offset-2',
