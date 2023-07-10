@@ -33,7 +33,7 @@ export const FileUploader = ({
     >
       <div
         className={cn(
-          'p-4 flex flex-col justify-between space-y-10 min-w-[250px] max-w-min',
+          'p-4 flex flex-col justify-between space-y-10 min-w-[250px] max-w-[fit-content]',
           {
             'border-2 border-dashed border-gray-200 dark:border-gray-700':
               variant === 'outline'

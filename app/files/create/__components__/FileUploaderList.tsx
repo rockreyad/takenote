@@ -9,7 +9,7 @@ export default function FileUploaderList() {
   return (
     <>
       <div
-        className="flex flex-col md:flex-row items-center gap-5 max-h-max pb-96"
+        className="flex flex-col md:flex-row items-center gap-5 max-h- w-min pb-96"
         onDragOver={() => FileStackUploader().then((res) => console.log(res))}
       >
         {FilePickerOptions.map((option) => (
