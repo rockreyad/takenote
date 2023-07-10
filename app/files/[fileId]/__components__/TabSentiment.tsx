@@ -18,19 +18,19 @@ const SentimentAnalysisOption = {
         {
           value: 335,
           itemStyle: {
-            color: '#ffdead'
+            color: '#F4BA77'
           }
         },
         {
           value: 200,
           itemStyle: {
-            color: '#00bc64'
+            color: '#94D8AC'
           }
         },
         {
           value: 150,
           itemStyle: {
-            color: '#b22222'
+            color: '#DF665A'
           }
         }
       ],
