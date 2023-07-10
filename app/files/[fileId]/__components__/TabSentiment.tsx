@@ -36,10 +36,7 @@ const SentimentAnalysisOption = {
       ],
       type: 'bar'
     }
-  ],
-  grid: {
-    height: 500
-  }
+  ]
 } as EChartsOption;
 // prettier-ignore
 const hours = [
@@ -115,13 +112,13 @@ export default function TabSentiment() {
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Analysis
         </h4>
-        <ReactECharts option={SentimentAnalysisOption} className="!h-[578px]" />
+        <ReactECharts option={SentimentAnalysisOption} className="!h-[500px]" />
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Score Distribution
         </h4>
         <ReactECharts
           option={ScoreDistributionOptions}
-          className="!h-[878px]"
+          className="!h-[768px]"
         />
       </div>
     </>

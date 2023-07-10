@@ -24,20 +24,20 @@ export function DataTablePagination<TData>({
 }: DataTablePaginationProps<TData>) {
   return (
     <div className="flex items-center justify-between px-2">
-      <div className="hidden md:flex-1 text-sm text-muted-foreground">
+      <div className="hidden md:block md:flex-1 text-sm text-muted-foreground">
         {table.getFilteredSelectedRowModel().rows.length} of{' '}
         {table.getFilteredRowModel().rows.length} file(s) selected.
       </div>
-      <div className="flex items-center space-x-6 lg:space-x-8">
+      <div className="flex items-center space-x-4 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Files per page</p>
+          <p className="text-xs sm:text-sm font-medium">Files per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value: any) => {
               table.setPageSize(Number(value));
             }}
           >
-            <SelectTrigger className="h-8 w-[70px]">
+            <SelectTrigger className="h-8 w-[50px] sm:w-[70px]">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top">
@@ -49,7 +49,7 @@ export function DataTablePagination<TData>({
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
+        <div className="flex w-[100px] items-center justify-center text-xs sm:text-sm font-medium">
           Page {table.getState().pagination.pageIndex + 1} of{' '}
           {table.getPageCount()}
         </div>

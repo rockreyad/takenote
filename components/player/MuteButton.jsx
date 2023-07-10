@@ -32,7 +32,7 @@ export function MuteButton({ player }) {
   return (
     <button
       type="button"
-      className="group relative rounded-md hover:bg-slate-100 dark:hover:bg-opacity-5 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary focus:ring-offset-2 md:order-none"
+      className="group relative rounded-md hover:bg-slate-100 dark:bg-secondary dark:bg-opacity-50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary focus:ring-offset-2 md:order-none"
       onClick={() => player.toggleMute()}
       aria-label={player.muted ? 'Unmute' : 'Mute'}
     >
