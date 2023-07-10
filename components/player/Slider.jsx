@@ -100,7 +100,7 @@ export function Slider(props) {
           props.onChangeStart?.();
         }}
         ref={trackRef}
-        className="relative w-full bg-slate-100 md:rounded-full"
+        className="relative w-full bg-slate-100 dark:bg-slate-500 md:rounded-full"
       >
         <div
           className={clsx(
