@@ -1,3 +1,4 @@
+import { PrimaryFeatures } from '@/components/home/PrimaryFeatures';
 import Hero from '@/components/home/hero';
 import LogoCloud from '@/components/home/logo-cloud';
 import { FunctionComponent } from 'react';
@@ -9,6 +10,7 @@ const Home: FunctionComponent<HomeProps> = () => {
     <>
       <Hero />
       <LogoCloud />
+      <PrimaryFeatures />
     </>
   );
 };
