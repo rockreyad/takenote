@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils';
 import localFont from 'next/font/local';
-import Image from 'next/image';
 import { FunctionComponent } from 'react';
 
 const nasalization = localFont({

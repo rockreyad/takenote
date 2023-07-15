@@ -8,7 +8,7 @@ import { AudioProvider } from '@/context/AudioProvider';
 
 const TopProgressBar = dynamic(
   () => {
-    return import('@/components/TopProgressBar');
+    return import('@/components/top-progressbar');
   },
   { ssr: false }
 );

@@ -1,4 +1,4 @@
-import { PrimaryFeatures } from '@/components/home/PrimaryFeatures';
+import { PrimaryFeatures } from '@/components/home/primary-features';
 import Hero from '@/components/home/hero';
 import LogoCloud from '@/components/home/logo-cloud';
 import { FunctionComponent } from 'react';
