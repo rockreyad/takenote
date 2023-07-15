@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import Logo from '../icon/logo/Logo';
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -27,14 +28,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
         >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <Image
-                className="h-full w-full"
-                src="/logo.png"
-                alt="brand logo"
-                width={48}
-                height={48}
-              />
+              <span className="sr-only">TakeNote.ai</span>
+              <Logo />
             </a>
           </div>
           <div className="flex lg:hidden">
