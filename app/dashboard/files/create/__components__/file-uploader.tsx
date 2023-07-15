@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-import FileUploaderURLDialog from './FileUploaderURL';
+import FileUploaderURLDialog from './file-uploader-url';
 
 export interface FileUploader {
   type?: 'upload' | 'link';

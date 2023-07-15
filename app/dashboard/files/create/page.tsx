@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import FileUploaderList from './__components__/FileUploaderList';
-import { TopSection } from './__components__/TopSection';
-import TooltipInfo from './__components__/ToolTipInfo';
+import FileUploaderList from './__components__/file-uploader-list';
+import { TopSection } from './__components__/top-section';
+import TooltipInfo from './__components__/tool-tip-info';
 
 export const metadata: Metadata = {
   title: 'Upload - TakeNote',

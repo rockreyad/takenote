@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import {
   BuildingOffice2Icon,
   EnvelopeIcon,
@@ -71,9 +57,9 @@ export default function Contact() {
                   />
                 </dt>
                 <dd>
-                  545 Mavis Island
+                  7 Bell Yard, London
                   <br />
-                  Chicago, IL 99191
+                  WC2A 2JR
                 </dd>
               </div>
               <div className="flex gap-x-4">
@@ -89,7 +75,7 @@ export default function Contact() {
                     className="hover:text-gray-900"
                     href="tel:+1 (555) 234-5678"
                   >
-                    +1 (555) 234-5678
+                    +44 7809 120260
                   </a>
                 </dd>
               </div>
@@ -106,7 +92,7 @@ export default function Contact() {
                     className="hover:text-gray-900"
                     href="mailto:hello@example.com"
                   >
-                    hello@example.com
+                    contact@takenote.ai
                   </a>
                 </dd>
               </div>
