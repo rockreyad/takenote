@@ -1,7 +1,4 @@
-import DashboardLayoutProvider from '@/context/dashboardLayout';
 import './globals.css';
-import Sidebar from '@/components/sidebar';
-import Header from '@/components/header';
 import ThemeProviderWrapper from '@/context/ThemeProvider';
 import { Inter } from 'next/font/google';
 import 'nprogress/nprogress.css';
@@ -11,7 +8,7 @@ import { AudioProvider } from '@/context/AudioProvider';
 
 const TopProgressBar = dynamic(
   () => {
-    return import('@/components/TopProgressBar');
+    return import('@/components/topProgressBar');
   },
   { ssr: false }
 );
@@ -19,7 +16,9 @@ const TopProgressBar = dynamic(
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  style: ['normal'],
+  weight: ['400', '500', '600', '700', '800']
 });
 
 export const metadata: Metadata = {
@@ -38,17 +37,7 @@ export default async function RootLayout({
       <ThemeProviderWrapper>
         <body className="font-sans">
           <TopProgressBar />
-          <DashboardLayoutProvider>
-            <AudioProvider>
-              <Sidebar />
-              <div className="lg:pl-52">
-                <Header />
-                <main className="py-10">
-                  <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>
-                </main>
-              </div>
-            </AudioProvider>
-          </DashboardLayoutProvider>
+          <AudioProvider>{children}</AudioProvider>
         </body>
       </ThemeProviderWrapper>
     </html>

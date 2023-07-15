@@ -2,8 +2,8 @@
 
 import { Bars3Icon, BellIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { useDashboardLayout } from '@/context/dashboardLayout';
-import { UserNav } from './user-nav';
+import { useDashboardLayout } from '@/context/DashboardLayout';
+import { UserNav } from '@/components/dashboard/user-nav';
 
 const Header = () => {
   const { setSidebarOpen } = useDashboardLayout();

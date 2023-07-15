@@ -12,7 +12,7 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 import { cn } from '@/lib/utils';
-import { useDashboardLayout } from '@/context/dashboardLayout';
+import { useDashboardLayout } from '@/context/DashboardLayout';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -34,10 +34,25 @@ import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 
 const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'My files', href: '/files', icon: FolderOpenIcon, current: false },
-  { name: 'History', href: '/history', icon: ClockIcon, current: false },
-  { name: 'Contact', href: '/comtact', icon: EnvelopeIcon, current: false }
+  { name: 'Home', href: '/dashboard', icon: HomeIcon, current: true },
+  {
+    name: 'My files',
+    href: '/dashboard/files',
+    icon: FolderOpenIcon,
+    current: false
+  },
+  {
+    name: 'History',
+    href: '/dashboard/history',
+    icon: ClockIcon,
+    current: false
+  },
+  {
+    name: 'Contact',
+    href: '/dashboard/contact',
+    icon: EnvelopeIcon,
+    current: false
+  }
 ];
 
 const Sidebar = () => {
