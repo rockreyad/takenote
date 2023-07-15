@@ -30,33 +30,33 @@ const product = [
       'Sentiment Analysis using Natural Language Processing models.Generate accurate insight. Make better decisions.',
     image: screenshotVatReturns
   },
-  {
-    title: 'Visualise',
-    description: `Extract semantic relationships between entities from transcribed text using Natural Language Processing.
-      TakeNote generates visualisations of transcriptions and displays connections.`,
-    image: screenshotVatReturns
-  },
+  // {
+  //   title: 'Visualise',
+  //   description: `Extract semantic relationships between entities from transcribed text using Natural Language Processing.
+  //     TakeNote generates visualisations of transcriptions and displays connections.`,
+  //   image: screenshotVatReturns
+  // },
   {
     title: 'Identify',
     description:
       'Identify speakers from AI analysis of voices.Simply upload sample audio clips of each speaker and let TakeNote AI do the rest.',
     image: screenshotReporting
-  },
-  {
-    title: 'Focus',
-    description:
-      'TakeNote AI will take meeting notes for you.Focus on the discussion - never miss an important action, decision or debate.',
-    image: screenshotReporting
-  },
-  {
-    title: 'Stay informed',
-    description:
-      'Can’t attend a meeting?  Send TakeNote AI.Review the transcript or summary offline.',
-    image: screenshotReporting
   }
+  // {
+  //   title: 'Focus',
+  //   description:
+  //     'TakeNote AI will take meeting notes for you.Focus on the discussion - never miss an important action, decision or debate.',
+  //   image: screenshotReporting
+  // },
+  // {
+  //   title: 'Stay informed',
+  //   description:
+  //     'Can’t attend a meeting?  Send TakeNote AI.Review the transcript or summary offline.',
+  //   image: screenshotReporting
+  // }
 ];
 
-export function PrimaryFeatures() {
+export function PrimaryProduct() {
   let [tabOrientation, setTabOrientation] = useState('horizontal');
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export function PrimaryFeatures() {
     <section
       id="product"
       aria-label="Features for running your books"
-      className="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
+      className="relative overflow-hidden bg-green-600 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
     >
       <Image
         className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
@@ -93,7 +93,7 @@ export function PrimaryFeatures() {
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
             Everything you need to run your books.
           </h2>
-          <p className="mt-6 text-lg tracking-tight text-blue-100">
+          <p className="mt-6 text-lg tracking-tight text-green-100">
             Well everything you need if you aren’t that picky about minor
             details like tax compliance.
           </p>
@@ -122,8 +122,8 @@ export function PrimaryFeatures() {
                           className={clsx(
                             'font-display text-lg focus:outline-none',
                             selectedIndex === productIndex
-                              ? 'text-blue-600 lg:text-white'
-                              : 'text-blue-100 hover:text-white lg:text-white'
+                              ? 'text-green-600 lg:text-white'
+                              : 'text-green-100 hover:text-white lg:text-white'
                           )}
                         >
                           <span className="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none" />
@@ -135,7 +135,7 @@ export function PrimaryFeatures() {
                           'mt-2 hidden text-sm lg:block',
                           selectedIndex === productIndex
                             ? 'text-white'
-                            : 'text-blue-100 group-hover:text-white'
+                            : 'text-green-100 group-hover:text-white'
                         )}
                       >
                         {product.description}
@@ -153,7 +153,7 @@ export function PrimaryFeatures() {
                         {product.description}
                       </p>
                     </div>
-                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-green-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
                       <Image
                         className="w-full"
                         src={product.image}

@@ -13,7 +13,7 @@ export default function Logo() {
         `${nasalization.className} flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center`
       )}
     >
-      <LogoIcon className="h-8 w-8 md:h-12 md:w-12" />
+      <LogoIcon className="h-7 w-7" />
       <h1 className="text-[10px] md:text-[28px] text-gray-400 tracking-wider font-medium capitalize">
         TakeNote
       </h1>
