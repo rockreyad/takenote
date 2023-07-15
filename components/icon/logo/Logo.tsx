@@ -14,8 +14,8 @@ export default function Logo() {
         `${nasalization.className} flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center`
       )}
     >
-      <LogoIcon size={30} />
-      <h1 className="text-[10px] md:text-[30px] text-gray-400 tracking-wider font-medium capitalize">
+      <LogoIcon className="h-8 w-8 md:h-12 md:w-12" />
+      <h1 className="text-[10px] md:text-[28px] text-gray-400 tracking-wider font-medium capitalize">
         TakeNote
       </h1>
     </main>
@@ -23,18 +23,17 @@ export default function Logo() {
 }
 
 interface IconProps {
-  size: number;
+  className: string;
 }
 
-const LogoIcon: FunctionComponent<IconProps> = ({ size }) => {
+const LogoIcon: FunctionComponent<IconProps> = ({ className }) => {
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 1145 1145"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
     >
       <rect width="1145" height="1145" fill="url(#pattern0)" />
       <defs>
