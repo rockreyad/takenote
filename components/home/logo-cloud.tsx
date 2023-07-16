@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Transistor from './__company-logo__/transistor';
 import Reform from './__company-logo__/reform';
 import Tuple from './__company-logo__/tuple';
