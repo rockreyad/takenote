@@ -20,7 +20,7 @@ export default function Logo({ variant = 'default' }: LogoProps) {
           )}
         >
           <LogoIcon className="h-7 w-7" />
-          <h1 className="text-[10px]  text-gray-400 tracking-wider font-medium capitalize">
+          <h1 className="text-[10px]  text-[#7F8182] tracking-wider font-medium capitalize">
             TakeNote
           </h1>
         </main>
@@ -33,7 +33,7 @@ export default function Logo({ variant = 'default' }: LogoProps) {
           )}
         >
           <LogoIcon className="h-7 w-7" />
-          <h1 className="text-[10px] md:text-[28px] text-gray-400 tracking-wider font-medium capitalize">
+          <h1 className="text-[10px] md:text-[28px] text-[#7F8182] tracking-wider font-medium capitalize">
             TakeNote
           </h1>
         </main>

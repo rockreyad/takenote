@@ -33,7 +33,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
               <Logo />
             </a>
           </div>
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden gap-2">
+            <ThemeSelector className="relative z-10" />
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400"
@@ -64,7 +65,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             </a>
           </div>
         </nav>
-        {/* Mobile Navbar */}
+        {/* Mobile Navbar layout */}
+
         <Dialog
           as="div"
           className="lg:hidden"
