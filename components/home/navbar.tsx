@@ -3,8 +3,8 @@ import type { FunctionComponent } from 'react';
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 import Logo from '../icon/logo/logo';
+import { ThemeSelector } from './ThemeSelector';
 
 const navigation = [
   { name: 'Home', href: '#' },
@@ -54,7 +54,8 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
+            <ThemeSelector className="relative z-10" />
             <a
               href="#"
               className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"

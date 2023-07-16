@@ -1,21 +1,96 @@
 'use client';
 import Image from 'next/image';
 import Navbar from './navbar';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGsapContext } from '@/lib/gsapUtils';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export default function Hero() {
-  const imgRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: imgRef
-  });
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0.25, 0.5, 0.75, 1]
-  );
+  const main = useRef<any>(null);
+  const tl = useRef<string>(null);
+  const ctx = useGsapContext(main);
+  useIsomorphicLayoutEffect(() => {
+    ctx.add(() => {
+      // tl.current = gsap.timeline();
+      gsap
+        .timeline()
+        .from('.hero-text h1', { opacity: 0, ease: 'power2.in' })
+        .from('.hero-text p', {
+          opacity: 0,
+          y: 10,
+          delay: -0.2,
+          ease: 'power2.in'
+        })
+        .from('.hero-text div', {
+          opacity: 0,
+          y: 10,
+          delay: -0.2,
+          ease: 'power2.in'
+        })
+        .from('.hero-img', {
+          opacity: 0,
+          y: 150,
+          scale: 1.5,
+          duration: 1.5,
+          ease: 'sine'
+        })
+        .fromTo(
+          '.hero-img',
+          { scale: 1 },
+          {
+            scale: 1.2,
+            // x: -500,
+            y: 200,
+            // keyframes: {
+            //   x: [0, -500, 200, 0],
+            //   y: [0, 200, 200, 0],
+            //   scale: [1, 1.5, 1.5, 1],
+            //   easeEach: 'sine'
+            // },
+            ease: 'sine',
+            duration: 500,
+            // attr: {
+            //   src: '/images/app-screenshot-2.png'
+            // },
+            scrollTrigger: {
+              trigger: '.hero-img',
+              start: 'start 30%',
+              end: 'top top',
+              scrub: true,
+              // markers: true,
+              pin: main.current
+            }
+          }
+        );
+    });
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const updateMousePosition = (ev: MouseEvent) => {
+      if (!main.current) return;
+      const { clientX, clientY } = ev;
+      main.current.style.setProperty('--x', `${clientX}px`);
+      main.current.style.setProperty('--y', `${clientY}px`);
+    };
+
+    window.addEventListener('mousemove', updateMousePosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
   return (
-    <div className="bg-white dark:bg-gray-900 overflow-hidden">
+    <div
+      className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:fixed before:inset-0 before:z-50 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),_var(--primary)_0%,_transparent_100%)] before:opacity-40"
+      ref={main}
+    >
       <Navbar />
       <div className="relative isolate pt-14">
         <div
@@ -32,7 +107,8 @@ export default function Hero() {
         </div>
         <div className="py-24 sm:py-32 lg:pb-40">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            {/* Text */}
+            <div className="hero-text mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl uppercase">
                 the next generation
               </h1>
@@ -59,21 +135,18 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-            <motion.div
-              style={{ opacity }}
-              className="mt-16 flow-root sm:mt-24"
-              ref={imgRef}
-            >
+            {/* Image */}
+            <div className="hero-img mt-16 flow-root sm:mt-24">
               <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                 <Image
                   src="/images/app-screenshot.png"
                   alt="App screenshot"
                   width={2432}
                   height={1442}
-                  className="mt-16 rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10 sm:mt-24"
+                  className="rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
         <div
