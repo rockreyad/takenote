@@ -6,19 +6,40 @@ const nasalization = localFont({
   src: './font/nasalization.otf'
 });
 
-export default function Logo() {
-  return (
-    <main
-      className={cn(
-        `${nasalization.className} flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center`
-      )}
-    >
-      <LogoIcon className="h-7 w-7" />
-      <h1 className="text-[10px] md:text-[28px] text-gray-400 tracking-wider font-medium capitalize">
-        TakeNote
-      </h1>
-    </main>
-  );
+interface LogoProps {
+  variant?: 'default' | 'small';
+}
+
+export default function Logo({ variant = 'default' }: LogoProps) {
+  switch (variant) {
+    case 'small':
+      return (
+        <main
+          className={cn(
+            `${nasalization.className} flex flex-col space-y-0.5 md:space-y-0 items-center`
+          )}
+        >
+          <LogoIcon className="h-7 w-7" />
+          <h1 className="text-[10px]  text-gray-400 tracking-wider font-medium capitalize">
+            TakeNote
+          </h1>
+        </main>
+      );
+    default:
+      return (
+        <main
+          className={cn(
+            `${nasalization.className} flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center`
+          )}
+        >
+          <LogoIcon className="h-7 w-7" />
+          <h1 className="text-[10px] md:text-[28px] text-gray-400 tracking-wider font-medium capitalize">
+            TakeNote
+          </h1>
+        </main>
+      );
+      break;
+  }
 }
 
 interface IconProps {
