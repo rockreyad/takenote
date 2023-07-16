@@ -29,11 +29,13 @@ For example having the text: "closes #1234" would connect the current pull
 request to issue 1234.  And when we merge the pull request, Github will
 automatically close the issue.
 -->
-- Ticket: 
+
+- Ticket:
 - Related Issue #
 - Closes #
 
 ## Description
+
 - What's new, what's changed
 
 ## How to Test, QA Instructions, Screenshots, Recordings
@@ -42,8 +44,7 @@ _Please replace this line with instructions on how to test your changes, a note
 on the devices and browsers this has been tested on, as well as any relevant
 images for UI changes._
 
-## Other notes, discussions, documentations. 
-
+## Other notes, discussions, documentations.
 
 ## [optional] Are there any post deployment tasks we need to perform?
 
