@@ -285,14 +285,14 @@ const plans = [
   {
     name: 'Starter',
     price: 0,
-    features: [],
+    product: [],
     cta: 'upgrade',
     toolTipInfo: 'upgrade for unlimited transcriptions'
   },
   {
     name: 'Pro',
     price: 10,
-    features: [],
+    product: [],
     cta: 'Upgrade'
   }
 ];

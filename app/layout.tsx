@@ -8,7 +8,7 @@ import { AudioProvider } from '@/context/AudioProvider';
 
 const TopProgressBar = dynamic(
   () => {
-    return import('@/components/TopProgressBar');
+    return import('@/components/top-progressbar');
   },
   { ssr: false }
 );
@@ -22,9 +22,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Home - TakeNote',
+  title: 'TakeNote | Next Generation Speech to Text AI',
   description:
-    'A user admin dashboard configured with Next.js, PlanetScale, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
+    'Transform meetings into accurate transcriptions with exceptional accuracy.  Fast; Accurate; Secure Transcription and Sentiment Analysis.',
+  icons:
+    'https://uploads-ssl.webflow.com/640716069c07e6695feb6357/641f4218927bd57ccc106fcf_TakeNote_256.jpg',
+  openGraph: {
+    title: 'TakeNote | Next generation Speech to Text AI',
+    description:
+      'Precise Transcription; Generate Summarise; Sentiment Analysis; Speaker Identification'
+  }
 };
 
 export default async function RootLayout({

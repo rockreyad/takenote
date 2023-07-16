@@ -18,10 +18,10 @@ const options = {
   maxSize: 1024 * 1024 * 5,
   failOverMaxFiles: false,
   onFileUploadFinished: (res: any) => {
-    console.log(res);
+    // console.log(res);
   },
   onUploadDone: (res: any) => {
-    console.log(res);
+    // console.log(res);
   }
 };
 

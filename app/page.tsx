@@ -1,12 +1,12 @@
-import { PrimaryFeatures } from '@/components/home/PrimaryFeatures';
-import Contact from '@/components/home/contact';
-import FAQ from '@/components/home/faq';
-import Features from '@/components/home/features';
-import Footer from '@/components/home/footer';
+import { PrimaryProduct } from '@/components/home/primary-product';
 import Hero from '@/components/home/hero';
 import LogoCloud from '@/components/home/logo-cloud';
 import NewsLetter from '@/components/home/newsletter';
 import { FunctionComponent } from 'react';
+import Features from '@/components/home/features';
+import FAQ from '@/components/home/faq';
+import Contact from '@/components/home/contact';
+import Footer from '@/components/home/footer';
 
 interface HomeProps {}
 
@@ -15,7 +15,7 @@ const Home: FunctionComponent<HomeProps> = () => {
     <>
       <Hero />
       <LogoCloud />
-      <PrimaryFeatures />
+      <PrimaryProduct />
       <Features />
       <FAQ />
       <Contact />
