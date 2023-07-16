@@ -1,21 +1,41 @@
 'use client';
 import Image from 'next/image';
 import Navbar from './navbar';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGsapContext } from '@/lib/gsapUtils';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export default function Hero() {
-  const imgRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: imgRef
-  });
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [0, 0.25, 0.5, 0.75, 1]
-  );
+  const main = useRef<any>(null);
+  const ctx = useGsapContext(main);
+  useIsomorphicLayoutEffect(() => {
+    ctx.add(() => {
+      gsap
+        .timeline()
+        .from('.hero-text h1', { opacity: 0, ease: 'power2.in' })
+        .from('.hero-text p', {
+          opacity: 0,
+          y: 10,
+          delay: -0.2,
+          ease: 'power2.in'
+        })
+        .from('.hero-text div', {
+          opacity: 0,
+          y: 10,
+          delay: -0.2,
+          ease: 'power2.in'
+        });
+    });
+    return () => ctx.revert();
+  }, []);
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden" ref={main}>
       <Navbar />
       <div className="relative isolate pt-14">
         <div
@@ -32,7 +52,8 @@ export default function Hero() {
         </div>
         <div className="py-24 sm:py-32 lg:pb-40">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            {/* Text */}
+            <div className="hero-text mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 THE NEXT GENERATION
               </h1>
@@ -59,21 +80,18 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-            <motion.div
-              style={{ opacity }}
-              className="mt-16 flow-root sm:mt-24"
-              ref={imgRef}
-            >
+            {/* Image */}
+            <div className="mt-16 flow-root sm:mt-24">
               <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                 <Image
                   src="/images/app-screenshot.png"
                   alt="App screenshot"
                   width={2432}
                   height={1442}
-                  className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                  className="hero-img rounded-md shadow-2xl ring-1 ring-gray-900/10"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
         <div
