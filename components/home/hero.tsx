@@ -13,9 +13,11 @@ export const useIsomorphicLayoutEffect =
 
 export default function Hero() {
   const main = useRef<any>(null);
+  const tl = useRef<string>(null);
   const ctx = useGsapContext(main);
   useIsomorphicLayoutEffect(() => {
     ctx.add(() => {
+      // tl.current = gsap.timeline();
       gsap
         .timeline()
         .from('.hero-text h1', { opacity: 0, ease: 'power2.in' })
@@ -30,7 +32,42 @@ export default function Hero() {
           y: 10,
           delay: -0.2,
           ease: 'power2.in'
-        });
+        })
+        .from('.hero-img', {
+          opacity: 0,
+          y: 150,
+          scale: 1.5,
+          duration: 1.5,
+          ease: 'sine'
+        })
+        .fromTo(
+          '.hero-img',
+          { scale: 1 },
+          {
+            scale: 1.2,
+            // x: -500,
+            y: 200,
+            // keyframes: {
+            //   x: [0, -500, 200, 0],
+            //   y: [0, 200, 200, 0],
+            //   scale: [1, 1.5, 1.5, 1],
+            //   easeEach: 'sine'
+            // },
+            ease: 'sine',
+            duration: 500,
+            // attr: {
+            //   src: '/images/app-screenshot-2.png'
+            // },
+            scrollTrigger: {
+              trigger: '.hero-img',
+              start: 'start 30%',
+              end: 'top top',
+              scrub: true,
+              // markers: true,
+              pin: main.current
+            }
+          }
+        );
     });
     return () => ctx.revert();
   }, []);
@@ -81,14 +118,14 @@ export default function Hero() {
               </div>
             </div>
             {/* Image */}
-            <div className="mt-16 flow-root sm:mt-24">
+            <div className="hero-img mt-16 flow-root sm:mt-24">
               <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                 <Image
                   src="/images/app-screenshot.png"
                   alt="App screenshot"
                   width={2432}
                   height={1442}
-                  className="hero-img rounded-md shadow-2xl ring-1 ring-gray-900/10"
+                  className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
                 />
               </div>
             </div>
