@@ -71,8 +71,26 @@ export default function Hero() {
     });
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+    const updateMousePosition = (ev: MouseEvent) => {
+      if (!main.current) return;
+      const { clientX, clientY } = ev;
+      main.current.style.setProperty('--x', `${clientX}px`);
+      main.current.style.setProperty('--y', `${clientY}px`);
+    };
+
+    window.addEventListener('mousemove', updateMousePosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
   return (
-    <div className="bg-white overflow-hidden" ref={main}>
+    <div
+      className="bg-white overflow-hidden relative before:pointer-events-none before:fixed before:inset-0 before:z-50 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),_var(--primary)_0%,_transparent_100%)] before:opacity-40"
+      ref={main}
+    >
       <Navbar />
       <div className="relative isolate pt-14">
         <div
