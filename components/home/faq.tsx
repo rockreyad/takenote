@@ -33,19 +33,19 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
-          <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
+        <div className="mx-auto max-w-4xl divide-y divide-gray-900/10 dark:divide-white/10">
+          <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900 dark:text-white">
             Frequently asked questions
           </h2>
-          <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
+          <dl className="mt-10 space-y-6 divide-y divide-gray-900/10 dark:divide-white/10">
             {faqs.map((faq) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
                 {({ open }) => (
                   <>
                     <dt>
-                      <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900">
+                      <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900 dark:text-white">
                         <span className="text-base font-semibold leading-7">
                           {faq.question}
                         </span>
@@ -65,7 +65,7 @@ export default function FAQ() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-base leading-7 text-gray-600">
+                      <p className="text-base leading-7 text-gray-600 dark:text-gray-300">
                         {faq.answer}
                       </p>
                     </Disclosure.Panel>
