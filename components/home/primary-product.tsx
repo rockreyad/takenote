@@ -4,41 +4,59 @@ import Image from 'next/image';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 
-import { Container } from '@/components/Container';
-import backgroundImage from '@/images/background-features.jpg';
+import Container from '@/components/container';
+import backgroundImage from '@/images/background-product.jpg';
 import screenshotExpenses from '@/images/screenshots/expenses.png';
 import screenshotPayroll from '@/images/screenshots/payroll.png';
 import screenshotReporting from '@/images/screenshots/reporting.png';
 import screenshotVatReturns from '@/images/screenshots/vat-returns.png';
 
-const features = [
+const product = [
   {
-    title: 'Payroll',
+    title: 'Transcribe',
     description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
+      'Transform meetings into accurate transcriptions with exceptional accuracy. Our advanced AI solution approaches human level robustness and accuracy on English speech recognition.',
     image: screenshotPayroll
   },
   {
-    title: 'Claim expenses',
+    title: 'Summarise',
     description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
+      'Generate accurate meeting summaries. TakeNote AI engine comprehends meeting context and content to achieve high precision.',
     image: screenshotExpenses
   },
   {
-    title: 'VAT handling',
+    title: 'Analyse',
     description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
+      'Sentiment Analysis using Natural Language Processing models.Generate accurate insight. Make better decisions.',
     image: screenshotVatReturns
   },
+  // {
+  //   title: 'Visualise',
+  //   description: `Extract semantic relationships between entities from transcribed text using Natural Language Processing.
+  //     TakeNote generates visualisations of transcriptions and displays connections.`,
+  //   image: screenshotVatReturns
+  // },
   {
-    title: 'Reporting',
+    title: 'Identify',
     description:
-      'Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.',
+      'Identify speakers from AI analysis of voices.Simply upload sample audio clips of each speaker and let TakeNote AI do the rest.',
     image: screenshotReporting
   }
+  // {
+  //   title: 'Focus',
+  //   description:
+  //     'TakeNote AI will take meeting notes for you.Focus on the discussion - never miss an important action, decision or debate.',
+  //   image: screenshotReporting
+  // },
+  // {
+  //   title: 'Stay informed',
+  //   description:
+  //     'Can’t attend a meeting?  Send TakeNote AI.Review the transcript or summary offline.',
+  //   image: screenshotReporting
+  // }
 ];
 
-export function PrimaryFeatures() {
+export function PrimaryProduct() {
   let [tabOrientation, setTabOrientation] = useState('horizontal');
 
   useEffect(() => {
@@ -58,13 +76,14 @@ export function PrimaryFeatures() {
 
   return (
     <section
-      id="features"
+      id="product"
       aria-label="Features for running your books"
-      className="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
+      className="relative overflow-hidden bg-green-600 dark:bg-gray-900 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
     >
       <Image
         className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
-        src={backgroundImage}
+        // src={backgroundImage}
+        src={''}
         alt=""
         width={2245}
         height={1636}
@@ -75,7 +94,7 @@ export function PrimaryFeatures() {
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
             Everything you need to run your books.
           </h2>
-          <p className="mt-6 text-lg tracking-tight text-blue-100">
+          <p className="mt-6 text-lg tracking-tight text-green-100">
             Well everything you need if you aren’t that picky about minor
             details like tax compliance.
           </p>
@@ -89,12 +108,12 @@ export function PrimaryFeatures() {
             <>
               <div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
                 <Tab.List className="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal">
-                  {features.map((feature, featureIndex) => (
+                  {product.map((product, productIndex) => (
                     <div
-                      key={feature.title}
+                      key={product.title}
                       className={clsx(
                         'group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6',
-                        selectedIndex === featureIndex
+                        selectedIndex === productIndex
                           ? 'bg-white lg:bg-white/10 lg:ring-1 lg:ring-inset lg:ring-white/10'
                           : 'hover:bg-white/10 lg:hover:bg-white/5'
                       )}
@@ -103,42 +122,42 @@ export function PrimaryFeatures() {
                         <Tab
                           className={clsx(
                             'font-display text-lg focus:outline-none',
-                            selectedIndex === featureIndex
-                              ? 'text-blue-600 lg:text-white'
-                              : 'text-blue-100 hover:text-white lg:text-white'
+                            selectedIndex === productIndex
+                              ? 'text-green-600 lg:text-white'
+                              : 'text-green-100 hover:text-white lg:text-white'
                           )}
                         >
                           <span className="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none" />
-                          {feature.title}
+                          {product.title}
                         </Tab>
                       </h3>
                       <p
                         className={clsx(
                           'mt-2 hidden text-sm lg:block',
-                          selectedIndex === featureIndex
+                          selectedIndex === productIndex
                             ? 'text-white'
-                            : 'text-blue-100 group-hover:text-white'
+                            : 'text-green-100 group-hover:text-white'
                         )}
                       >
-                        {feature.description}
+                        {product.description}
                       </p>
                     </div>
                   ))}
                 </Tab.List>
               </div>
               <Tab.Panels className="lg:col-span-7">
-                {features.map((feature) => (
-                  <Tab.Panel key={feature.title} unmount={false}>
+                {product.map((product) => (
+                  <Tab.Panel key={product.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
                       <div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
                       <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
-                        {feature.description}
+                        {product.description}
                       </p>
                     </div>
-                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-green-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
                       <Image
                         className="w-full"
-                        src={feature.image}
+                        src={product.image}
                         alt=""
                         priority
                         sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
