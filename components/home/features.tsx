@@ -69,7 +69,10 @@ const actions = [
 export default function Features() {
   return (
     <Container className="py-12">
-      <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
+      <div
+        id="features"
+        className="max-w-2xl md:mx-auto md:text-center xl:max-w-none"
+      >
         <h2 className="font-display text-3xl tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
           Features
         </h2>
