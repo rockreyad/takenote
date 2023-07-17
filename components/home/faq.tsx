@@ -1,32 +1,40 @@
 'use client';
 import { Disclosure } from '@headlessui/react';
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
+import ReactMarkdown from 'react-markdown';
 
-const faqs = [
+type FAQProps = {
+  question: string;
+  answer: string[];
+};
+
+const faqs: FAQProps[] = [
   {
     question: 'Why use TakeNote AI?',
-    answer: `For Organisations:  TakeNote can record and transcribe meetings, with an accuracy that is higher than most people can achieve.  Our software can comprehend very high talking rates and strong regional accents.  Support for multiple languages will be added in H1-23.   Meeting transcripts can be summarised, analyzed and visualized.
-
-    Improve productivity for employees. Enhance meeting effectiveness.  Increase accuracy.
-    For Teams: TakeNote AI enhances meeting productivity by reducing the burden on attendees to take notes in real-time.   This enables meeting delegates to concentrate on the meeting itself and to contribute more.
-    
-    The Summary and Visualisation features identifies key points from the dialogue such as consensus, actions & decisions.
-    For the individual:  TakeNote AI enables staff to focus more on meeting content and contribute more.  Individuals who were unable to attend the meeting are able to review transcriptions and summaries to enhance productivity.
-    
-    Never miss important meeting content, even if you are unable to attend in person.`
+    answer: [
+      '**For Organisations:** **TakeNote** can record and transcribe meetings, with an accuracy that is higher than most people can achieve.  Our software can comprehend very high talking rates and strong regional accents.  Support for multiple languages will be added in H1-23.   Meeting transcripts can be summarised, analyzed and visualized.',
+      ' *Improve productivity for employees. Enhance meeting effectiveness.  Increase accuracy.*  ',
+      '**For Teams:** **TakeNote AI** enhances meeting productivity by reducing the burden on attendees to take notes in real-time.   This enables meeting delegates to concentrate on the meeting itself and to contribute more. ',
+      '*The Summary and Visualisation features identifies key points from the dialogue such as consensus, actions & decisions.*  ',
+      '**For the individual:  TakeNote AI** enables staff to focus more on meeting content and contribute more.  Individuals who were unable to attend the meeting are able to review transcriptions and summaries to enhance productivity.  ',
+      '*Never miss important meeting content, even if you are unable to attend in person.*'
+    ]
   },
   {
     question: 'How does it all work?',
-    answer: `TakeNote AI is a general-purpose speech recognition model,  trained on a very large dataset of diverse audio that can perform accurate speech recognition, transcription, translation, summarisation, visualisation and language identification.
+    answer: [
+      '**TakeNote AI** is a general-purpose speech recognition model,  trained on a very large dataset of diverse audio that can perform accurate speech recognition, transcription, translation, summarisation, visualisation and language identification.',
 
-    TakeNote AI uses Convolution Neural Networks to comprehend transcribed text and deliver accurate summaries and perform sentiment analysis.
-    
-    Meeting transcriptions can be visualised using 'Knowledge Graphing' with Natural Language Processing.   This extracts semantic relationships between identified entities.  This is performed using REBEL - Relational Extraction by End-to-End Language generation.`
+      '**TakeNote AI** uses Convolution Neural Networks to comprehend transcribed text and deliver accurate summaries and perform sentiment analysis.',
+
+      "Meeting transcriptions can be visualised using 'Knowledge Graphing' with Natural Language Processing.   This extracts semantic relationships between identified entities.  This is performed using REBEL - Relational Extraction by End-to-End Language generation."
+    ]
   },
   {
     question: 'Which languages does TakeNote AI support?',
-    answer:
-      'TakeNote AI currently supports English only.  Support for 10 other languages will be released in H1-2023.'
+    answer: [
+      '**TakeNote AI** currently supports English only.  Support for 10 other languages will be released in H1-2023.'
+    ]
   }
   // More questions...
 ];
@@ -66,7 +74,14 @@ export default function FAQ() {
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
                       <p className="text-base leading-7 text-gray-600 dark:text-gray-300">
-                        {faq.answer}
+                        {faq.answer.map((answer, faqIndex) => (
+                          <ReactMarkdown
+                            key={faqIndex}
+                            className="mt-4 text-gray-500 dark:text-gray-400"
+                          >
+                            {answer}
+                          </ReactMarkdown>
+                        ))}
                       </p>
                     </Disclosure.Panel>
                   </>
