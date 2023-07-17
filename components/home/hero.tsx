@@ -1,23 +1,18 @@
 'use client';
 import Image from 'next/image';
 import Navbar from './navbar';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGsapContext } from '@/lib/gsapUtils';
+import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
 export default function Hero() {
   const main = useRef<any>(null);
-  const tl = useRef<string>(null);
   const ctx = useGsapContext(main);
   useIsomorphicLayoutEffect(() => {
     ctx.add(() => {
-      // tl.current = gsap.timeline();
       gsap
         .timeline()
         .from('.hero-text h1', { opacity: 0, ease: 'power2.in' })
@@ -88,7 +83,7 @@ export default function Hero() {
   }, []);
   return (
     <div
-      className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#98FF24,_transparent_100%)] dark:before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#7775D6,_transparent_100%)] before:opacity-40 dark:before:opacity-40"
+      className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#98FF24,_transparent_100%)] dark:before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#7775D6,_transparent_100%)] before:opacity-40 dark:before:opacity-40"
       ref={main}
     >
       <Navbar />

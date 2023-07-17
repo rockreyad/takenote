@@ -1,15 +1,16 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 
 import Container from '@/components/container';
-import backgroundImage from '@/images/background-product.jpg';
 import screenshotExpenses from '@/images/screenshots/expenses.png';
 import screenshotPayroll from '@/images/screenshots/payroll.png';
 import screenshotReporting from '@/images/screenshots/reporting.png';
 import screenshotVatReturns from '@/images/screenshots/vat-returns.png';
+import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
+import { Power2, gsap } from 'gsap';
 
 const product = [
   {
@@ -57,6 +58,7 @@ const product = [
 ];
 
 export function PrimaryProduct() {
+  const [tabIndex, setTabIndex] = useState(0);
   let [tabOrientation, setTabOrientation] = useState('horizontal');
 
   useEffect(() => {
@@ -73,9 +75,97 @@ export function PrimaryProduct() {
       lgMediaQuery.removeEventListener('change', onMediaQueryChange);
     };
   }, []);
+  const productRef = useRef<any>(null);
+  const ctx = useGsapContext(productRef);
+  useIsomorphicLayoutEffect(() => {
+    ctx.add(() => {
+      gsap.from('.product-title', {
+        opacity: 0,
+        y: -40,
+        duration: 2,
+        ease: Power2.easeOut,
+        scrollTrigger: {
+          trigger: '.product-title',
+          start: '40px bottom',
+          toggleActions: 'restart none none reverse'
+        }
+      });
+      gsap.from('.product-subtitle', {
+        opacity: 0,
+        y: 10,
+        duration: 2,
+        ease: Power2.easeOut,
+        scrollTrigger: {
+          trigger: '.product-subtitle',
+          toggleActions: 'restart none none reverse'
+        }
+      });
+      gsap.from('.tab-panel', {
+        opacity: 0,
+        y: 40,
+        duration: 1.5,
+        ease: Power2.easeOut,
+        scrollTrigger: {
+          trigger: '.tab-panel',
+          start: '10% bottom',
+          toggleActions: 'restart none none reverse'
+        }
+      });
+      // Timeline
+      const myObj = { value: 0 };
+      gsap
+        .timeline()
+        .to(productRef.current, {
+          keyframes: {
+            scale: [0.8, 1],
+            easeEach: Power2.easeOut
+          },
+          scrollTrigger: {
+            trigger: productRef.current,
+            start: 'top bottom',
+            end: '20% 80%',
+            // markers: true,
+            scrub: 3
+          }
+        })
+        .to(myObj, {
+          value: product.length - 1,
+          snap: 'value',
+          duration: 4,
+          scrollTrigger: {
+            trigger: productRef.current,
+            pin: true,
+            start: '10% top',
+            end: 'bottom top',
+            scrub: true,
+            // markers: true,
+            onUpdate: () => {
+              // console.log(myObj.value);
+              setTabIndex(myObj.value);
+            }
+          }
+        })
+        .to(productRef.current, {
+          keyframes: {
+            scale: [1, 0.9],
+            easeEach: Power2.easeOut
+          },
+          scrollTrigger: {
+            trigger: productRef.current,
+            start: 'bottom 20%',
+            end: 'bottom top',
+            // markers: true,
+            scrub: 3
+          }
+        });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
+      ref={productRef}
       id="product"
       aria-label="Features for running your books"
       className="relative overflow-hidden bg-green-600 dark:bg-gray-900 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
@@ -91,10 +181,10 @@ export function PrimaryProduct() {
       />
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="product-title font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
             Everything you need to run your books.
           </h2>
-          <p className="mt-6 text-lg tracking-tight text-green-100">
+          <p className="product-subtitle mt-6 text-lg tracking-tight text-green-100">
             Well everything you need if you aren’t that picky about minor
             details like tax compliance.
           </p>
@@ -103,6 +193,8 @@ export function PrimaryProduct() {
           as="div"
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
           vertical={tabOrientation === 'vertical'}
+          selectedIndex={tabIndex}
+          onChange={setTabIndex}
         >
           {({ selectedIndex }) => (
             <>
@@ -145,9 +237,9 @@ export function PrimaryProduct() {
                   ))}
                 </Tab.List>
               </div>
-              <Tab.Panels className="lg:col-span-7">
+              <Tab.Panels className="tab-panels lg:col-span-7">
                 {product.map((product) => (
-                  <Tab.Panel key={product.title} unmount={false}>
+                  <Tab.Panel className="tab-panel" key={product.title}>
                     <div className="relative sm:px-6 lg:hidden">
                       <div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
                       <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">

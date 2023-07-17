@@ -66,6 +66,7 @@
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
     "react-stately": "^3.24.0",
+    "react-transition-group": "^4.4.5",
     "rss-to-json": "^2.1.1",
     "server-only": "^0.0.1",
     "tailwind-merge": "^1.13.2",
@@ -77,6 +78,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@types/nprogress": "^0.2.0",
+    "@types/react-transition-group": "^4.4.6",
     "husky": "^8.0.0"
   }
 }

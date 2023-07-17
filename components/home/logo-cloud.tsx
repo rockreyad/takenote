@@ -1,12 +1,33 @@
+'use client';
 import Transistor from './__company-logo__/transistor';
 import Reform from './__company-logo__/reform';
 import Tuple from './__company-logo__/tuple';
 import SavvyCal from './__company-logo__/savvycal';
 import Satamic from './__company-logo__/satatmic';
+import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function LogoCloud() {
+  const logoCloudRef = useRef<any>(null);
+  const ctx = useGsapContext(logoCloudRef);
+  useIsomorphicLayoutEffect(() => {
+    ctx.add(() => {
+      gsap.from('.cloud-logo', {
+        opacity: 0,
+        y: 10,
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: logoCloudRef.current,
+          start: '80px bottom',
+          toggleActions: 'restart none none reverse'
+        }
+      });
+    });
+    return () => ctx.revert();
+  });
   return (
-    <div className="relative isolate z-10 mt-32 sm:mt-48">
+    <div className="relative isolate z-10 mt-32 sm:mt-48" ref={logoCloudRef}>
       <div className="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)] dark:[mask-image:radial-gradient(50%_45%_at_50%_55%,black,transparent)] bg-white dark:bg-black">
         <svg
           className="h-[40rem] w-[80rem] flex-none stroke-gray-200 dark:stroke-gray-700"
@@ -49,21 +70,21 @@ export default function LogoCloud() {
         </h2>
         <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
           <div className="col-span-2 max-h-12 object-contain lg:col-span-1 h-[158px] w-[48px]">
-            <Transistor className="fill-gray-900 dark:fill-gray-100" />
+            <Transistor className="cloud-logo fill-gray-900 dark:fill-gray-100" />
           </div>
           <div className="col-span-2 max-h-12 w-full object-contain lg:col-span-1">
-            <Reform className="fill-gray-900 dark:fill-gray-100" />
+            <Reform className="cloud-logo fill-gray-900 dark:fill-gray-100" />
           </div>
           <div className="col-span-2 max-h-12 w-full object-contain lg:col-span-1">
-            <Tuple className="fill-gray-900 dark:fill-gray-100" />
+            <Tuple className="cloud-logo fill-gray-900 dark:fill-gray-100" />
           </div>
 
           <div className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1">
-            <SavvyCal className="fill-gray-900 dark:fill-gray-100" />
+            <SavvyCal className="cloud-logo fill-gray-900 dark:fill-gray-100" />
           </div>
 
           <div className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1">
-            <Satamic className="fill-gray-900 dark:fill-gray-100" />
+            <Satamic className="cloud-logo fill-gray-900 dark:fill-gray-100" />
           </div>
         </div>
       </div>
