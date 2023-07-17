@@ -39,35 +39,35 @@ export default function Hero() {
           scale: 1.5,
           duration: 1.5,
           ease: 'sine'
-        })
-        .fromTo(
-          '.hero-img',
-          { scale: 1 },
-          {
-            scale: 1.2,
-            // x: -500,
-            y: 200,
-            // keyframes: {
-            //   x: [0, -500, 200, 0],
-            //   y: [0, 200, 200, 0],
-            //   scale: [1, 1.5, 1.5, 1],
-            //   easeEach: 'sine'
-            // },
-            ease: 'sine',
-            duration: 500,
-            // attr: {
-            //   src: '/images/app-screenshot-2.png'
-            // },
-            scrollTrigger: {
-              trigger: '.hero-img',
-              start: 'start 30%',
-              end: 'top top',
-              scrub: true,
-              // markers: true,
-              pin: main.current
-            }
-          }
-        );
+        });
+      // .fromTo(
+      //   '.hero-img',
+      //   { scale: 1 },
+      //   {
+      //     scale: 1.2,
+      //     // x: -500,
+      //     y: 200,
+      //     // keyframes: {
+      //     //   x: [0, -500, 200, 0],
+      //     //   y: [0, 200, 200, 0],
+      //     //   scale: [1, 1.5, 1.5, 1],
+      //     //   easeEach: 'sine'
+      //     // },
+      //     ease: 'sine',
+      //     duration: 500,
+      //     // attr: {
+      //     //   src: '/images/app-screenshot-2.png'
+      //     // },
+      //     scrollTrigger: {
+      //       trigger: '.hero-img',
+      //       start: 'start 30%',
+      //       end: 'top top',
+      //       scrub: true,
+      //       // markers: true,
+      //       pin: main.current
+      //     }
+      //   }
+      // );
     });
     return () => ctx.revert();
   }, []);
@@ -88,7 +88,7 @@ export default function Hero() {
   }, []);
   return (
     <div
-      className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:fixed before:inset-0 before:z-50 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),_var(--primary)_0%,_transparent_100%)] before:opacity-40"
+      className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#98FF24,_transparent_100%)] dark:before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#7775D6,_transparent_100%)] before:opacity-40 dark:before:opacity-40"
       ref={main}
     >
       <Navbar />
