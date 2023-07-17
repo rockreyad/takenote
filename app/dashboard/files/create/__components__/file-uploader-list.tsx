@@ -3,18 +3,15 @@
 import React from 'react';
 import { FileUploader } from './file-uploader';
 import { RiLink, RiUploadCloud2Line } from 'react-icons/ri';
-import FileStackUploader from '@/lib/filestack';
+import useFileStack from '@/hook/useFileStack';
 
 export default function FileUploaderList() {
+  const { OpenFilePicker } = useFileStack();
   return (
     <>
       <div
         className="flex flex-col md:flex-row items-center gap-5 max-h- w-min pb-96"
-        onDragOver={() =>
-          FileStackUploader().then(() => {
-            // console.log(res)
-          })
-        }
+        onDragOver={OpenFilePicker}
       >
         {FilePickerOptions.map((option) => (
           <FileUploader
@@ -24,14 +21,7 @@ export default function FileUploaderList() {
             label={option.label}
             buttonName={option.buttonName}
             variant={option.variant || 'solid'}
-            onClick={
-              option.type === 'upload'
-                ? () =>
-                    FileStackUploader().then(() => {
-                      // console.log(res);
-                    })
-                : undefined
-            }
+            onClick={option.type === 'upload' ? OpenFilePicker : undefined}
           />
         ))}
       </div>
