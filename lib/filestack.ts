@@ -10,20 +10,19 @@ const options = {
     'instagram',
     'facebook',
     'googledrive',
-    'dropbox',
-    'webcam'
+    'dropbox'
   ],
-  accept: ['audio/*', 'video/*'],
+  accept: ['.mp3', 'video/*'],
   maxFiles: 1,
-  maxSize: 1024 * 1024 * 5,
+  maxSize: 1024 * 1024 * 250,
   failOverMaxFiles: false,
-  onFileUploadFinished: (res: any) => {
-    // console.log(res);
+  onFileUploadFinished: (res: filestack.PickerFileMetadata) => {
+    // console.log('File Stack On file upload finished', res);
   },
-  onUploadDone: (res: any) => {
-    // console.log(res);
+  onUploadDone: (res: filestack.PickerResponse) => {
+    // console.log('File Stack On Upload Done', res);
   }
-};
+} as filestack.PickerOptions;
 
 const FileStackUploader = async () => {
   const FileUploaed = await filestackClient.picker(options).open();
