@@ -40,7 +40,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`h-full bg-gray-50 ${inter.className}`}>
+    <html
+      lang="en"
+      className={`h-full bg-gray-50 ${inter.className} scroll-smooth`}
+    >
       <ThemeProviderWrapper>
         <body className="font-sans">
           <TopProgressBar />

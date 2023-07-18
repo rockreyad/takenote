@@ -7,6 +7,7 @@ import Features from '@/components/home/features';
 import FAQ from '@/components/home/faq';
 import Contact from '@/components/home/contact';
 import Footer from '@/components/home/footer';
+import ScrollToTop from '@/components/home/ScrollToTop';
 
 interface HomeProps {}
 
@@ -21,6 +22,7 @@ const Home: FunctionComponent<HomeProps> = () => {
       <Contact />
       <NewsLetter />
       <Footer />
+      <ScrollToTop />
     </>
   );
 };
