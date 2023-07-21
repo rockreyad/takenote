@@ -3,10 +3,7 @@ import Image from 'next/image';
 import Navbar from './navbar';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const main = useRef<any>(null);

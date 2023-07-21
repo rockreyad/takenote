@@ -77,8 +77,7 @@ export default function Features() {
           Features
         </h2>
         <p className="mt-6 text-lg tracking-tight text-gray-400 dark:text-green-100">
-          Well everything you need if you aren’t that picky about minor details
-          like tax compliance.
+          Transcribe audio into insight with exceptional accuracy.
         </p>
       </div>
       <div className="mt-16 divide-y divide-gray-200 dark:divide-white/20 overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-200/20 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
@@ -118,14 +117,6 @@ export default function Features() {
               </h3>
               <p className="mt-2 text-sm text-gray-500">{action.description}</p>
             </div>
-            <span
-              className="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400"
-              aria-hidden="true"
-            >
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-              </svg>
-            </span>
           </div>
         ))}
       </div>

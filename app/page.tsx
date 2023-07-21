@@ -8,21 +8,24 @@ import FAQ from '@/components/home/faq';
 import Contact from '@/components/home/contact';
 import Footer from '@/components/home/footer';
 import ScrollToTop from '@/components/home/ScrollToTop';
+import GsapProvider from '@/context/GsapProvider';
 
 interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
   return (
     <>
-      <Hero />
-      <LogoCloud />
-      <PrimaryProduct />
-      <Features />
-      <FAQ />
-      <Contact />
-      <NewsLetter />
-      <Footer />
-      <ScrollToTop />
+      <GsapProvider>
+        <Hero />
+        <LogoCloud />
+        <PrimaryProduct />
+        <Features />
+        <FAQ />
+        <Contact />
+        <NewsLetter />
+        <Footer />
+        <ScrollToTop />
+      </GsapProvider>
     </>
   );
 };
