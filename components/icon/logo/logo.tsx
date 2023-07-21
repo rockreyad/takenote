@@ -1,10 +1,4 @@
-import { cn } from '@/lib/utils';
-import localFont from 'next/font/local';
 import { FunctionComponent } from 'react';
-
-const nasalization = localFont({
-  src: './font/nasalization.otf'
-});
 
 interface LogoProps {
   variant?: 'default' | 'small';
@@ -14,11 +8,7 @@ export default function Logo({ variant = 'default' }: LogoProps) {
   switch (variant) {
     case 'small':
       return (
-        <main
-          className={cn(
-            `${nasalization.className} flex flex-col space-y-0.5 md:space-y-0 items-center`
-          )}
-        >
+        <main className={'flex flex-col space-y-0.5 md:space-y-0 items-center'}>
           <LogoIcon className="h-7 w-7" />
           <h1 className="text-[10px]  text-[#7F8182] tracking-wider font-medium capitalize">
             TakeNote
@@ -28,9 +18,9 @@ export default function Logo({ variant = 'default' }: LogoProps) {
     default:
       return (
         <main
-          className={cn(
-            `${nasalization.className} flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center`
-          )}
+          className={
+            'flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center'
+          }
         >
           <LogoIcon className="h-7 w-7" />
           <h1 className="text-[10px] md:text-[28px] text-[#7F8182] tracking-wider font-medium capitalize">

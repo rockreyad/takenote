@@ -17,6 +17,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        primary: 'GT Walsheim Regular',
+        primaryMedium: 'GT Walsheim Medium',
+        primaryBold: 'GT Walsheim Bold',
+        primaryLight: 'GT Walsheim Light',
         sans: ['var(--font-inter)']
       },
       colors: {
