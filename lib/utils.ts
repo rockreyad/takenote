@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
-import { taskSchema } from '@/app/dashboard/files/__data__/schema';
+import { taskSchema } from '@/app/[locale]/dashboard/files/__data__/schema';
 import { faker } from '@faker-js/faker';
 
 export function cn(...inputs: ClassValue[]) {
