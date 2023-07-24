@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: ['class'],
   content: [
-    './pages/**/*.{ts,tsx,jsx}',
+    './pages/**/*.{ts,tsx,jsx,mdx}',
     './components/**/*.{ts,tsx,jsx}',
     './app/**/*.{ts,tsx,jsx}',
     './src/**/*.{ts,tsx,jsx}'
@@ -82,5 +82,9 @@ module.exports = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')]
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
+  ]
 };

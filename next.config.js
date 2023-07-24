@@ -2,7 +2,10 @@
 const nextConfig = {
   images: {
     domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh']
+  },
+  experimental: {
+    mdxRs: true
   }
 };
-
-module.exports = nextConfig;
+const withMDX = require('@next/mdx')();
+module.exports = withMDX(nextConfig);
