@@ -4,8 +4,10 @@ import Navbar from './navbar';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+  const t = useTranslations('Index');
   const main = useRef<any>(null);
   const ctx = useGsapContext(main);
   useIsomorphicLayoutEffect(() => {
@@ -102,10 +104,10 @@ export default function Hero() {
             {/* Text */}
             <div className="hero-text mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl uppercase">
-                the next generation
+                {t('hero.title.firstLine')}
               </h1>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl uppercase">
-                speech to text ai
+                {t('hero.title.secondLine')}
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                 Transform your business by changing the way you process audio

@@ -5,6 +5,8 @@ import 'nprogress/nprogress.css';
 import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
 import { AudioProvider } from '@/context/AudioProvider';
+import { NextIntlClientProvider } from 'next-intl';
+import { notFound } from 'next/navigation';
 
 const TopProgressBar = dynamic(
   () => {
@@ -34,11 +36,23 @@ export const metadata: Metadata = {
   }
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'de' }];
+}
+
 export default async function RootLayout({
-  children
+  children,
+  params: { locale }
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
   return (
     <html
       lang="en"
@@ -46,8 +60,10 @@ export default async function RootLayout({
     >
       <ThemeProviderWrapper>
         <body className="font-sans">
-          <TopProgressBar />
-          <AudioProvider>{children}</AudioProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <TopProgressBar />
+            <AudioProvider>{children}</AudioProvider>
+          </NextIntlClientProvider>
         </body>
       </ThemeProviderWrapper>
     </html>
