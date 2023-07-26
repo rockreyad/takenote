@@ -1,43 +1,9 @@
 'use client';
 
+import { Sentiment } from '@/types/analyseData';
 import echarts, { EChartsOption } from 'echarts';
 import ReactECharts from 'echarts-for-react';
 
-const SentimentAnalysisOption = {
-  xAxis: {
-    type: 'category',
-    data: ['Neutral', 'Positive', 'Negative']
-  },
-  yAxis: {
-    type: 'value',
-    boundaryGap: [0, 0.1]
-  },
-  series: [
-    {
-      data: [
-        {
-          value: 335,
-          itemStyle: {
-            color: '#F4BA77'
-          }
-        },
-        {
-          value: 200,
-          itemStyle: {
-            color: '#94D8AC'
-          }
-        },
-        {
-          value: 150,
-          itemStyle: {
-            color: '#DF665A'
-          }
-        }
-      ],
-      type: 'bar'
-    }
-  ]
-} as EChartsOption;
 // prettier-ignore
 const hours = [
   '12a', '1a', '2a', '3a', '4a', '5a', '6a',
@@ -102,7 +68,75 @@ const ScoreDistributionOptions = {
   series: series
 } as echarts.EChartsOption;
 
-export default function TabSentiment() {
+export default function TabSentiment({
+  sentimentData
+}: {
+  sentimentData: Sentiment[] | undefined;
+}) {
+  const sentimentNeutralValue = sentimentData?.length
+    ? sentimentData
+        ?.filter((item) => item.label === 'Neutral')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
+    : 0;
+
+  const sentimentPositiveValue = sentimentData?.length
+    ? sentimentData
+        ?.filter((item) => item.label === 'Positive')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
+    : 0;
+  const sentimentNegativeValue = sentimentData?.length
+    ? sentimentData
+        ?.filter((item) => item.label === 'Negative')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
+    : 0;
+
+  const SentimentAnalysisOption = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      data: ['Neutral', 'Positive', 'Negative']
+    },
+    yAxis: {
+      type: 'value',
+      boundaryGap: [0, 0.1]
+    },
+    series: [
+      {
+        data: [
+          {
+            value: sentimentNeutralValue,
+            itemStyle: {
+              color: '#F4BA77'
+            }
+          },
+          {
+            value: sentimentPositiveValue,
+            itemStyle: {
+              color: '#94D8AC'
+            }
+          },
+          {
+            value: sentimentNegativeValue,
+            itemStyle: {
+              color: '#DF665A'
+            }
+          }
+        ],
+        type: 'bar'
+      }
+    ]
+  } as EChartsOption;
   return (
     <>
       <div className="space-y-8">

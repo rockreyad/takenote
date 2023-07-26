@@ -81,7 +81,7 @@ export const columns: ColumnDef<Task>[] = [
             </TooltipProvider>
           )}
           <Link
-            href="/dashboard/files/123"
+            href="/dashboard/files/random?fileName=audio.wav"
             className="max-w-[500px] truncate font-medium hover:underline"
           >
             {row.getValue('title')}
