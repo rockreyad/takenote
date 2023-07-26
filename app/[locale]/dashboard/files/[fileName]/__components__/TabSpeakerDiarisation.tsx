@@ -2,6 +2,7 @@ import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { SpeakerDiarization } from '@/types/analyseData';
 import { Play } from 'lucide-react';
+import moment from 'moment';
 
 const speackerColor = {
   SPEAKER_00: 'text-primary',
@@ -39,7 +40,9 @@ export default function TabSpeakerDiarisation({
                   />
                   <span className="flex items-center gap-2 cursor-pointer">
                     <Play className="h-4 w-4 text-black" />
-                    {item.start}
+                    {moment(
+                      moment.duration(item.start, 'seconds').asMilliseconds()
+                    ).format('mm:ss')}
                   </span>
                 </div>
                 <blockquote className="mt-6 border-l-2 border-primary pl-6 italic">
