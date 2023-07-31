@@ -1,8 +1,21 @@
-import { FunctionComponent } from 'react';
+'use client';
+import { FunctionComponent, useState } from 'react';
 
 interface NewsLetterProps {}
 
 const NewsLetter: FunctionComponent<NewsLetterProps> = () => {
+  const [email, setEmail] = useState<string>();
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    // TODO
+    event.preventDefault();
+    console.log(email);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setEmail(value);
+  };
   return (
     <>
       <div className="mx-auto max-w-7xl sm:my-32 sm:px-6 lg:px-8">
@@ -11,16 +24,20 @@ const NewsLetter: FunctionComponent<NewsLetterProps> = () => {
             Get notified when we’re launching.
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Reprehenderit ad esse et non officia in nulla. Id proident tempor
-            incididunt nostrud nulla et culpa.
+            Register here to keep up-to-date as TakeNote evolves
           </p>
-          <form className="mx-auto mt-10 flex max-w-md gap-x-4">
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto mt-10 flex max-w-md gap-x-4"
+          >
             <label htmlFor="email-address" className="sr-only">
               Email address
             </label>
             <input
               id="email-address"
               name="email"
+              value={email}
+              onChange={handleEmailChange}
               type="email"
               autoComplete="email"
               required

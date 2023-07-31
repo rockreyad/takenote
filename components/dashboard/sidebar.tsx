@@ -32,7 +32,7 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import Logo from '../icon/logo/logo';
+import Logo from '../icon/logo';
 
 const navigation = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon, current: true },
@@ -163,7 +163,7 @@ const Sidebar = () => {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex grow flex-col gap-y-5 overflow-y-auto overflow-x-hidden bg-primary-foreground px-6 pb-4">
           <div className="flex h-16 shrink-0 items-center">
-            <Logo variant="small" />
+            <Logo variant="default" />
           </div>
           <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">

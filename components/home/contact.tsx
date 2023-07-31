@@ -60,9 +60,7 @@ export default function Contact() {
               Get in touch
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Perferendis sapiente totam fugiat eos, provident nostrum illo nisi
-              distinctio! Ratione ullam laboriosam repellat. Odio, ab quos!
+              “Please fill out the form to contact us. We will respond asap”
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-300">
               <div className="flex gap-x-4">

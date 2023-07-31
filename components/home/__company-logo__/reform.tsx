@@ -1,4 +1,4 @@
-import { SVGProps } from '@/types/svg';
+import { SVGProps } from '@/types/icon';
 import React, { FunctionComponent } from 'react';
 
 const Reform: FunctionComponent<SVGProps> = ({ className }) => {
