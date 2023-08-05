@@ -77,7 +77,8 @@ export default function Contact() {
                   WC2A 2JR
                 </dd>
               </div>
-              <div className="flex gap-x-4">
+              {/* Right Now the phone number is turn off */}
+              {/* <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Telephone</span>
                   <PhoneIcon
@@ -93,7 +94,7 @@ export default function Contact() {
                     +44 7809 120260
                   </a>
                 </dd>
-              </div>
+              </div> */}
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Email</span>
