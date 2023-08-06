@@ -85,11 +85,13 @@ export const LoginForm = () => {
         backgroundColor="#3b5998"
         label="Continue with Google"
         icon={<RiGoogleFill className="w-full h-full" />}
+        onClick={() => signIn('google', { callbackUrl })}
       />
       <ProviderButton
         backgroundColor="#55acee"
         label=" Continue with GitHub"
         icon={<RiGithubFill className="w-full h-full" />}
+        onClick={() => signIn('github', { callbackUrl })}
       />
     </form>
   );

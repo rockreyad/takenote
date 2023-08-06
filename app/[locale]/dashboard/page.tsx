@@ -1,15 +1,10 @@
-'use client';
-import { useSession } from 'next-auth/react';
+import { authOptions } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
-export default function IndexPage() {
-  // eslint-disable-next-line no-unused-vars
-  const { data } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect('/auth/signin?callbackUrl=/dashboard');
-    }
-  });
+export default async function IndexPage() {
+  const session = getServerSession(authOptions);
+  if (!session) redirect('/auth/signin?callbackUrl=/dashboard');
   return (
     <div className="space-y-2 h-screen">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-wide lg:text-5xl">
