@@ -6,7 +6,8 @@ import { cn } from '@/lib/utils';
 
 const themes = [
   { name: 'Light', value: 'light', icon: LightIcon },
-  { name: 'Dark', value: 'dark', icon: DarkIcon }
+  { name: 'Dark', value: 'dark', icon: DarkIcon },
+  { name: 'System', value: 'system', icon: SystemIcon }
 ];
 
 function LightIcon(props: { className: string }) {
@@ -95,6 +96,11 @@ export function ThemeSelector(props: { className?: string }) {
         <DarkIcon
           className={cn('hidden h-4 w-4 fill-green-400', {
             block: selectedTheme?.value === 'dark'
+          })}
+        />
+        <SystemIcon
+          className={cn('hidden h-4 w-4 fill-green-400', {
+            block: selectedTheme?.value === 'system'
           })}
         />
       </Listbox.Button>

@@ -60,9 +60,7 @@ export default function Contact() {
               Get in touch
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Perferendis sapiente totam fugiat eos, provident nostrum illo nisi
-              distinctio! Ratione ullam laboriosam repellat. Odio, ab quos!
+              “Please fill out the form to contact us. We will respond asap”
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-300">
               <div className="flex gap-x-4">
@@ -79,7 +77,8 @@ export default function Contact() {
                   WC2A 2JR
                 </dd>
               </div>
-              <div className="flex gap-x-4">
+              {/* Right Now the phone number is turn off */}
+              {/* <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Telephone</span>
                   <PhoneIcon
@@ -95,7 +94,7 @@ export default function Contact() {
                     +44 7809 120260
                   </a>
                 </dd>
-              </div>
+              </div> */}
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Email</span>

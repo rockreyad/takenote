@@ -1,42 +1,7 @@
+import { IconProps } from '@/types/icon';
 import { FunctionComponent } from 'react';
 
-interface LogoProps {
-  variant?: 'default' | 'small';
-}
-
-export default function Logo({ variant = 'default' }: LogoProps) {
-  switch (variant) {
-    case 'small':
-      return (
-        <main className={'flex flex-col space-y-0.5 md:space-y-0 items-center'}>
-          <LogoIcon className="h-7 w-7" />
-          <h1 className="text-[10px]  text-[#7F8182] tracking-wider font-medium capitalize">
-            TakeNote
-          </h1>
-        </main>
-      );
-    default:
-      return (
-        <main
-          className={
-            'flex flex-col md:flex-row space-y-0.5 md:space-y-0 md:space-x-0.5 items-center'
-          }
-        >
-          <LogoIcon className="h-7 w-7" />
-          <h1 className="text-[10px] md:text-[28px] text-[#7F8182] tracking-wider font-medium capitalize">
-            TakeNote
-          </h1>
-        </main>
-      );
-      break;
-  }
-}
-
-interface IconProps {
-  className: string;
-}
-
-const LogoIcon: FunctionComponent<IconProps> = ({ className }) => {
+export const LogoIcon: FunctionComponent<IconProps> = ({ className }) => {
   return (
     <svg
       viewBox="0 0 1145 1145"

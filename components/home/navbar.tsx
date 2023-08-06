@@ -3,7 +3,7 @@ import type { FunctionComponent } from 'react';
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Logo from '../icon/logo/logo';
+import Logo from '../icon/logo';
 import { ThemeSelector } from './ThemeSelector';
 import { scrollTo } from '@/lib/gsapUtils';
 import Link from 'next/link';
@@ -60,6 +60,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
+            {/* Theme Switch Toggle */}
             <ThemeSelector className="relative z-10" />
             <a
               href="#"
