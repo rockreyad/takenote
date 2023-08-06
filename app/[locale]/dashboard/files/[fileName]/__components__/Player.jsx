@@ -3,7 +3,7 @@
 import { useAudioPlayer } from '@/context/AudioProvider';
 import { useMemo } from 'react';
 
-export default function Palayer({ episode }) {
+export default function Player({ episode }) {
   let audioPlayerData = useMemo(
     () => ({
       title: episode.title,

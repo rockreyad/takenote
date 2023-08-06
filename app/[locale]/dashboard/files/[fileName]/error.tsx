@@ -18,6 +18,8 @@ export default function Error({
   return (
     <div className="space-y-4 text-center min-h-screen flex flex-col items-center justify-center">
       <p>Somethings want wrong. Please try to refresh this page.</p>
+      {/* Error Message */}
+      <p className="text-red-500">{error.message}</p>
       <Button
         className="bg-primary hover:bg-primary/80"
         onClick={
