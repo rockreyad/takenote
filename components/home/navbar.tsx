@@ -7,6 +7,7 @@ import Logo from '../icon/logo';
 import { ThemeSelector } from './ThemeSelector';
 import { scrollTo } from '@/lib/gsapUtils';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 const navigation = [
   { name: 'Home', href: '#navbar' },
@@ -21,7 +22,7 @@ interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const { status } = useSession();
   return (
     <>
       <header id="navbar" className="absolute inset-x-0 top-0 z-50">
@@ -63,10 +64,11 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
             {/* Theme Switch Toggle */}
             <ThemeSelector className="relative z-10" />
             <a
-              href="/auth/signin"
+              href={status === 'authenticated' ? '/dashboard' : '/auth/signin'}
               className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
             >
-              Log in <span aria-hidden="true">&rarr;</span>
+              {status === 'authenticated' ? 'Dashboard' : 'signIn'}
+              <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </nav>
@@ -115,10 +117,12 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                 </div>
                 <div className="py-6">
                   <Link
-                    href="/auth/signin"
+                    href={
+                      status === 'authenticated' ? '/dashboard' : '/auth/signin'
+                    }
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:text-gray-800"
                   >
-                    Log in
+                    {status === 'authenticated' ? 'Dashboard' : 'signIn'}
                   </Link>
                 </div>
               </div>

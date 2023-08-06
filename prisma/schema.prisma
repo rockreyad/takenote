@@ -21,8 +21,8 @@ model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
   type              String
-  provider          String?
-  providerAccountId String? @map("provider_account_id")
+  provider          String
+  providerAccountId String  @map("provider_account_id")
   refresh_token     String? @db.Text
   access_token      String? @db.Text
   expires_at        Int?
@@ -50,6 +50,7 @@ model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
+  password      String?   @map("password_hash") @db.Text
   emailVerified DateTime? @map("email_verified")
   image         String?
   accounts      Account[]

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 import TextField from './TextField';
 import ProviderButton from './ProviderButton';
-import { RiGithubFill, RiGoogleFill } from 'react-icons/ri';
+import { RiGoogleFill } from 'react-icons/ri';
 import SubmitButton from './SubmitButton';
 
 export const LoginForm = () => {
@@ -87,12 +87,12 @@ export const LoginForm = () => {
         icon={<RiGoogleFill className="w-full h-full" />}
         onClick={() => signIn('google', { callbackUrl })}
       />
-      <ProviderButton
+      {/* <ProviderButton
         backgroundColor="#55acee"
         label=" Continue with GitHub"
         icon={<RiGithubFill className="w-full h-full" />}
         onClick={() => signIn('github', { callbackUrl })}
-      />
+      /> */}
     </form>
   );
 };
