@@ -4,7 +4,11 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   images: {
-    domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh']
+    domains: [
+      'avatars.githubusercontent.com',
+      'avatar.vercel.sh',
+      'googleusercontent.com'
+    ]
   },
   experimental: {
     mdxRs: true

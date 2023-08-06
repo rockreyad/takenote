@@ -90,12 +90,12 @@ export const authOptions: NextAuthOptions = {
       return token;
     }
   },
-  // pages: {
-  //   signIn: '/auth/signin'
-  //   // signOut: '/auth/signout',
-  //   // error: '/auth/error',
-  //   // newUser: '/auth/newuser'
-  // },
+  pages: {
+    signIn: '/auth/signin'
+    // signOut: '/auth/signout',
+    // error: '/auth/error',
+    // newUser: '/auth/newuser'
+  },
   session: {
     strategy: 'jwt'
   },

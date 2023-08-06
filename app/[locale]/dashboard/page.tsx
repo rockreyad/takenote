@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 
 export default async function IndexPage() {
   const session = getServerSession(authOptions);
-  if (!session) redirect('/auth/signin?callbackUrl=/dashboard');
+  if (!session) redirect('/auth/signin');
   return (
     <div className="space-y-2 h-screen">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-wide lg:text-5xl">
