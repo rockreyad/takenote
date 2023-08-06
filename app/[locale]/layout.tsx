@@ -2,18 +2,10 @@ import './globals.css';
 import ThemeProviderWrapper from '@/context/ThemeProvider';
 import { Inter } from 'next/font/google';
 import 'nprogress/nprogress.css';
-import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
-import { AudioProvider } from '@/context/AudioProvider';
+import Provider from '@/components/Provider';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-
-const TopProgressBar = dynamic(
-  () => {
-    return import('@/components/top-progressbar');
-  },
-  { ssr: false }
-);
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -61,9 +53,8 @@ export default async function RootLayout({
       <ThemeProviderWrapper>
         <body className="font-sans">
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <TopProgressBar />
-            <AudioProvider>{children}</AudioProvider>
-          </NextIntlClientProvider>
+            <Provider>{children}</Provider>
+          </NextIntlClientProvider>{' '}
         </body>
       </ThemeProviderWrapper>
     </html>

@@ -68,9 +68,14 @@ model VerificationToken {
 model File{
     id String @id @default(cuid())
     name String
+    container String
+    mimetype String
+    size Int
+    key String
+    handle String
     user User @relation(fields: [userId], references: [id])
     userId String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    @@index([userId])
+    @@index([userId, name])
 }

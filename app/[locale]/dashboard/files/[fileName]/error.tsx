@@ -1,7 +1,6 @@
 'use client'; // Error components must be Client Components
 
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
 
 export default function Error({
   reset,
@@ -10,10 +9,10 @@ export default function Error({
   reset: () => void;
   error: Error;
 }) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+  // useEffect(() => {
+  //   // Log the error to an error reporting service
+  //   console.error(error);
+  // }, [error]);
 
   return (
     <div className="space-y-4 text-center min-h-screen flex flex-col items-center justify-center">
