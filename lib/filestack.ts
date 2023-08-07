@@ -1,7 +1,8 @@
+import { env } from '@/env.mjs';
 import * as filestack from 'filestack-js';
 
 export const filestackClient = filestack.init(
-  process.env.NEXT_PUBLIC_FILESTACK_API_KEY || ''
+  env.NEXT_PUBLIC_FILESTACK_API_KEY as string
 );
 
 export { filestack };

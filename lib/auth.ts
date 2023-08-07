@@ -1,10 +1,35 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import type { NextAuthOptions } from 'next-auth';
+import type { DefaultSession, NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import { env } from '@/env.mjs';
+/**
+ * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
+ * object and keep type safety.
+ *
+ * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
+ */
+declare module 'next-auth' {
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+      // ...other properties
+      // role: UserRole;
+    } & DefaultSession['user'];
+  }
 
+  // interface User {
+  //   // ...other properties
+  //   // role: UserRole;
+  // }
+}
+
+/**
+ * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
+ *
+ * @see https://next-auth.js.org/configuration/options
+ */
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -67,16 +92,6 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    session: ({ session, token }) => {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.id,
-          randomKey: token.randomKey
-        }
-      };
-    },
     jwt: ({ token, user }) => {
       if (user) {
         const u = user as unknown as any;
@@ -87,6 +102,16 @@ export const authOptions: NextAuthOptions = {
         };
       }
       return token;
+    },
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: session.user.id,
+          randomKey: token.randomKey
+        }
+      };
     }
   },
   pages: {

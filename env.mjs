@@ -39,6 +39,7 @@ const server = z.object({
  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object({
+  NEXT_PUBLIC_FILESTACK_API_KEY: z.string()
   // NEXT_PUBLIC_BACKEND_URL: z.string(),
   // NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string(),
   // NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: z.string()
@@ -56,7 +57,8 @@ const processEnv = {
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY
 };
 
 // Don't touch the part below
