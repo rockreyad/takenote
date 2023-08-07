@@ -163,10 +163,6 @@
   p {
     @apply font-primary;
   }
-
-  a {
-    @apply text-primary hover:text-primary/80;
-  }
 }
 
 @layer components {

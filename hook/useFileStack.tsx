@@ -44,6 +44,7 @@ const useFileStack = () => {
             title: 'File upload success',
             description: 'Your file has been uploaded to the cloud'
           });
+          console.log(file);
           router.push(`/dashboard/files/random?fileName=${file.key}`);
         },
         onFileUploadStarted: () => {

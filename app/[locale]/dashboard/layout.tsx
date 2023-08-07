@@ -3,14 +3,21 @@ import Sidebar from '@/components/dashboard/sidebar';
 import DashboardLayoutProvider from '@/context/DashboardLayout';
 import { FunctionComponent } from 'react';
 import { Toaster } from '@/components/ui/toaster';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const DashboardLayout: FunctionComponent<DashboardLayoutProps> = ({
+const DashboardLayout: FunctionComponent<DashboardLayoutProps> = async ({
   children
 }) => {
+  const session = await getServerSession();
+  if (!session) {
+    redirect('/auth/signin?callbackUrl=/dashboard');
+  }
+
   return (
     <>
       <DashboardLayoutProvider>

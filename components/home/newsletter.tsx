@@ -9,7 +9,7 @@ const NewsLetter: FunctionComponent<NewsLetterProps> = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     // TODO
     event.preventDefault();
-    console.log(email);
+    // console.log(email);
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

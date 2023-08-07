@@ -13,9 +13,19 @@ interface AnalyseDataContext {
 const AnalyseDataContext = createContext<AnalyseDataContext | null>(null);
 
 async function getTranscriptData(file_name: string): Promise<AnalyseData> {
-  const res = await axios.post('https://capturia.io/api/v1/transcribe/file', {
-    file_name
-  });
+  const res = await axios
+    .post(
+      'https://capturia.io/api/v1/transcribe/file',
+      {
+        file_name
+      },
+      {
+        timeout: 1000 * 60 * 12
+      }
+    )
+    .catch((error) => {
+      throw error;
+    });
   return res.data;
 }
 
