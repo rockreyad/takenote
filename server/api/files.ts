@@ -26,3 +26,17 @@ export async function storeSingleFile(data: File) {
     }
   });
 }
+
+export async function getFilesByUserId(userId: string) {
+  const files = await prisma.file.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    },
+    where: {
+      userId
+    },
+    take: INITIAL_FILE_TAKE
+  });
+
+  return files;
+}

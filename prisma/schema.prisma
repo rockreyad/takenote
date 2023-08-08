@@ -86,10 +86,10 @@ model File {
   key       String
   handle    String
   user      User     @relation(fields: [userId], references: [id])
-  userId    String
+  userId    String  @map("user_id")
   status    File_Status @default(IN_PROGRESS)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@index([userId, name])
 }

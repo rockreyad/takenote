@@ -60,11 +60,11 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="File Name" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
+      // const label = labels.find((label) => label.value === row.original.label);
 
       return (
         <div className="flex space-x-2">
-          {label && (
+          {/* {label && (
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -79,9 +79,9 @@ export const columns: ColumnDef<Task>[] = [
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          )}
+          )} */}
           <Link
-            href="/dashboard/files/random?fileName=audio.wav"
+            href={`/dashboard/files/${row.original.id}?fileName=${row.original.key}`}
             className="max-w-[500px] truncate font-medium hover:underline"
           >
             {row.getValue('title')}
@@ -109,9 +109,9 @@ export const columns: ColumnDef<Task>[] = [
           {status.icon && (
             <status.icon
               className={cn('mr-2 h-4 w-4', {
-                'text-blue-700/60': status.value === 'in progress',
-                'text-green-700/60': status.value === 'done',
-                'text-red-700/60': status.value === 'cancelled'
+                'text-blue-700/60': status.value === 'IN_PROGRESS',
+                'text-green-700/60': status.value === 'COMPLETE'
+                // 'text-red-700/60': status.value === 'cancelled'
               })}
             />
           )}
