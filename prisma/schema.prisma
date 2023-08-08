@@ -72,6 +72,11 @@ enum Role {
   USER
 }
 
+enum File_Status {
+  IN_PROGRESS
+  COMPLETE
+}
+
 model File {
   id        String   @id @default(cuid())
   name      String
@@ -81,9 +86,10 @@ model File {
   key       String
   handle    String
   user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  userId    String  @map("user_id")
+  status    File_Status @default(IN_PROGRESS)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@index([userId, name])
 }

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
-
 import { FunctionComponent } from 'react';
 import { DataTable } from './__components__/data-table';
 import { columns } from './__components__/columns';
-import { generateFakeTabledata } from '@/lib/utils';
 import { FolderOpenIcon } from 'lucide-react';
 import PrimaryButton from './__components__/PrimaryButton';
+import { getFilesByUserId } from '@/server/api/files';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 interface MyFilesProps {}
 
@@ -14,13 +15,19 @@ export const metadata: Metadata = {
   description: 'A list of files that I have uploaded.'
 };
 
-// Simulate a database read for tasks.
-async function getTasks() {
-  return generateFakeTabledata(1000);
-}
-
 const MyFiles: FunctionComponent<MyFilesProps> = async () => {
-  const tasks = await getTasks();
+  const session = await getServerSession(authOptions);
+  const files = await getFilesByUserId(session?.user.id || '');
+  const tableFiles = files?.map((file) => {
+    return {
+      id: file.id,
+      title: file.name,
+      key: file.key,
+      status: file.status,
+      create_at: file.createdAt,
+      handle: file.handle
+    };
+  });
   return (
     <>
       <div className="space-y-8">
@@ -32,7 +39,7 @@ const MyFiles: FunctionComponent<MyFilesProps> = async () => {
           <PrimaryButton buttonName="place new order" />
         </div>
         <div className="w-full">
-          <DataTable data={tasks} columns={columns} />
+          {tableFiles && <DataTable columns={columns} data={tableFiles} />}
         </div>
       </div>
     </>

@@ -14,7 +14,7 @@ const Tuple: FunctionComponent<SVGProps> = ({ className }) => {
         className={className}
         fillRule="evenodd"
         d="m45 4-18 6v19.5l6 2V37l18 6V11.5l-6 2V4ZM35 32.167 45 35.5V15.608l4-1.333v25.95L35 35.56v-3.393Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <path
         className={className}
@@ -24,9 +24,9 @@ const Tuple: FunctionComponent<SVGProps> = ({ className }) => {
       <path
         className={className}
         fill="#111827"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M95.969 31V17.058h5.558c4.017 0 5.733 1.794 5.733 4.777v.078c0 2.906-1.93 4.544-5.538 4.544h-1.346V31h-4.407Zm5.323-7.507h-.916v-3.14h.936c1.15 0 1.755.43 1.755 1.502v.078c0 1.033-.605 1.56-1.775 1.56Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <path
         className={className}

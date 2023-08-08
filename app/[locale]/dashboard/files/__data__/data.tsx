@@ -1,3 +1,4 @@
+import { File_Status } from '@prisma/client';
 import {
   ArrowDownIcon,
   ArrowRightIcon,
@@ -33,20 +34,20 @@ export const labels = [
 
 export const statuses = [
   {
-    value: 'in progress',
+    value: File_Status.IN_PROGRESS,
     label: 'In Progress',
     icon: StopwatchIcon
   },
   {
-    value: 'done',
-    label: 'Done',
+    value: File_Status.COMPLETE,
+    label: 'Complete',
     icon: CheckCircledIcon
-  },
-  {
-    value: 'cancelled',
-    label: 'Cancelled',
-    icon: CrossCircledIcon
   }
+  // {
+  //   value: 'cancelled',
+  //   label: 'Cancelled',
+  //   icon: CrossCircledIcon
+  // }
 ];
 
 export const priorities = [

@@ -2,6 +2,9 @@ import { filestack, filestackClient } from '@/lib/filestack';
 import { useToast } from '@/components/ui/use-toast';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { File_Status } from '@/types/file';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 const options = {
   uploadConfig: {},
@@ -12,7 +15,7 @@ const options = {
     'googledrive',
     'dropbox'
   ],
-  accept: ['.mp3', 'video/*'],
+  accept: ['video/*', 'audio/*'],
   maxFiles: 1,
   maxSize: 1024 * 1024 * 250,
   onFileSelected: (file) => {
@@ -28,6 +31,8 @@ const options = {
 const useFileStack = () => {
   const { toast } = useToast();
   const router = useRouter();
+  const { data: session } = useSession();
+
   // File picker modal
   const OpenFilePicker = useCallback(async () => {
     const FileUploaed = await filestackClient
@@ -39,13 +44,23 @@ const useFileStack = () => {
             description: 'Your file has failed to upload to the cloud'
           });
         },
-        onFileUploadFinished: (file) => {
-          toast({
-            title: 'File upload success',
-            description: 'Your file has been uploaded to the cloud'
+        onFileUploadFinished: async (file) => {
+          const fileUpload = await axios.post('/api/file', {
+            name: file.filename,
+            size: file.size,
+            mimetype: file.mimetype,
+            container: file.container as string,
+            handle: file.handle,
+            status: File_Status.IN_PROGRESS,
+            key: file.key as string
           });
-          console.log(file);
-          router.push(`/dashboard/files/random?fileName=${file.key}`);
+          if (fileUpload.status === 200) {
+            toast({
+              title: 'File upload success',
+              description: 'Your file has been uploaded to the cloud'
+            });
+            router.push('/dashboard/files');
+          }
         },
         onFileUploadStarted: () => {
           toast({
