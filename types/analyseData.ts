@@ -9,7 +9,7 @@ export interface SpeakerDiarization {
   text: string;
 }
 export interface AnalyseData {
-  file_name: string;
+  file_name?: string;
   sentiment: Sentiment[];
   speaker_diarization: SpeakerDiarization[];
   transcript: string;

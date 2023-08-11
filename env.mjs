@@ -19,7 +19,8 @@ const server = z.object({
     process.env.VERCEL ? z.string().min(1) : z.string().url()
   ),
   GOOGLE_CLIENT_ID: z.string(),
-  GOOGLE_CLIENT_SECRET: z.string()
+  GOOGLE_CLIENT_SECRET: z.string(),
+  BACKEND_URL: z.string().url()
   // GITHUB_CLIENT_ID: z.string(),
   // GITHUB_CLIENT_SECRET: z.string(),
   // TWITTER_CLIENT_ID: z.string(),
@@ -58,6 +59,7 @@ const processEnv = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  BACKEND_URL: process.env.BACKEND_URL,
   NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY
 };
 
@@ -80,6 +82,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
     : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
 
   if (parsed.success === false) {
+    // eslint-disable-next-line no-console
     console.error(
       '❌ Invalid environment variables:',
       parsed.error.flatten().fieldErrors

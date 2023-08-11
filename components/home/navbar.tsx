@@ -67,7 +67,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
               href={status === 'authenticated' ? '/dashboard' : '/auth/signin'}
               className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
             >
-              {status === 'authenticated' ? 'Dashboard' : 'signIn'}
+              {status === 'authenticated' ? 'Dashboard' : 'Sign In'}
               <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -122,7 +122,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                     }
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:text-gray-800"
                   >
-                    {status === 'authenticated' ? 'Dashboard' : 'signIn'}
+                    {status === 'authenticated' ? 'Dashboard' : 'Sign In'}
                   </Link>
                 </div>
               </div>

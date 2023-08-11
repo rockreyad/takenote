@@ -7,7 +7,9 @@ import moment from 'moment';
 const speackerColor = {
   SPEAKER_00: 'text-primary',
   SPEAKER_01: 'text-blue-500',
-  SPEAKER_02: 'text-green-500'
+  SPEAKER_02: 'text-orange-500',
+  SPEAKER_03: 'text-purple-500',
+  SPEAKER_04: 'text-indigo-500'
 };
 
 export default function TabSpeakerDiarisation({
