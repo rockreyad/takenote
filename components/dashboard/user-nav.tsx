@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { getServerSession } from 'next-auth';
 import { signOut, useSession } from 'next-auth/react';
 
 export function UserNav() {

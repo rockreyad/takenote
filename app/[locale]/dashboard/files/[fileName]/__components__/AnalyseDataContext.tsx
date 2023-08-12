@@ -1,46 +1,48 @@
 'use client';
+import { useSearchParams } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { Transcription } from '@/server/zodSchema/transcribe';
+import type { AnalyseData } from '@/types/analyseData';
 
 interface AnalyseDataContext {
-  data: Transcription | undefined;
+  data: AnalyseData | undefined;
   loading: boolean;
   isError: boolean;
   error: any;
 }
 const AnalyseDataContext = createContext<AnalyseDataContext | null>(null);
 
-async function getTranscriptData(idOrHandle: string): Promise<Transcription> {
+async function getTranscriptData(file_name: string): Promise<AnalyseData> {
   const res = await axios
-    .get(`/api/file/transcribe?idOrHandle=${idOrHandle}`, {
-      timeout: 1000 * 60 * 12
-    })
+    .post(
+      'https://capturia.io/api/v1/transcribe/file',
+      {
+        file_name
+      },
+      {
+        timeout: 1000 * 60 * 12
+      }
+    )
     .catch((error) => {
       throw error;
     });
-  const { data } = res.data;
-  return data;
+  return res.data;
 }
 
-const AnalyseDataProvider = ({
-  idOrHandle,
-  ...props
-}: {
-  idOrHandle: string;
-  children: React.ReactNode;
-}) => {
-  const [data, setData] = useState<Transcription>();
+const AnalyseDataProvider = ({ ...props }: { children: React.ReactNode }) => {
+  const searchParams = useSearchParams();
+  const fileName = searchParams?.get('fileName');
+  const [data, setData] = useState<AnalyseData>();
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<any>();
 
   useEffect(() => {
     (async () => {
-      if (!idOrHandle) return;
+      if (!fileName) return;
       try {
         setLoading(true);
-        const transcriptData = await getTranscriptData(idOrHandle);
+        const transcriptData = await getTranscriptData(fileName);
         setData(transcriptData);
         setLoading(false);
       } catch (error) {
@@ -49,7 +51,7 @@ const AnalyseDataProvider = ({
         setError(error);
       }
     })();
-  }, [idOrHandle]);
+  }, [fileName]);
   const value = {
     data,
     loading,
