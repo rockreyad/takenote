@@ -84,7 +84,7 @@ model File {
   mimetype  String
   size      Int
   key       String
-  handle    String  @unique
+  handle    String
   user      User     @relation(fields: [userId], references: [id])
   userId    String  @map("user_id")
   status    File_Status @default(IN_PROGRESS)
