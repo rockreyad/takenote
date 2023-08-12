@@ -31,8 +31,6 @@ const options = {
 const useFileStack = () => {
   const { toast } = useToast();
   const router = useRouter();
-  const { data: session } = useSession();
-
   // File picker modal
   const OpenFilePicker = useCallback(async () => {
     const FileUploaed = await filestackClient
@@ -77,7 +75,7 @@ const useFileStack = () => {
       })
       .open();
     return FileUploaed;
-  }, [toast]);
+  }, [router, toast]);
 
   return { OpenFilePicker };
 };

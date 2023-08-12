@@ -4,7 +4,6 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
   CheckCircledIcon,
-  CrossCircledIcon,
   StopwatchIcon
 } from '@radix-ui/react-icons';
 import { BotIcon, Globe2, User2 } from 'lucide-react';
