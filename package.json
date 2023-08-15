@@ -80,6 +80,7 @@
     "react-markdown": "^8.0.7",
     "react-stately": "^3.24.0",
     "react-transition-group": "^4.4.5",
+    "resend": "^0.17.2",
     "rss-to-json": "^2.1.1",
     "server-only": "^0.0.1",
     "tailwind-merge": "^1.14.0",

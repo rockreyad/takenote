@@ -5,6 +5,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import { env } from '@/env.mjs';
 import { Role } from '@prisma/client';
+import { JWT_EXPIRY } from './constant';
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -44,7 +45,7 @@ export const authOptions: NextAuthOptions = {
     //   clientSecret: process.env.GITHUB_SECRET as string
     // }),
     CredentialsProvider({
-      name: 'Sign in',
+      name: 'Credentials',
       credentials: {
         email: {
           label: 'Email',
@@ -99,19 +100,21 @@ export const authOptions: NextAuthOptions = {
         const u = user as unknown as any;
         return {
           ...token,
-          id: u.id,
-          randomKey: u.randomKey
+          id: u.id
         };
       }
       return token;
     },
     session: ({ session, token }) => {
+      if (session.user && token.sub) {
+        session.user.id = token.sub;
+      }
       return {
         ...session,
         user: {
           ...session.user,
           id: token.id,
-          randomKey: token.randomKey
+          token: token.jti
         }
       };
     }
@@ -123,7 +126,8 @@ export const authOptions: NextAuthOptions = {
     // newUser: '/auth/newuser'
   },
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: JWT_EXPIRY
   },
   jwt: {
     secret: process.env.NEXTAUTH_SECRET
