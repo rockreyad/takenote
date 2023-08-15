@@ -86,7 +86,6 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
     : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
 
   if (parsed.success === false) {
-    // eslint-disable-next-line no-console
     console.error(
       '❌ Invalid environment variables:',
       parsed.error.flatten().fieldErrors

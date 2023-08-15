@@ -2,32 +2,15 @@ import { INITIAL_FILE_TAKE } from '@/lib/constant';
 import { prisma } from '@/lib/prisma';
 import { File } from '../zodSchema/file';
 
-export async function getFiles(take?: number) {
+export async function getFiles() {
   const files = await prisma.file.findMany({
-    take: take || INITIAL_FILE_TAKE,
+    take: INITIAL_FILE_TAKE,
     orderBy: {
       createdAt: 'desc'
     }
   });
 
   return files;
-}
-
-export async function getFileByIdOrHandle(idOrHandle: string) {
-  const file = await prisma.file.findFirst({
-    where: {
-      OR: [
-        {
-          id: idOrHandle
-        },
-        {
-          handle: idOrHandle
-        }
-      ]
-    }
-  });
-
-  return file;
 }
 
 export async function storeSingleFile(data: File) {
@@ -44,7 +27,7 @@ export async function storeSingleFile(data: File) {
   });
 }
 
-export async function getFilesByUserId(userId: string, take?: number) {
+export async function getFilesByUserId(userId: string) {
   const files = await prisma.file.findMany({
     orderBy: {
       createdAt: 'desc'
@@ -52,7 +35,7 @@ export async function getFilesByUserId(userId: string, take?: number) {
     where: {
       userId
     },
-    take: take || INITIAL_FILE_TAKE
+    take: INITIAL_FILE_TAKE
   });
 
   return files;
