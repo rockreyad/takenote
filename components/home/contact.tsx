@@ -102,7 +102,7 @@ export default function Contact() {
                 <dd>
                   <a
                     className="hover:text-gray-900 dark:hover:text-white"
-                    href="mailto:hello@example.com"
+                    href="mailto:contact@takenote.ai"
                   >
                     contact@takenote.ai
                   </a>
@@ -112,7 +112,7 @@ export default function Contact() {
           </div>
         </div>
         <form
-          action="#"
+          action="/api/contact"
           method="POST"
           className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
         >
@@ -128,9 +128,10 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
+                    name="firstName"
+                    id="firstName"
                     autoComplete="given-name"
+                    required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -145,9 +146,10 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="text"
-                    name="last-name"
-                    id="last-name"
+                    name="lastName"
+                    id="lastName"
                     autoComplete="family-name"
+                    required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -165,6 +167,7 @@ export default function Contact() {
                     name="email"
                     id="email"
                     autoComplete="email"
+                    required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -179,9 +182,10 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="tel"
-                    name="phone-number"
-                    id="phone-number"
+                    name="phoneNumber"
+                    id="phoneNumber"
                     autoComplete="tel"
+                    required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -198,6 +202,7 @@ export default function Contact() {
                     name="message"
                     id="message"
                     rows={4}
+                    required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                     defaultValue={''}
                   />

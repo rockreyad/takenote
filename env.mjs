@@ -19,7 +19,10 @@ const server = z.object({
     process.env.VERCEL ? z.string().min(1) : z.string().url()
   ),
   GOOGLE_CLIENT_ID: z.string(),
-  GOOGLE_CLIENT_SECRET: z.string()
+  GOOGLE_CLIENT_SECRET: z.string(),
+  BACKEND_URL: z.string().url(),
+  RESEND_API_KEY: z.string(),
+  RECIPIENT_EMAIL: z.string()
   // GITHUB_CLIENT_ID: z.string(),
   // GITHUB_CLIENT_SECRET: z.string(),
   // TWITTER_CLIENT_ID: z.string(),
@@ -58,7 +61,10 @@ const processEnv = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-  NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY
+  BACKEND_URL: process.env.BACKEND_URL,
+  NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
+  RECIPIENT_EMAIL: process.env.RECIPIENT_EMAIL
 };
 
 // Don't touch the part below
