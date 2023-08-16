@@ -2,9 +2,9 @@ import { filestack, filestackClient } from '@/lib/filestack';
 import { useToast } from '@/components/ui/use-toast';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { File_Status } from '@/types/file';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { File_Status } from '@/server/zodSchema/file';
 
 const options = {
   uploadConfig: {},
@@ -49,7 +49,7 @@ const useFileStack = () => {
             mimetype: file.mimetype,
             container: file.container as string,
             handle: file.handle,
-            status: File_Status.IN_PROGRESS,
+            status: File_Status.enum.IN_PROGRESS,
             key: file.key as string
           });
           if (fileUpload.status === 200) {

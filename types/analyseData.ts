@@ -1,3 +1,5 @@
+import { JsonValue } from '@prisma/client/runtime/library';
+
 export interface Sentiment {
   label: string;
   score: number;
@@ -10,7 +12,11 @@ export interface SpeakerDiarization {
 }
 export interface AnalyseData {
   file_name?: string;
-  sentiment: Sentiment[];
-  speaker_diarization: SpeakerDiarization[];
-  transcript: string;
+  file?: {
+    name?: string;
+  };
+  sentiment?: Sentiment[] | JsonValue | null;
+  speaker_diarization?: SpeakerDiarization[];
+  speakerDiarization?: JsonValue | null;
+  transcript?: string | null;
 }

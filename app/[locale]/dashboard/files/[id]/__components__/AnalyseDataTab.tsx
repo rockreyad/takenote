@@ -43,7 +43,7 @@ const AnalyseDataTab = () => {
           <TabSummary />
         </TabsContent> */}
       <TabsContent value="speaker_diarization">
-        <TabSpeakerDiarisation speakerDiarization={data?.speaker_diarization} />
+        <TabSpeakerDiarisation speakerDiarization={data?.speakerDiarization} />
       </TabsContent>
     </Tabs>
   );

@@ -1,10 +1,11 @@
 import { authOptions } from '@/lib/auth';
-import api from '@/lib/axios';
 import { getFileByIdOrHandle } from '@/server/api/files';
+import { getTranscribeByIdOrHandleOrFileId } from '@/server/api/transcribe';
+import { File_Status } from '@/server/zodSchema/file';
 import { Transcription } from '@/server/zodSchema/transcribe';
-import { AnalyseData } from '@/types/analyseData';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
+import { generatedTranscribe } from './option';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -32,43 +33,29 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ message: 'Unauthorized', status: 401 });
       }
     }
-    //if yes, return transcription
-    const generatedTranscribe = await api
-      .post(
-        '/transcribe/file',
-        {
-          file_name: files.key
-        },
-        {
-          timeout: 1000 * 60 * 12
-        }
-      )
-      .catch((error) => {
-        throw error;
-      });
 
-    if (!generatedTranscribe.data) {
-      return NextResponse.json({
-        message: 'Transcription could not be generated',
-        status: 500,
-        error: 'No data'
-      });
+    let transcription;
+    switch (files.status) {
+      case File_Status.enum.IN_PROGRESS:
+        transcription = await generatedTranscribe(files.key, files.id);
+        break;
+      case File_Status.enum.COMPLETE:
+        transcription = await getTranscribeByIdOrHandleOrFileId(files.id);
+        break;
+      default:
+        break;
     }
 
-    // eslint-disable-next-line no-unused-vars
-    const { file_name, ...restOfOhers } =
-      generatedTranscribe.data as AnalyseData;
-
-    const formattedData: Transcription = {
-      file_name: files.name,
-      mime_type: files.mimetype,
-      ...restOfOhers
-    };
+    if (!transcription)
+      return NextResponse.json({
+        message: 'No transcription found! Please reload the page.',
+        status: 404
+      });
 
     return NextResponse.json({
       message: 'Ok',
       status: 200,
-      data: formattedData
+      data: transcription as Transcription
     });
   } catch (error) {
     return NextResponse.json({

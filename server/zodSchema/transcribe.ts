@@ -1,23 +1,52 @@
 import { z } from 'zod';
+import { filePreviewSchema } from '../zodSchema/file';
 
-export const transcribeSchema = z.object({
-  file_name: z.string(),
-  mime_type: z.string(),
-  sentiment: z.array(
-    z.object({
-      label: z.string(),
-      score: z.number()
-    })
-  ),
-  speaker_diarization: z.array(
-    z.object({
-      end: z.number(),
-      speaker: z.string(),
-      start: z.number(),
-      text: z.string()
-    })
-  ),
-  transcript: z.string()
+export const transcribePreviewSchema = z.object({
+  file: filePreviewSchema,
+  transcript: z.string().optional(),
+  sentiment: z
+    .array(
+      z.object({
+        label: z.string(),
+        score: z.number()
+      })
+    )
+    .optional(),
+  speakerDiarization: z
+    .array(
+      z.object({
+        end: z.number(),
+        speaker: z.string(),
+        start: z.number(),
+        text: z.string()
+      })
+    )
+    .optional()
 });
 
-export type Transcription = z.infer<typeof transcribeSchema>;
+export const transcribeSchema = z.object({
+  id: z.string().optional(),
+  fileId: z.string(),
+  transcript: z.string().optional(),
+  sentiment: z
+    .array(
+      z.object({
+        label: z.string(),
+        score: z.number()
+      })
+    )
+    .optional(),
+  speakerDiarization: z
+    .array(
+      z.object({
+        end: z.number(),
+        speaker: z.string(),
+        start: z.number(),
+        text: z.string()
+      })
+    )
+    .optional()
+});
+
+export type Transcription = z.infer<typeof transcribePreviewSchema>;
+export type Transcribe = z.infer<typeof transcribeSchema>;

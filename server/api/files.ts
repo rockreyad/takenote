@@ -1,6 +1,6 @@
 import { INITIAL_FILE_TAKE } from '@/lib/constant';
 import { prisma } from '@/lib/prisma';
-import { File } from '../zodSchema/file';
+import { StoreFile } from '../zodSchema/file';
 
 export async function getFiles(take?: number) {
   const files = await prisma.file.findMany({
@@ -30,7 +30,7 @@ export async function getFileByIdOrHandle(idOrHandle: string) {
   return file;
 }
 
-export async function storeSingleFile(data: File) {
+export async function storeSingleFile(data: StoreFile) {
   await prisma.file.create({
     data: {
       name: data.name,
