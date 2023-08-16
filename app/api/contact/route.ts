@@ -11,17 +11,6 @@ export async function POST(request: NextRequest) {
   const lastName = formData.get('lastName');
   const phoneNumber = formData.get('phoneNumber');
 
-  if (
-    !request.nextUrl.hostname.includes(
-      'localhost' || 'takenote.ai' || 'takenote365.com' || 'takenote'
-    )
-  ) {
-    return NextResponse.json({
-      message: 'Invalid request!',
-      status: 400
-    });
-  }
-
   if (!message || !email || !firstName || !lastName || !phoneNumber) {
     return NextResponse.json({
       message: 'Missing required fields!',
