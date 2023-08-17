@@ -1,17 +1,9 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-
-import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip';
 
-import { labels, statuses } from '../__data__/data';
+import { statuses } from '../__data__/data';
 import { Task } from '../__data__/schema';
 import { DataTableColumnHeader } from './data-table-column-header';
 import { DataTableRowActions } from './data-table-row-actions';
@@ -81,7 +73,7 @@ export const columns: ColumnDef<Task>[] = [
             </TooltipProvider>
           )} */}
           <Link
-            href={`/dashboard/files/${row.original.id}?fileName=${row.original.key}`}
+            href={`/dashboard/files/${row.original.handle}`}
             className="max-w-[500px] truncate font-medium hover:underline"
           >
             {row.getValue('title')}

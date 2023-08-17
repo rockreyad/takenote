@@ -13,6 +13,7 @@ import { JWT_EXPIRY } from './constant';
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
 declare module 'next-auth' {
+  // eslint-disable-next-line no-unused-vars
   interface Session extends DefaultSession {
     user: {
       id: string;
