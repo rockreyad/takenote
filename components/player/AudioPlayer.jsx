@@ -23,18 +23,17 @@ function formatHumanTime(seconds) {
   }, ${s} second${s === 1 ? '' : 's'}`;
 }
 
-export function AudioPlayer({ episode }) {
+export function AudioPlayer({ title, src }) {
   let audioPlayerData = useMemo(
     () => ({
-      title: episode.title,
+      title,
       audio: {
-        src: episode.audio.src,
-        type: episode.audio.type
-      },
-      link: `/${episode.id}`
+        src
+      }
     }),
-    [episode]
+    [title, src]
   );
+
   let player = useAudioPlayer(audioPlayerData);
   useEffect(() => {
     player.ready();

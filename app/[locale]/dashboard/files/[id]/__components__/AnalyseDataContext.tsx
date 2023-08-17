@@ -1,48 +1,46 @@
 'use client';
-import { useSearchParams } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import type { AnalyseData } from '@/types/analyseData';
+import { Transcription } from '@/server/zodSchema/transcribe';
 
 interface AnalyseDataContext {
-  data: AnalyseData | undefined;
+  data: Transcription | undefined;
   loading: boolean;
   isError: boolean;
   error: any;
 }
 const AnalyseDataContext = createContext<AnalyseDataContext | null>(null);
 
-async function getTranscriptData(file_name: string): Promise<AnalyseData> {
+async function getTranscriptData(idOrHandle: string): Promise<Transcription> {
   const res = await axios
-    .post(
-      'https://capturia.io/api/v1/transcribe/file',
-      {
-        file_name
-      },
-      {
-        timeout: 1000 * 60 * 12
-      }
-    )
+    .get(`/api/file/transcribe?idOrHandle=${idOrHandle}`, {
+      timeout: 1000 * 60 * 12
+    })
     .catch((error) => {
       throw error;
     });
-  return res.data;
+  const { data } = res.data;
+  return data;
 }
 
-const AnalyseDataProvider = ({ ...props }: { children: React.ReactNode }) => {
-  const searchParams = useSearchParams();
-  const fileName = searchParams?.get('fileName');
-  const [data, setData] = useState<AnalyseData>();
+const AnalyseDataProvider = ({
+  idOrHandle,
+  ...props
+}: {
+  idOrHandle: string;
+  children: React.ReactNode;
+}) => {
+  const [data, setData] = useState<Transcription>();
   const [loading, setLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<any>();
 
   useEffect(() => {
     (async () => {
-      if (!fileName) return;
+      if (!idOrHandle) return;
       try {
         setLoading(true);
-        const transcriptData = await getTranscriptData(fileName);
+        const transcriptData = await getTranscriptData(idOrHandle);
         setData(transcriptData);
         setLoading(false);
       } catch (error) {
@@ -51,7 +49,7 @@ const AnalyseDataProvider = ({ ...props }: { children: React.ReactNode }) => {
         setError(error);
       }
     })();
-  }, [fileName]);
+  }, [idOrHandle]);
   const value = {
     data,
     loading,
