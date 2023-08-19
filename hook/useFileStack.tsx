@@ -3,7 +3,6 @@ import { useToast } from '@/components/ui/use-toast';
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { useSession } from 'next-auth/react';
 import { File_Status } from '@/server/zodSchema/file';
 
 const options = {

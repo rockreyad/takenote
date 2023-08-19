@@ -22,7 +22,9 @@ const server = z.object({
   GOOGLE_CLIENT_SECRET: z.string(),
   BACKEND_URL: z.string().url(),
   RESEND_API_KEY: z.string(),
-  RECIPIENT_EMAIL: z.string()
+  RECIPIENT_EMAIL: z.string(),
+  REDIS_HOST: z.string(),
+  REDIS_PORT: z.string()
   // GITHUB_CLIENT_ID: z.string(),
   // GITHUB_CLIENT_SECRET: z.string(),
   // TWITTER_CLIENT_ID: z.string(),
@@ -64,7 +66,9 @@ const processEnv = {
   BACKEND_URL: process.env.BACKEND_URL,
   NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
-  RECIPIENT_EMAIL: process.env.RECIPIENT_EMAIL
+  RECIPIENT_EMAIL: process.env.RECIPIENT_EMAIL,
+  REDIS_HOST: process.env.REDIS_HOST,
+  REDIS_PORT: process.env.REDIS_PORT
 };
 
 // Don't touch the part below

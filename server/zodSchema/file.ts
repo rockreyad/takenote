@@ -26,7 +26,17 @@ export const filePreviewSchema = z.object({
   handle: z.string().optional()
 });
 
+const fileListSchema = z.object({
+  id: z.string().optional(),
+  key: z.string().optional(),
+  title: z.string(),
+  status: File_Status,
+  create_at: z.date().optional(),
+  handle: z.string().optional()
+});
+
 export type File = z.infer<typeof fileSchema>;
+export type FileList = z.infer<typeof fileListSchema>;
 export type StoreFile = Pick<
   File,
   'name' | 'size' | 'mimetype' | 'container' | 'handle' | 'key' | 'userId'

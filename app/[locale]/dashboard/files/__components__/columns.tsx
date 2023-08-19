@@ -4,14 +4,14 @@ import { ColumnDef } from '@tanstack/react-table';
 import { Checkbox } from '@/components/ui/checkbox';
 
 import { statuses } from '../__data__/data';
-import { Task } from '../__data__/schema';
 import { DataTableColumnHeader } from './data-table-column-header';
 import { DataTableRowActions } from './data-table-row-actions';
 import moment from 'moment';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { FileList } from '@/server/zodSchema/file';
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<FileList>[] = [
   {
     id: 'select',
     header: ({ table }) => (
