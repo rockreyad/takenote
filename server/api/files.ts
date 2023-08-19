@@ -5,6 +5,9 @@ import { StoreFile } from '../zodSchema/file';
 export async function getFiles(take?: number) {
   const files = await prisma.file.findMany({
     take: take || INITIAL_FILE_TAKE,
+    where: {
+      deletedAt: null
+    },
     orderBy: {
       createdAt: 'desc'
     }
@@ -18,10 +21,12 @@ export async function getFileByIdOrHandle(idOrHandle: string) {
     where: {
       OR: [
         {
-          id: idOrHandle
+          id: idOrHandle,
+          deletedAt: null
         },
         {
-          handle: idOrHandle
+          handle: idOrHandle,
+          deletedAt: null
         }
       ]
     }
@@ -44,16 +49,35 @@ export async function storeSingleFile(data: StoreFile) {
   });
 }
 
-export async function getFilesByUserId(userId: string, take?: number) {
+export async function getFilesByUserId(
+  userId: string,
+  includeDeleted: boolean = false,
+  take?: number
+) {
   const files = await prisma.file.findMany({
+    where: {
+      userId,
+      OR: [
+        { deletedAt: includeDeleted ? { not: null } : null }, // Include deleted files if includeDeleted is true
+        { deletedAt: null }
+      ]
+    },
     orderBy: {
       createdAt: 'desc'
-    },
-    where: {
-      userId
     },
     take: take || INITIAL_FILE_TAKE
   });
 
   return files;
+}
+
+export async function deleteFileById(id: string) {
+  await prisma.file.update({
+    where: {
+      id
+    },
+    data: {
+      deletedAt: new Date()
+    }
+  });
 }

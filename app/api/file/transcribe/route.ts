@@ -6,6 +6,7 @@ import { Transcription } from '@/server/zodSchema/transcribe';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { generatedTranscribe } from './option';
+// import transcribeQueue from './background-jobs';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -38,11 +39,19 @@ export async function GET(request: NextRequest) {
     switch (files.status) {
       case File_Status.enum.IN_PROGRESS:
         transcription = await generatedTranscribe(files.key, files.id);
+
+        //TODO: Add to queue
+        // await transcribeQueue.add({ filekey: files.key, fileId: files.id });
+        // return NextResponse.json({
+        //   message: 'Transcription job added to the queue',
+        //   status: 200
+        // });
         break;
       case File_Status.enum.COMPLETE:
         transcription = await getTranscribeByIdOrHandleOrFileId(files.id);
         break;
       default:
+        NextResponse.json({ message: 'File is not ready', status: 400 });
         break;
     }
 

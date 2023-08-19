@@ -12,8 +12,8 @@ export default function FileUploadPage() {
   return (
     <div className="space-y-10">
       <TopSection
-        title="Order English Transcripts by a Professional Transcriber"
-        description="Professionals transcribe your files to 99% accuracy"
+        title="Generate powerful content by transcribing audio & video with TakeNote AI"
+        description="Transcribe, summarize, search and analyse"
       />
       <div className="space-y-2">
         <p className="text-xl font-light tracking-wide flex items-center space-x-2">
