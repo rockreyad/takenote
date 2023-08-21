@@ -81,3 +81,12 @@ export async function deleteFileById(id: string) {
     }
   });
 }
+
+export async function updateFileById(id: string, data: Partial<StoreFile>) {
+  return await prisma.file.update({
+    where: {
+      id
+    },
+    data
+  });
+}

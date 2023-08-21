@@ -6,7 +6,8 @@ import {
   getFileByIdOrHandle,
   getFiles,
   getFilesByUserId,
-  storeSingleFile
+  storeSingleFile,
+  updateFileById
 } from '@/server/api/files';
 import { File } from '@/server/zodSchema/file';
 import { getUser } from '@/server/api/user';
@@ -118,6 +119,61 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({
       message: 'File has been deleted!',
+      status: 200
+    });
+  } catch (error) {
+    return NextResponse.json({
+      message: 'Something went wrong',
+      status: 500,
+      error
+    });
+  }
+}
+
+//Update file name
+export async function PUT(request: NextRequest) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json({ message: 'UnAuthenticated', status: 401 });
+  }
+  try {
+    const { fileId, name } = await request.json();
+
+    if (!fileId || !name) {
+      return NextResponse.json({ message: 'Bad Request', status: 400 });
+    }
+
+    let user;
+    if (session.user.id) {
+      user = await getUser(session.user.id);
+      if (!user) {
+        return NextResponse.json({ message: 'Unauthorized', status: 401 });
+      }
+    }
+
+    let files;
+    switch (user?.roles) {
+      case 'USER':
+        files = await getFileByIdOrHandle(fileId);
+        if (!files) {
+          return NextResponse.json({ message: 'No files found!', status: 404 });
+        }
+        if (files.userId !== session.user.id) {
+          return NextResponse.json({ message: 'Unauthorized', status: 401 });
+        }
+        break;
+      case 'ADMIN':
+        break;
+      default:
+        break;
+    }
+
+    // Just Update the deletedAt field
+    await updateFileById(fileId, { name });
+
+    return NextResponse.json({
+      message: 'File has been updated!',
       status: 200
     });
   } catch (error) {
