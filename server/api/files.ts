@@ -1,6 +1,7 @@
 import { INITIAL_FILE_TAKE } from '@/lib/constant';
 import { prisma } from '@/lib/prisma';
 import { StoreFile } from '../zodSchema/file';
+import transcribeQueue from '@/queue/transcribe-queue';
 
 export async function getFiles(take?: number) {
   const files = await prisma.file.findMany({
@@ -36,17 +37,25 @@ export async function getFileByIdOrHandle(idOrHandle: string) {
 }
 
 export async function storeSingleFile(data: StoreFile) {
-  await prisma.file.create({
-    data: {
-      name: data.name,
-      container: data.container,
-      mimetype: data.mimetype,
-      size: data.size,
-      key: data.key,
-      handle: data.handle,
-      userId: data.userId
-    }
-  });
+  try {
+    const file = await prisma.file.create({
+      data: {
+        name: data.name,
+        container: data.container,
+        mimetype: data.mimetype,
+        size: data.size,
+        key: data.key,
+        handle: data.handle,
+        userId: data.userId
+      }
+    });
+    await transcribeQueue.add(`file-${data.key}`, {
+      filekey: data.key,
+      fileId: file.id
+    });
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function getFilesByUserId(

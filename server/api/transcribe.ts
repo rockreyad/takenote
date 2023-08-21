@@ -1,4 +1,3 @@
-import { transcribePreviewSchema } from './../zodSchema/transcribe';
 import { prisma } from '@/lib/prisma';
 import { Transcribe } from '../zodSchema/transcribe';
 import { File_Status } from '../zodSchema/file';
