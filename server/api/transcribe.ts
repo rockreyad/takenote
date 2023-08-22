@@ -52,7 +52,15 @@ export async function storeTranscribe(data: Transcribe) {
       select: {
         file: {
           select: {
-            name: true
+            name: true,
+            status: true,
+            handle: true,
+            user: {
+              select: {
+                email: true,
+                name: true
+              }
+            }
           }
         },
         transcript: true,

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const fileStatusEnum = ['IN_PROGRESS', 'COMPLETE'] as const;
+const fileStatusEnum = ['IN_PROGRESS', 'COMPLETE', 'ERROR'] as const;
 export const File_Status = z.enum(fileStatusEnum);
 
 export const fileSchema = z.object({

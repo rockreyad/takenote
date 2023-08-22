@@ -24,7 +24,10 @@ const server = z.object({
   RESEND_API_KEY: z.string(),
   RECIPIENT_EMAIL: z.string(),
   REDIS_HOST: z.string(),
-  REDIS_PORT: z.string()
+  REDIS_PORT: z.string(),
+  REDIS_USERNAME: z.string(),
+  REDIS_PASSWORD: z.string(),
+  REDIS_TIMEOUT: z.string()
   // GITHUB_CLIENT_ID: z.string(),
   // GITHUB_CLIENT_SECRET: z.string(),
   // TWITTER_CLIENT_ID: z.string(),
@@ -68,7 +71,10 @@ const processEnv = {
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   RECIPIENT_EMAIL: process.env.RECIPIENT_EMAIL,
   REDIS_HOST: process.env.REDIS_HOST,
-  REDIS_PORT: process.env.REDIS_PORT
+  REDIS_PORT: process.env.REDIS_PORT,
+  REDIS_USERNAME: process.env.REDIS_USERNAME,
+  REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+  REDIS_TIMEOUT: process.env.REDIS_TIMEOUT
 };
 
 // Don't touch the part below

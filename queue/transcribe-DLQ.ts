@@ -7,8 +7,15 @@ import { env } from '@/env.mjs';
 
 const QueueName = 'transcribe-DLQ';
 const connection: ConnectionOptions = {
-  host: env.REDIS_HOST, // Replace with your Redis server's host
-  port: Number(env.REDIS_PORT) // Replace with your Redis server's port
+  host: env.REDIS_HOST,
+  port: Number(env.REDIS_PORT),
+  username: env.REDIS_USER,
+  password: env.REDIS_PASSWORD,
+  connectTimeout: Number(env.REDIS_TIMEOUT),
+  retryStrategy: (times: number) => {
+    return Math.max(Math.min(Math.exp(times), 20000), 1000);
+  },
+  maxRetriesPerRequest: 10
 };
 
 const queue = new Queue(QueueName, {
@@ -21,7 +28,12 @@ const worker = new Worker(
     console.log(job.data);
     return job.data;
   },
-  { connection }
+  {
+    connection: {
+      ...connection,
+      maxRetriesPerRequest: null
+    }
+  }
 );
 
 worker.on('completed', (job: Job) => {

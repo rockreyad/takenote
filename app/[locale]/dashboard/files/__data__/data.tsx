@@ -1,9 +1,10 @@
-import { File_Status } from '@prisma/client';
+import { File_Status } from '@/server/zodSchema/file';
 import {
   ArrowDownIcon,
   ArrowRightIcon,
   ArrowUpIcon,
   CheckCircledIcon,
+  CrossCircledIcon,
   StopwatchIcon
 } from '@radix-ui/react-icons';
 import { BotIcon, Globe2, User2 } from 'lucide-react';
@@ -33,14 +34,19 @@ export const labels = [
 
 export const statuses = [
   {
-    value: File_Status.IN_PROGRESS,
+    value: File_Status.enum.IN_PROGRESS,
     label: 'In Progress',
     icon: StopwatchIcon
   },
   {
-    value: File_Status.COMPLETE,
+    value: File_Status.enum.COMPLETE,
     label: 'Complete',
     icon: CheckCircledIcon
+  },
+  {
+    value: File_Status.enum.ERROR,
+    label: 'Error',
+    icon: CrossCircledIcon
   }
   // {
   //   value: 'cancelled',

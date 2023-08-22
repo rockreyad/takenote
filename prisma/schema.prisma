@@ -76,6 +76,7 @@ enum Role {
 enum File_Status {
   IN_PROGRESS
   COMPLETE
+  ERROR
 }
 
 model Folder {

@@ -1,8 +1,6 @@
 import { env } from '@/env.mjs';
+import resend from '@/lib/resend';
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const message = formData.get('message');

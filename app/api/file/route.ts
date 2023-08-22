@@ -10,6 +10,7 @@ import {
 } from '@/server/api/files';
 import { File } from '@/server/zodSchema/file';
 import { getUser } from '@/server/api/user';
+import transcribeQueue from '@/queue/transcribe-queue';
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -63,7 +64,24 @@ export async function POST(request: NextRequest) {
     };
 
     // Save data to prisma
-    await storeSingleFile(fileInfo);
+    try {
+      const file = await storeSingleFile(fileInfo);
+      // Add transcribe job to queue
+      await transcribeQueue.add(
+        `file-${fileInfo.key}`,
+        {
+          filekey: fileInfo.key,
+          fileId: file.id,
+          baseUrl: request.nextUrl.origin
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true
+        }
+      );
+    } catch (error) {
+      throw error;
+    }
 
     return NextResponse.json({ message: 'File has been stored!', status: 200 });
   } catch (error) {
