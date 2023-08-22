@@ -39,5 +39,12 @@ export type File = z.infer<typeof fileSchema>;
 export type FileList = z.infer<typeof fileListSchema>;
 export type StoreFile = Pick<
   File,
-  'name' | 'size' | 'mimetype' | 'container' | 'handle' | 'key' | 'userId'
+  | 'name'
+  | 'size'
+  | 'mimetype'
+  | 'container'
+  | 'handle'
+  | 'key'
+  | 'userId'
+  | 'status'
 >;

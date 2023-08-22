@@ -88,13 +88,11 @@ export async function deleteFileById(id: string) {
   });
 }
 
-export async function updateFileStatus(status: File_Status, id: string) {
-  await prisma.file.update({
+export async function updateFileById(id: string, data: Partial<StoreFile>) {
+  return await prisma.file.update({
     where: {
       id
     },
-    data: {
-      status: status
-    }
+    data
   });
 }

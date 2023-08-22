@@ -4,7 +4,7 @@ import { env } from '@/env.mjs';
 import { storeTranscribe } from '@/server/api/transcribe';
 import mailQueue from './transcribe-mail-queue';
 import axios from 'axios';
-import { updateFileStatus } from '@/server/api/files';
+import { updateFileById } from '@/server/api/files';
 import { File_Status } from '@/server/zodSchema/file';
 
 const BACKEND_URL = env.BACKEND_URL as string;
@@ -97,7 +97,9 @@ worker.on('completed', async (job: Job) => {
 worker.on('failed', async (job, err) => {
   // Send notification to the user about the job failed
   console.log(`Job ${job?.id} failed with ${err.message}`);
-  await updateFileStatus(File_Status.enum.ERROR, job?.data.fileId);
+  await updateFileById(job?.data.fileId, {
+    status: File_Status.Enum.ERROR
+  });
 });
 
 process.on('SIGINT', async () => {

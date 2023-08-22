@@ -4,9 +4,10 @@ import { DataTable } from './__components__/data-table';
 import { columns } from './__components__/columns';
 import { FolderOpenIcon } from 'lucide-react';
 import PrimaryButton from './__components__/PrimaryButton';
-import { getFilesByUserId } from '@/server/api/files';
+import { getFiles, getFilesByUserId } from '@/server/api/files';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { USER_ROLE } from '@/server/zodSchema/user';
 
 interface MyFilesProps {}
 
@@ -15,9 +16,14 @@ export const metadata: Metadata = {
   description: 'A list of files that I have uploaded.'
 };
 
-const MyFiles: FunctionComponent<MyFilesProps> = async () => {
+const MyFilesPage: FunctionComponent<MyFilesProps> = async () => {
   const session = await getServerSession(authOptions);
-  const files = await getFilesByUserId(session?.user.id || '');
+  let files;
+  if (session?.user.role === USER_ROLE.enum.ADMIN) {
+    files = await getFiles();
+  } else {
+    files = await getFilesByUserId(session?.user.id || '');
+  }
   const tableFiles = files?.map((file) => {
     return {
       id: file.id,
@@ -46,4 +52,4 @@ const MyFiles: FunctionComponent<MyFilesProps> = async () => {
   );
 };
 
-export default MyFiles;
+export default MyFilesPage;

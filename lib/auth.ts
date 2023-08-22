@@ -6,6 +6,7 @@ import { prisma } from './prisma';
 import { env } from '@/env.mjs';
 import { Role } from '@prisma/client';
 import { JWT_EXPIRY } from './constant';
+import { compare } from 'bcryptjs';
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -55,43 +56,31 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
-        // TODO: Add logic here to look up the user from the credentials supplied
-        const user = { id: '1', email: 'admin@gmail.com', password: 'admin' };
-
-        if (
-          credentials?.email == user.email &&
-          credentials.password == user.password
-        ) {
-          return {
-            ...user,
-            customKey: 'Our Custom key'
-          };
-        } else {
+        if (!credentials?.email || !credentials.password) {
           return null;
         }
+
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email
+          }
+        });
+
+        if (
+          !user ||
+          !(await compare(credentials.password, user.password as string))
+        ) {
+          return null;
+        }
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.roles
+          // randomKey: 'Hey cool'
+        };
       }
-      // async authorize(credentials) {
-      //   if (!credentials?.email || !credentials.password) {
-      //     return null;
-      //   }
-
-      //   const user = await prisma.user.findUnique({
-      //     where: {
-      //       email: credentials.email,
-      //     },
-      //   });
-
-      //   if (!user || !(await compare(credentials.password, user.password))) {
-      //     return null;
-      //   }
-
-      //   return {
-      //     id: user.id,
-      //     email: user.email,
-      //     name: user.name,
-      //     randomKey: "Hey cool",
-      //   };
-      // },
     })
   ],
   callbacks: {
@@ -100,7 +89,8 @@ export const authOptions: NextAuthOptions = {
         const u = user as unknown as any;
         return {
           ...token,
-          id: u.id
+          id: u.id,
+          role: u.role
         };
       }
       return token;
@@ -114,6 +104,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
+          role: token.role,
           token: token.jti
         }
       };
