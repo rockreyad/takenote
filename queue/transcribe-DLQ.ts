@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * We are still not using this DLQ queue, but we will use it in the future
  */
