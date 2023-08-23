@@ -12,6 +12,7 @@ import {
 import { File } from '@/server/zodSchema/file';
 import { getUser } from '@/server/api/user';
 import transcribeQueue from '@/queue/transcribe-queue';
+import { env } from '@/env.mjs';
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -73,7 +74,7 @@ export async function POST(request: NextRequest) {
         {
           filekey: fileInfo.key,
           fileId: file.id,
-          baseUrl: request.nextUrl.origin
+          baseUrl: env.BASE_URL
         },
         {
           removeOnComplete: true,
