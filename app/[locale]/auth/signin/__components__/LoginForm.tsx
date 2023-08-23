@@ -77,7 +77,17 @@ export const LoginForm = () => {
           placeholder="Password"
         />
       </div>
-      <SubmitButton type="submit" label="Sign in" loading={loading} />
+      <div className="space-y-2">
+        <SubmitButton type="submit" label="Sign in" loading={loading} />
+        <SubmitButton
+          type="button"
+          label="Register"
+          backgroundColor="#3b8"
+          onClick={() => {
+            router.push('/auth/register');
+          }}
+        />
+      </div>
       <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
         <p className="text-center font-semibold mx-4 mb-0">OR</p>
       </div>

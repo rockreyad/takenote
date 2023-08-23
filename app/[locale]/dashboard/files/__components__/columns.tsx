@@ -9,7 +9,7 @@ import { DataTableRowActions } from './data-table-row-actions';
 import moment from 'moment';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { FileList } from '@/server/zodSchema/file';
+import { FileList, File_Status } from '@/server/zodSchema/file';
 
 export const columns: ColumnDef<FileList>[] = [
   {
@@ -53,6 +53,8 @@ export const columns: ColumnDef<FileList>[] = [
     ),
     cell: ({ row }) => {
       // const label = labels.find((label) => label.value === row.original.label);
+      const originalStatus = row.original.status;
+      const status = statuses.find((status) => status.value === originalStatus);
 
       return (
         <div className="flex space-x-2">
@@ -72,12 +74,22 @@ export const columns: ColumnDef<FileList>[] = [
               </Tooltip>
             </TooltipProvider>
           )} */}
-          <Link
-            href={`/dashboard/files/${row.original.handle}`}
-            className="max-w-[500px] truncate font-medium hover:underline"
-          >
-            {row.getValue('title')}
-          </Link>
+          {status && status.value === File_Status.enum.IN_PROGRESS ? (
+            <p className="max-w-[500px] truncate font-medium opacity-50">
+              {row.getValue('title')}
+            </p>
+          ) : status && status.value == File_Status.enum.COMPLETE ? (
+            <Link
+              href={`/dashboard/files/${row.original.handle}`}
+              className="max-w-[500px] truncate font-medium hover:underline"
+            >
+              {row.getValue('title')}
+            </Link>
+          ) : (
+            <p className="max-w-[500px] truncate font-medium opacity-50">
+              {row.getValue('title')}
+            </p>
+          )}
         </div>
       );
     }
@@ -101,9 +113,10 @@ export const columns: ColumnDef<FileList>[] = [
           {status.icon && (
             <status.icon
               className={cn('mr-2 h-4 w-4', {
-                'text-blue-700/60': status.value === 'IN_PROGRESS',
-                'text-green-700/60': status.value === 'COMPLETE'
-                // 'text-red-700/60': status.value === 'cancelled'
+                'text-blue-700/60':
+                  status.value === File_Status.enum.IN_PROGRESS,
+                'text-green-700/60': status.value === File_Status.enum.COMPLETE,
+                'text-red-700/60': status.value === File_Status.enum.ERROR
               })}
             />
           )}

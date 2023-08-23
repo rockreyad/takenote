@@ -35,18 +35,23 @@ export async function getFileByIdOrHandle(idOrHandle: string) {
   return file;
 }
 
-export async function storeSingleFile(data: StoreFile) {
-  await prisma.file.create({
-    data: {
-      name: data.name,
-      container: data.container,
-      mimetype: data.mimetype,
-      size: data.size,
-      key: data.key,
-      handle: data.handle,
-      userId: data.userId
-    }
-  });
+export async function storeSingleFile(data: Omit<StoreFile, 'status'>) {
+  try {
+    const file = await prisma.file.create({
+      data: {
+        name: data.name,
+        container: data.container,
+        mimetype: data.mimetype,
+        size: data.size,
+        key: data.key,
+        handle: data.handle,
+        userId: data.userId
+      }
+    });
+    return file;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function getFilesByUserId(
@@ -79,5 +84,14 @@ export async function deleteFileById(id: string) {
     data: {
       deletedAt: new Date()
     }
+  });
+}
+
+export async function updateFileById(id: string, data: Partial<StoreFile>) {
+  return await prisma.file.update({
+    where: {
+      id
+    },
+    data
   });
 }

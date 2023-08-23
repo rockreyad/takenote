@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const fileStatusEnum = ['IN_PROGRESS', 'COMPLETE'] as const;
+const fileStatusEnum = ['IN_PROGRESS', 'COMPLETE', 'ERROR'] as const;
 export const File_Status = z.enum(fileStatusEnum);
 
 export const fileSchema = z.object({
@@ -39,5 +39,12 @@ export type File = z.infer<typeof fileSchema>;
 export type FileList = z.infer<typeof fileListSchema>;
 export type StoreFile = Pick<
   File,
-  'name' | 'size' | 'mimetype' | 'container' | 'handle' | 'key' | 'userId'
+  | 'name'
+  | 'size'
+  | 'mimetype'
+  | 'container'
+  | 'handle'
+  | 'key'
+  | 'userId'
+  | 'status'
 >;

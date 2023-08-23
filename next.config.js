@@ -11,7 +11,8 @@ const nextConfig = {
     ]
   },
   experimental: {
-    mdxRs: true
+    mdxRs: true,
+    serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'docx']
   },
   sentry: {
     // See the sections below for information on the following options:

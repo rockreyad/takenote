@@ -1,4 +1,3 @@
-import { transcribePreviewSchema } from './../zodSchema/transcribe';
 import { prisma } from '@/lib/prisma';
 import { Transcribe } from '../zodSchema/transcribe';
 import { File_Status } from '../zodSchema/file';
@@ -53,7 +52,15 @@ export async function storeTranscribe(data: Transcribe) {
       select: {
         file: {
           select: {
-            name: true
+            name: true,
+            status: true,
+            handle: true,
+            user: {
+              select: {
+                email: true,
+                name: true
+              }
+            }
           }
         },
         transcript: true,
