@@ -23,6 +23,7 @@ const server = z.object({
   BACKEND_URL: z.string().url(),
   RESEND_API_KEY: z.string(),
   RECIPIENT_EMAIL: z.string(),
+  RESEND_TRANSCRIPTION_STATUS_EMAIL: z.string(),
   REDIS_HOST: z.string(),
   REDIS_PORT: z.string(),
   REDIS_USERNAME: z.string(),
@@ -70,6 +71,8 @@ const processEnv = {
   NEXT_PUBLIC_FILESTACK_API_KEY: process.env.NEXT_PUBLIC_FILESTACK_API_KEY,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   RECIPIENT_EMAIL: process.env.RECIPIENT_EMAIL,
+  RESEND_TRANSCRIPTION_STATUS_EMAIL:
+    process.env.RESEND_TRANSCRIPTION_STATUS_EMAIL,
   REDIS_HOST: process.env.REDIS_HOST,
   REDIS_PORT: process.env.REDIS_PORT,
   REDIS_USERNAME: process.env.REDIS_USERNAME,
