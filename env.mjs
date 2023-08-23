@@ -28,7 +28,8 @@ const server = z.object({
   REDIS_PORT: z.string(),
   REDIS_USERNAME: z.string(),
   REDIS_PASSWORD: z.string(),
-  REDIS_TIMEOUT: z.string()
+  REDIS_TIMEOUT: z.string(),
+  BASE_URL: z.string()
   // GITHUB_CLIENT_ID: z.string(),
   // GITHUB_CLIENT_SECRET: z.string(),
   // TWITTER_CLIENT_ID: z.string(),
@@ -77,7 +78,8 @@ const processEnv = {
   REDIS_PORT: process.env.REDIS_PORT,
   REDIS_USERNAME: process.env.REDIS_USERNAME,
   REDIS_PASSWORD: process.env.REDIS_PASSWORD,
-  REDIS_TIMEOUT: process.env.REDIS_TIMEOUT
+  REDIS_TIMEOUT: process.env.REDIS_TIMEOUT,
+  BASE_URL: process.env.BASE_URL
 };
 
 // Don't touch the part below
