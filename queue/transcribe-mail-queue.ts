@@ -44,7 +44,7 @@ const worker = new Worker(
       const stat =
         fileStatus === File_Status.Enum.COMPLETE ? 'Complete' : 'Error';
       const { id } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: env.RESEND_TRANSCRIPTION_STATUS_EMAIL as string,
         to: emailTo,
         subject: emailSubject,
         html: `
