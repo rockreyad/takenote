@@ -48,48 +48,40 @@ const worker = new Worker(
         to: emailTo,
         subject: emailSubject,
         html: `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      </head>
-      <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0;">
-      
-          <table style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          </head>
+          <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0;">
+            <table style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden;">
               <tr>
-                  <td style="padding: 20px;">
-                      <h2 style="color: #333333; margin-bottom: 10px;">${emailSubject}</h2>
-                      <p style="color: #666666; margin-top: 0;">Dear, ${name}</p>
-                      <p style="color: #666666;">Bellow are the status of your last uploaded file:</p>
-                      
-                      <table style="width: 100%; margin-top: 20px;">
-                          <tr>
-                              <td style="width: 30%; color: #333333; font-weight: bold;">File name:</td>
-                              <td style="color: #666666;">${fileName}</td>
-                          </tr>
-                          <tr>
-                              <td style="width: 30%; color: #333333; font-weight: bold;">Status:</td>
-                              <td style="color: #666666;">${stat}</td>
-                          </tr>
-                          ${
-                            fileStatus === File_Status.Enum.COMPLETE
-                              ? `<tr>
+                <td style="padding: 20px;">
+                  <h2 style="color: #333333; margin-bottom: 10px;">${emailSubject}</h2>
+                  <p style="color: #666666; margin-top: 0;">Dear, ${name}</p>
+                  <p style="color: #666666;">
+                    Your AI Transcription is complete.<br>
+                    You can view and download it here.
+                  </p>
 
-                            <td style="width: 30%; color: #333333; font-weight: bold;">Transcribe url:</td>
-                            <td style="color: #666666;"><a href="${baseUrl}/dashboard/files/${fileHandle}" target="_blank">Here</a></td>
-                        </tr>`
-                              : ''
-                          }
-                      </table>
-                  </td>
+                  <table style="width: 100%; margin-top: 20px;">
+                    <tr>
+                      <td style="color: #333333; font-weight: bold;">File name:</td>
+                      <td style="color: #666666;">${fileName}</td>
+                    </tr>
+                    <tr>
+                      <td style="color: #333333; font-weight: bold;">Status:</td>
+                      <td style="color: #666666;">${stat}</td>
+                    </tr>
+                  </table>
+                  ${fileStatus === File_Status.Enum.COMPLETE ? `<p>Click <a href="${baseUrl}/dashboard/files/${fileHandle}" target="_blank">here</a> to view and download</p>` : ''}
+                </td>
               </tr>
-          </table>
-      
-      </body>
-      </html>
-      `
-      });
+            </table>
+          </body>
+          </html>
+          `});
       return id;
     } catch (error) {
       throw error;
