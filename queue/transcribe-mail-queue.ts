@@ -71,10 +71,6 @@ const worker = new Worker(
                       You can try it again or contact customer support.
                     </p>`
                   }
-                  <p style="color: #666666;">
-                    Your AI Transcription is complete.<br>
-                    You can view and download it here.
-                  </p>
 
                   <table style="width: 100%; margin-top: 20px;">
                     <tr>
