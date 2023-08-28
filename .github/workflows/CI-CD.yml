@@ -24,6 +24,29 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
+    - name: Setup environment variables
+      run: |
+        echo "${{env.NODE_ENV}}"   
+        echo "${{env.DATABASE_URL}}"   
+        echo "${{env.DIRECT_URL}}"   
+        echo "${{env.NEXTAUTH_URL}}"   
+        echo "${{env.NEXTAUTH_SECRET}}"   
+        echo "${{env.BACKEND_URL}}"   
+        echo "${{env.GOOGLE_CLIENT_ID}}"   
+        echo "${{env.GOOGLE_CLIENT_SECRET}}"   
+        echo "${{env.NEXT_PUBLIC_FILESTACK_API_KEY}}"   
+        echo "${{env.SENTRY_PROJECT}}"   
+        echo "${{env.SENTRY_DSN}}"   
+        echo "${{env.SENTRY_AUTH_TOKEN}}"   
+        echo "${{env.RESEND_API_KEY}}"   
+        echo "${{env.RECIPIENT_EMAIL}}"   
+        echo "${{env.RESEND_TRANSCRIPTION_STATUS_EMAIL}}"   
+        echo "${{env.REDIS_HOST}}"   
+        echo "${{env.REDIS_USERNAME}}"   
+        echo "${{env.REDIS_PASSWORD}}"   
+        echo "${{env.REDIS_PORT}}"   
+        echo "${{env.REDIS_TIMEOUT}}"   
+        echo "${{env.BASE_URL}}"   
     - run: npm run build
     - run: pm2 restart takenote
-    - run: sudo systemctl restart nginx
+    # - run: sudo systemctl restart nginx
