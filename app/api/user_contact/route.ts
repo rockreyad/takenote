@@ -2,11 +2,12 @@ import { env } from '@/env.mjs';
 import resend from '@/lib/resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
-  const email = formData.get('email');
-  const message = formData.get('message');
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
 
   if (!email || !message) {
     return NextResponse.json({
@@ -25,9 +26,9 @@ export async function POST(request: NextRequest) {
 
   try {
     const data = await resend.emails.send({
-      from: `Contact Form <${user.email}>`,
+      from: `Contact Form <${user!.email}>`,
       to: env.RECIPIENT_EMAIL as string,
-      subject: `${user.name} just contacted!`,
+      subject: `${user!.name} just contacted!`,
       html: `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -47,11 +48,11 @@ export async function POST(request: NextRequest) {
                       <table style="width: 100%; margin-top: 20px;">
                           <tr>
                               <td style="width: 30%; color: #333333; font-weight: bold;">Name:</td>
-                              <td style="color: #666666;">${user.name}</td>
+                              <td style="color: #666666;">${user!.name}</td>
                           </tr>
                           <tr>
                               <td style="width: 30%; color: #333333; font-weight: bold;">Email:</td>
-                              <td style="color: #666666;">${user.email}</td>
+                              <td style="color: #666666;">${user!.email}</td>
                           </tr>
                       </table>
       
