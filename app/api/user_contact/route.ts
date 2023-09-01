@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const data = await resend.emails.send({
-      from: `Contact Form <${user!.email}>`,
+      from: `Contact Form <${env.RECIPIENT_EMAIL as string}>`,
       to: env.RECIPIENT_EMAIL as string,
       subject: `${user!.name} just contacted!`,
       html: `<!DOCTYPE html>
