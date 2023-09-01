@@ -6,9 +6,7 @@ import { authOptions } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
-  const formData = await request.formData();
-  const email = formData.get('email') as string;
-  const message = formData.get('message') as string;
+  const { email, message } = await request.json();
 
   if (!session) {
     return NextResponse.json({
@@ -78,7 +76,10 @@ export async function POST(request: NextRequest) {
 
 
     if (data) {
-      return NextResponse.redirect(new URL('/', request.nextUrl));
+      return NextResponse.json({
+        message: 'User has been sended contact!',
+        status: 200
+      });
     }
 
     return NextResponse.json({
