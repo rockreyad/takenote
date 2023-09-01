@@ -1,12 +1,21 @@
 import { env } from '@/env.mjs';
 import resend from '@/lib/resend';
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
+  const session = await getServerSession(authOptions);
   const formData = await request.formData();
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;
+
+  if (!session) {
+    return NextResponse.json({
+      message: 'UnAuthenticated',
+      status: 401
+    });
+  }
 
   if (!email || !message) {
     return NextResponse.json({
@@ -15,20 +24,14 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email: email },
-    select: {
-      name: true,
-      email: true
-    }
-  });
-
-  if (!user) {
+  if (session!.user!.email != email) {
     return NextResponse.json({
-      message: 'Not Found!',
-      status: 404
+      message: 'UnAuthorization',
+      status: 403
     });
   }
+
+  const user = session!.user;
 
   try {
     const data = await resend.emails.send({
