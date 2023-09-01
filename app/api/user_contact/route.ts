@@ -2,7 +2,6 @@ import { env } from '@/env.mjs';
 import resend from '@/lib/resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
