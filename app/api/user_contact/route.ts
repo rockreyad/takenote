@@ -23,6 +23,13 @@ export async function POST(request: NextRequest) {
     }
   });
 
+  if (!user) {
+    return NextResponse.json({
+      message: 'Not Found!',
+      status: 404
+    });
+  }
+
   try {
     const data = await resend.emails.send({
       from: `Contact Form <${user!.email}>`,
