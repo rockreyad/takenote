@@ -74,10 +74,9 @@ export async function POST(request: NextRequest) {
       `
     });
 
-
     if (data) {
       return NextResponse.json({
-        message: 'User has been sended contact!',
+        message: 'Your message has been sent successfully!',
         status: 200
       });
     }

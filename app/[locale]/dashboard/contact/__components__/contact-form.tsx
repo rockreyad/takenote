@@ -58,9 +58,9 @@ export default function ContactForm() {
           </div>
         </div>
         <div className="mt-8 flex justify-end">
-          <a onClick={handleSubmit} className="flex-none rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-semibold text-gray-50 dark:text-gray-900 shadow-sm hover:bg-gray-900 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" >
+          <button onClick={handleSubmit} className="flex-none rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-semibold text-gray-50 dark:text-gray-900 shadow-sm hover:bg-gray-900 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" >
             Send message
-          </a>
+          </button>
         </div>
       </div>
     </form>
