@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
-import animationData2 from '../animation/77488-translate-language.json';
-import animationData1 from '../animation/signin.json';
-import animationData3 from '../animation/7491-uploading-files.json';
-import animationData4 from '../animation/97208-network.json';
+import animationData2 from '../../public/lottie/77488-translate-language.json';
+import animationData1 from '../../public/lottie/signin.json';
+import animationData3 from '../../public/lottie/7491-uploading-files.json';
+import animationData4 from '../../public/lottie/97208-network.json';
 import Lottie from 'react-lottie';
 
 function About() {

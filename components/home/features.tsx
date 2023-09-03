@@ -9,12 +9,12 @@ import { cn } from '@/lib/utils';
 //   UsersIcon
 // } from '@heroicons/react/24/outline';
 import Container from '../container';
-import animationData5 from '../animation/28784-businessmen-at-the-table.json';
-import animationData6 from '../animation/67986-business-deal.json';
-import animationData7 from '../animation/76888-color-data-analysis.json';
-import animationData10 from '../animation/84726-business-meeting-animation.json';
-import animationData15 from '../animation/Comp-2.json';
-import animationData17 from '../animation/Isometric-people.json';
+import animationData5 from '../../public/lottie/28784-businessmen-at-the-table.json';
+import animationData6 from '../../public/lottie/67986-business-deal.json';
+import animationData7 from '../../public/lottie/76888-color-data-analysis.json';
+import animationData10 from '../../public/lottie/84726-business-meeting-animation.json';
+import animationData15 from '../../public/lottie/Comp-2.json';
+import animationData17 from '../../public/lottie/Isometric-people.json';
 import Lottie from 'react-lottie';
 
 export default function Features() {
