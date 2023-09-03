@@ -22,7 +22,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm i
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+
+      - name: Install dependencies
+        run: |
+          pnpm install
       - name: Setup environment variables
         run: |
           touch .env
@@ -48,6 +54,6 @@ jobs:
           echo REDIS_PORT=${{ vars.REDIS_PORT }} >> .env 
           echo REDIS_TIMEOUT=${{ vars.REDIS_TIMEOUT }} >> .env 
           echo BASE_URL=${{ vars.BASE_URL }} >> .env
-      - run: npm run build
+      - run: pnpm build
       - run: pm2 restart takenote
     # - run: sudo systemctl restart nginx

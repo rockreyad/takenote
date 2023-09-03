@@ -74,7 +74,7 @@ const faqs: FAQProps[] = [
 export default function FAQ() {
   return (
     <div id="faq" className="bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 pb-16 pt-0  lg:px-8">
         <div className="mx-auto divide-y divide-gray-900/10 dark:divide-white/10">
           <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900 dark:text-white">
             Frequently asked questions
