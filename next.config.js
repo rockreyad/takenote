@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
-
 const { withSentryConfig } = require('@sentry/nextjs');
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     domains: [
@@ -12,7 +11,8 @@ const nextConfig = {
   },
   experimental: {
     mdxRs: true,
-    serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'docx']
+    serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'docx'],
+    serverActions: true
   },
   sentry: {
     // See the sections below for information on the following options:

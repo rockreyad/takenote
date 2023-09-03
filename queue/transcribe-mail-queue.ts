@@ -60,13 +60,13 @@ const worker = new Worker(
                 <td style="padding: 20px;">
                   <h2 style="color: #333333; margin-bottom: 10px;">${emailSubject}</h2>
                   <p style="color: #666666; margin-top: 0;">Dear, ${name}</p>
-                  ${fileStatus === File_Status.Enum.COMPLETE ? 
-                    `<p style="color: #666666;">
+                  ${
+                    fileStatus === File_Status.Enum.COMPLETE
+                      ? `<p style="color: #666666;">
                       Your AI Transcription is complete.<br>
                       You can view and download it here.
-                    </p>` 
-                    : 
-                    `<p style="color: #666666;">
+                    </p>`
+                      : `<p style="color: #666666;">
                       Your AI transcription has failed.<br>
                       You can try it again or contact customer support.
                     </p>`
@@ -82,17 +82,18 @@ const worker = new Worker(
                       <td style="color: #666666;">${stat}</td>
                     </tr>
                   </table>
-                  ${fileStatus === File_Status.Enum.COMPLETE ?
-                    `<p>Click <a href="${baseUrl}/dashboard/files/${fileHandle}" target="_blank">here</a> to view and download</p>`
-                    :
-                    `<p>Click <a href="#" target="_blank">here</a> to contact customer support.</p>`
+                  ${
+                    fileStatus === File_Status.Enum.COMPLETE
+                      ? `<p>Click <a href="${baseUrl}/dashboard/files/${fileHandle}" target="_blank">here</a> to view and download</p>`
+                      : `<p>Click <a href="#" target="_blank">here</a> to contact customer support.</p>`
                   }
                 </td>
               </tr>
             </table>
           </body>
           </html>
-          `});
+          `
+      });
       return id;
     } catch (error) {
       throw error;
