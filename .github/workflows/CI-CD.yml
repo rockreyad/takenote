@@ -5,11 +5,10 @@ name: CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -18,37 +17,37 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i
-    - name: Setup environment variables
-      run: |
-        touch .env
-        echo NODE_ENV=${{ vars.NODE_ENV }} >> .env 
-        echo DATABASE_URL=${{ vars.DATABASE_URL }} >> .env   
-        echo DIRECT_URL=${{ vars.DIRECT_URL }} >> .env   
-        echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env   
-        echo NEXTAUTH_SECRET=${{ vars.NEXTAUTH_SECRET }} >> .env   
-        echo BACKEND_URL=${{ vars.BACKEND_URL }} >> .env   
-        echo GOOGLE_CLIENT_ID=${{ vars.GOOGLE_CLIENT_ID }} >> .env   
-        echo GOOGLE_CLIENT_SECRET=${{ vars.GOOGLE_CLIENT_SECRET }} >> .env   
-        echo NEXT_PUBLIC_FILESTACK_API_KEY=${{ vars.NEXT_PUBLIC_FILESTACK_API_KEY }} >> .env   
-        echo SENTRY_ORG=${{ vars.SENTRY_ORG }} >> .env   
-        echo SENTRY_PROJECT=${{ vars.SENTRY_PROJECT }} >> .env   
-        echo SENTRY_DSN=${{ vars.SENTRY_DSN }} >> .env   
-        echo SENTRY_AUTH_TOKEN=${{ vars.SENTRY_AUTH_TOKEN }} >> .env  
-        echo RESEND_API_KEY=${{ vars.RESEND_API_KEY }} >> .env  
-        echo RECIPIENT_EMAIL=${{ vars.RECIPIENT_EMAIL }} >> .env  
-        echo RESEND_TRANSCRIPTION_STATUS_EMAIL=${{ vars.RESEND_TRANSCRIPTION_STATUS_EMAIL }} >> .env  
-        echo REDIS_HOST=${{ vars.REDIS_HOST }} >> .env  
-        echo REDIS_USERNAME=${{ vars.REDIS_USERNAME }} >> .env  
-        echo REDIS_PASSWORD=${{ vars.REDIS_PASSWORD }} >> .env  
-        echo REDIS_PORT=${{ vars.REDIS_PORT }} >> .env 
-        echo REDIS_TIMEOUT=${{ vars.REDIS_TIMEOUT }} >> .env 
-        echo BASE_URL=${{ vars.BASE_URL }} >> .env 
-    - run: npm run build
-    - run: pm2 restart takenote
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+      - name: Setup environment variables
+        run: |
+          touch .env
+          echo NODE_ENV=${{ vars.NODE_ENV }} >> .env 
+          echo DATABASE_URL=${{ vars.DATABASE_URL }} >> .env   
+          echo DIRECT_URL=${{ vars.DIRECT_URL }} >> .env   
+          echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env   
+          echo NEXTAUTH_SECRET=${{ vars.NEXTAUTH_SECRET }} >> .env   
+          echo BACKEND_URL=${{ vars.BACKEND_URL }} >> .env   
+          echo GOOGLE_CLIENT_ID=${{ vars.GOOGLE_CLIENT_ID }} >> .env   
+          echo GOOGLE_CLIENT_SECRET=${{ vars.GOOGLE_CLIENT_SECRET }} >> .env   
+          echo NEXT_PUBLIC_FILESTACK_API_KEY=${{ vars.NEXT_PUBLIC_FILESTACK_API_KEY }} >> .env   
+          echo SENTRY_ORG=${{ vars.SENTRY_ORG }} >> .env   
+          echo SENTRY_PROJECT=${{ vars.SENTRY_PROJECT }} >> .env   
+          echo SENTRY_DSN=${{ vars.SENTRY_DSN }} >> .env   
+          echo SENTRY_AUTH_TOKEN=${{ vars.SENTRY_AUTH_TOKEN }} >> .env  
+          echo RESEND_API_KEY=${{ vars.RESEND_API_KEY }} >> .env  
+          echo RECIPIENT_EMAIL=${{ vars.RECIPIENT_EMAIL }} >> .env  
+          echo RESEND_TRANSCRIPTION_STATUS_EMAIL=${{ vars.RESEND_TRANSCRIPTION_STATUS_EMAIL }} >> .env  
+          echo REDIS_HOST=${{ vars.REDIS_HOST }} >> .env  
+          echo REDIS_USERNAME=${{ vars.REDIS_USERNAME }} >> .env  
+          echo REDIS_PASSWORD=${{ vars.REDIS_PASSWORD }} >> .env  
+          echo REDIS_PORT=${{ vars.REDIS_PORT }} >> .env 
+          echo REDIS_TIMEOUT=${{ vars.REDIS_TIMEOUT }} >> .env 
+          echo BASE_URL=${{ vars.BASE_URL }} >> .env
+      - run: npm run build
+      - run: pm2 restart takenote
     # - run: sudo systemctl restart nginx

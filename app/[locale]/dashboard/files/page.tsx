@@ -9,14 +9,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { USER_ROLE } from '@/server/zodSchema/user';
 
-interface MyFilesProps {}
-
 export const metadata: Metadata = {
   title: 'My Files - TakeNote',
   description: 'A list of files that I have uploaded.'
 };
 
-const MyFilesPage: FunctionComponent<MyFilesProps> = async () => {
+const MyFilesPage: FunctionComponent = async () => {
   const session = await getServerSession(authOptions);
   let files;
   if (session?.user.role === USER_ROLE.enum.ADMIN) {

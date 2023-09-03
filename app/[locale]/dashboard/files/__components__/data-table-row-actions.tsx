@@ -244,10 +244,12 @@ const DeleteDialog = ({
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleClose = () => {
     setIsOpen(false);
     onClose();
+    router.refresh();
   };
 
   if (!isOpen) {
@@ -316,6 +318,9 @@ const RenameDialog = ({
   };
   onRename: (newName: string) => void;
 }) => {
+  const [loading, setLoading] = useState(false);
+  console.log('loading', loading);
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
   const [newName, setNewName] = useState(file.name); // Track the new name
   const { toast } = useToast();
@@ -330,22 +335,25 @@ const RenameDialog = ({
   }
 
   const handleSubmit = async () => {
+    setLoading(true);
     try {
       // Perform renaming logic here
       const res = await axios.put('/api/file', {
         fileId: file.id,
         name: newName
       });
-
+      setLoading(false);
       if (res.status === 200) {
         toast({
           title: 'File renamed successfully',
           description: 'Your file has been renamed'
         });
-        onRename(newName); // Update the UI with the new name
+        // onRename(newName); // Update the UI with the new name
+        router.refresh();
         handleClose();
       }
     } catch (error) {
+      setLoading(false);
       toast({
         title: 'An error occurred',
         description: 'Your file could not be renamed',
@@ -367,15 +375,18 @@ const RenameDialog = ({
         <input
           type="text"
           value={newName}
+          name="newName"
           onChange={(e) => setNewName(e.target.value)}
           className="border border-gray-300 px-2 py-1 mt-2 w-full rounded-md dark:bg-gray-800 dark:border-gray-700"
         />
+        <input type="hidden" name="fileId" value={file.id} />
         <DialogFooter>
           <Button type="reset" variant={'outline'} onClick={handleClose}>
             Cancel
           </Button>
+
           <Button type="submit" variant={'default'} onClick={handleSubmit}>
-            Rename
+            {loading ? 'Renaming...' : 'Rename'}
           </Button>
         </DialogFooter>
       </DialogContent>
