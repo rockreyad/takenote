@@ -6,7 +6,7 @@ const FullPageLoading = () => {
       <div className="animate-spin">
         <Loader2 />
       </div>
-      <p className="animate-pulse">loading..</p>
+      <p className="animate-pulse">Please wait.Do not close this Browser</p>
     </div>
   );
 };
