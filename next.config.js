@@ -3,6 +3,7 @@
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
+
   images: {
     domains: [
       'avatars.githubusercontent.com',
@@ -14,7 +15,7 @@ const nextConfig = {
     mdxRs: true,
     serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'docx']
   },
-  sentry: {
+  // sentry: {
     // See the sections below for information on the following options:
     //   'Configure Source Maps':
     //     - disableServerWebpackPlugin
@@ -28,7 +29,7 @@ const nextConfig = {
     //     - excludeServerRoutes
     //   'Configure Tunneling to avoid Ad-Blockers':
     //     - tunnelRoute
-  }
+  // }
 };
 const withMDX = require('@next/mdx')();
 const sentryWebpackPluginOptions = {

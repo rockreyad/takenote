@@ -9,6 +9,7 @@ import Contact from '@/components/home/contact';
 import Footer from '@/components/home/footer';
 import ScrollToTop from '@/components/home/ScrollToTop';
 import GsapProvider from '@/context/GsapProvider';
+import About from '@/components/home/about';
 
 interface HomeProps {}
 
@@ -19,6 +20,7 @@ const Home: FunctionComponent<HomeProps> = () => {
         <Hero />
         <LogoCloud />
         <PrimaryProduct />
+        <About />
         <Features />
         <FAQ />
         <Contact />
