@@ -244,10 +244,12 @@ const DeleteDialog = ({
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleClose = () => {
     setIsOpen(false);
     onClose();
+    router.refresh();
   };
 
   if (!isOpen) {
