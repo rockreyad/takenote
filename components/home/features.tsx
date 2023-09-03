@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { cn } from '@/lib/utils';
 // import {
 //   AcademicCapIcon,
@@ -15,114 +15,113 @@ import animationData7 from '../animation/76888-color-data-analysis.json';
 import animationData10 from '../animation/84726-business-meeting-animation.json';
 import animationData15 from '../animation/Comp-2.json';
 import animationData17 from '../animation/Isometric-people.json';
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie';
 
 export default function Features() {
-
   const option1 = {
     loop: true,
     autoplay: true,
     animationData: animationData10,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   const option2 = {
     loop: true,
     autoplay: true,
     animationData: animationData5,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   const option3 = {
     loop: true,
     autoplay: true,
     animationData: animationData7,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   const option4 = {
     loop: true,
     autoplay: true,
     animationData: animationData15,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   const option5 = {
     loop: true,
     autoplay: true,
     animationData: animationData17,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   const option6 = {
     loop: true,
     autoplay: true,
     animationData: animationData6,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
-const actions = [
-  {
-    title: 'Accurate',
-    description:
-      'Our advanced artificial intelligence models provide an exceptional level of accuracy, automatically handling spelling and punctuation. When compared to humans, our AI models approach their accuracy and robustness.',
-    href: '#',
-    icon: option1,
-    iconForeground: 'text-teal-700',
-    iconBackground: 'bg-teal-50'
-  },
-  {
-    title: 'Versatile',
-    description:
-      'TakeNote AI is available with its full functionality on popular browsers, such as Google Chrome and Edge. All processing is performed securely on the Cloud.',
-    href: '#',
-    icon: option2,
-    iconForeground: 'text-purple-700',
-    iconBackground: 'bg-purple-50'
-  },
-  {
-    title: 'Secure',
-    description:
-      'TakeNote provides high level security, privacy and data protection.',
-    href: '#',
-    icon: option3,
-    iconForeground: 'text-sky-700',
-    iconBackground: 'bg-sky-50'
-  },
-  {
-    title: 'Speaker separation',
-    description:
-      'TakeNote can recognise and identify multiple speakers in the same audio file and label them accurately.',
-    href: '#',
-    icon: option4,
-    iconForeground: 'text-yellow-700',
-    iconBackground: 'bg-yellow-50'
-  },
-  {
-    title: 'Robust',
-    description:
-      'Handle poor quality audio, strong regional accents, very fast speech and noisy backgrounds whilst producing precise output.',
-    href: '#',
-    icon: option5,
-    iconForeground: 'text-rose-700',
-    iconBackground: 'bg-rose-50'
-  },
-  {
-    title: 'Automatic punctuation',
-    description:
-      'TakeNote accurately punctuates transcriptions with commas, question marks and full stops.',
-    href: '#',
-    icon: option6,
-    iconForeground: 'text-indigo-700',
-    iconBackground: 'bg-indigo-50'
-  }
-];
+  const actions = [
+    {
+      title: 'Accurate',
+      description:
+        'Our advanced artificial intelligence models provide an exceptional level of accuracy, automatically handling spelling and punctuation. When compared to humans, our AI models approach their accuracy and robustness.',
+      href: '#',
+      icon: option1,
+      iconForeground: 'text-teal-700',
+      iconBackground: 'bg-teal-50'
+    },
+    {
+      title: 'Versatile',
+      description:
+        'TakeNote AI is available with its full functionality on popular browsers, such as Google Chrome and Edge. All processing is performed securely on the Cloud.',
+      href: '#',
+      icon: option2,
+      iconForeground: 'text-purple-700',
+      iconBackground: 'bg-purple-50'
+    },
+    {
+      title: 'Secure',
+      description:
+        'TakeNote provides high level security, privacy and data protection.',
+      href: '#',
+      icon: option3,
+      iconForeground: 'text-sky-700',
+      iconBackground: 'bg-sky-50'
+    },
+    {
+      title: 'Speaker separation',
+      description:
+        'TakeNote can recognise and identify multiple speakers in the same audio file and label them accurately.',
+      href: '#',
+      icon: option4,
+      iconForeground: 'text-yellow-700',
+      iconBackground: 'bg-yellow-50'
+    },
+    {
+      title: 'Robust',
+      description:
+        'Handle poor quality audio, strong regional accents, very fast speech and noisy backgrounds whilst producing precise output.',
+      href: '#',
+      icon: option5,
+      iconForeground: 'text-rose-700',
+      iconBackground: 'bg-rose-50'
+    },
+    {
+      title: 'Automatic punctuation',
+      description:
+        'TakeNote accurately punctuates transcriptions with commas, question marks and full stops.',
+      href: '#',
+      icon: option6,
+      iconForeground: 'text-indigo-700',
+      iconBackground: 'bg-indigo-50'
+    }
+  ];
   return (
     <Container className="py-12">
       <div

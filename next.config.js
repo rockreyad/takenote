@@ -2,7 +2,6 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
   images: {
     domains: [
       'avatars.githubusercontent.com',
@@ -14,21 +13,21 @@ const nextConfig = {
     mdxRs: true,
     serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs', 'docx'],
     serverActions: true
-  },
+  }
   // sentry: {
-    // See the sections below for information on the following options:
-    //   'Configure Source Maps':
-    //     - disableServerWebpackPlugin
-    //     - disableClientWebpackPlugin
-    //     - hideSourceMaps
-    //     - widenClientFileUpload
-    //   'Configure Legacy Browser Support':
-    //     - transpileClientSDK
-    //   'Configure Serverside Auto-instrumentation':
-    //     - autoInstrumentServerFunctions
-    //     - excludeServerRoutes
-    //   'Configure Tunneling to avoid Ad-Blockers':
-    //     - tunnelRoute
+  // See the sections below for information on the following options:
+  //   'Configure Source Maps':
+  //     - disableServerWebpackPlugin
+  //     - disableClientWebpackPlugin
+  //     - hideSourceMaps
+  //     - widenClientFileUpload
+  //   'Configure Legacy Browser Support':
+  //     - transpileClientSDK
+  //   'Configure Serverside Auto-instrumentation':
+  //     - autoInstrumentServerFunctions
+  //     - excludeServerRoutes
+  //   'Configure Tunneling to avoid Ad-Blockers':
+  //     - tunnelRoute
   // }
 };
 const withMDX = require('@next/mdx')();
