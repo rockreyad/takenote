@@ -37,7 +37,10 @@ const AnalyseDataTab = () => {
         <TabTranscription transcript={data?.transcript} />
       </TabsContent>
       <TabsContent value="sentiment">
-        <TabSentiment sentimentData={data?.sentiment} speakerDiarization={data?.speakerDiarization} />
+        <TabSentiment
+          sentimentData={data?.sentiment}
+          speakerDiarization={data?.speakerDiarization}
+        />
       </TabsContent>
       {/* <TabsContent value="summary">
           <TabSummary />
