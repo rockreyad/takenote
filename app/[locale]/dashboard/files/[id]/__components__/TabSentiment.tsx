@@ -36,6 +36,12 @@ export default function TabSentiment({
     : [];
   // console.log("hours", hours);
 
+  const transcriptions = speakerDiarization?.length
+    ? speakerDiarization
+      ?.map((item) => item.text)
+    : [];
+  // console.log("transcriptions", transcriptions);
+
   days.forEach(function (day, idx) {
     title.push({
       textBaseline: 'middle',
@@ -73,19 +79,19 @@ export default function TabSentiment({
   sentimentData
     ?.map((item) => (item.label === 'Neutral' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[0]?.data.push([idx, val]);
+      (series as any)[0]?.data.push([idx, val, transcriptions[idx]]);
     });
 
   sentimentData
     ?.map((item) => (item.label === 'Positive' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[1]?.data.push([idx, val]);
+      (series as any)[1]?.data.push([idx, val, transcriptions[idx]]);
     });
 
   sentimentData
     ?.map((item) => (item.label === 'Negative' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[2]?.data.push([idx, val]);
+      (series as any)[2]?.data.push([idx, val, transcriptions[idx]]);
     });
   // console.log('series', series);
 
