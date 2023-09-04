@@ -25,15 +25,16 @@ export default function FileUploaderURLDialog(props: { buttonName: string }) {
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
-    const isYoutubeUrl = validateYouTubeUrl(url);
-    if (!isYoutubeUrl) {
-      toast({
-        title: 'Invalid URL',
-        description: 'Please enter a valid youtube url'
-      });
-      setUrl('');
-      return;
-    }
+    //Temoprary fix for youtube url
+    // const isYoutubeUrl = validateYouTubeUrl(url);
+    // if (!isYoutubeUrl) {
+    //   toast({
+    //     title: 'Invalid URL',
+    //     description: 'Please enter a valid youtube url'
+    //   });
+    //   setUrl('');
+    //   return;
+    // }
     await upload(url);
   };
 

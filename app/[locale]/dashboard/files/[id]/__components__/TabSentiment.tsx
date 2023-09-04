@@ -10,19 +10,20 @@ const days = [
 ];
 
 type tColors = {
-  [key: string]: string
-}
+  [key: string]: string;
+};
 
 const colors: tColors = {
   Neutral: '#F4BA77',
   Positive: '#94D8AC',
-  Negative: '#DF665A',
+  Negative: '#DF665A'
 };
 
 export default function TabSentiment({
-  sentimentData, speakerDiarization
+  sentimentData,
+  speakerDiarization
 }: {
-  sentimentData: Sentiment[] | undefined,
+  sentimentData: Sentiment[] | undefined;
   speakerDiarization: SpeakerDiarization[] | undefined;
 }) {
   const title: echarts.TitleComponentOption[] = [];
@@ -31,8 +32,7 @@ export default function TabSentiment({
 
   // console.log('speakerDiarization', speakerDiarization);
   const hours = speakerDiarization?.length
-    ? speakerDiarization
-      ?.map((item) => item.end)
+    ? speakerDiarization?.map((item) => item.end)
     : [];
   // console.log("hours", hours);
 
@@ -71,19 +71,19 @@ export default function TabSentiment({
   });
 
   sentimentData
-    ?.map((item) => item.label === 'Neutral' ? item.score : 0)
+    ?.map((item) => (item.label === 'Neutral' ? item.score : 0))
     ?.forEach(function (val, idx) {
       (series as any)[0]?.data.push([idx, val]);
     });
 
   sentimentData
-    ?.map((item) => item.label === 'Positive' ? item.score : 0)
+    ?.map((item) => (item.label === 'Positive' ? item.score : 0))
     ?.forEach(function (val, idx) {
       (series as any)[1]?.data.push([idx, val]);
     });
 
   sentimentData
-    ?.map((item) => item.label === 'Negative' ? item.score : 0)
+    ?.map((item) => (item.label === 'Negative' ? item.score : 0))
     ?.forEach(function (val, idx) {
       (series as any)[2]?.data.push([idx, val]);
     });
@@ -96,31 +96,31 @@ export default function TabSentiment({
     },
     title: title,
     singleAxis: singleAxis,
-    series: series,
+    series: series
   } as echarts.EChartsOption;
 
   // Set data for Sentiment Graph
   const sentimentNeutralValue = sentimentData?.length
     ? sentimentData
-      ?.filter((item) => item.label === 'Neutral')
-      .reduce((acc, current) => {
-        return acc + current.score;
-      }, 0)
+        ?.filter((item) => item.label === 'Neutral')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
     : 0;
 
   const sentimentPositiveValue = sentimentData?.length
     ? sentimentData
-      ?.filter((item) => item.label === 'Positive')
-      .reduce((acc, current) => {
-        return acc + current.score;
-      }, 0)
+        ?.filter((item) => item.label === 'Positive')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
     : 0;
   const sentimentNegativeValue = sentimentData?.length
     ? sentimentData
-      ?.filter((item) => item.label === 'Negative')
-      .reduce((acc, current) => {
-        return acc + current.score;
-      }, 0)
+        ?.filter((item) => item.label === 'Negative')
+        .reduce((acc, current) => {
+          return acc + current.score;
+        }, 0)
     : 0;
 
   const SentimentAnalysisOption = {
