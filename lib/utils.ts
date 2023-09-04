@@ -11,3 +11,13 @@ export function validateYouTubeUrl(url: string) {
 
   return regex.test(url);
 }
+
+// Function to convert seconds to HH:MM:SS format
+export function formatTimeFromSeconds(seconds: number) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const sec = Math.floor(seconds % 60);
+  return `${hours}:${minutes.toString().padStart(2, '0')}:${sec
+    .toString()
+    .padStart(2, '0')}`;
+}

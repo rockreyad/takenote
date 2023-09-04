@@ -25,7 +25,13 @@ export async function getTranscribeByIdOrHandleOrFileId(
       file: {
         select: {
           name: true,
-          mimetype: true
+          mimetype: true,
+          user: {
+            select: {
+              name: true
+            }
+          },
+          createdAt: true
         }
       },
       transcript: true,
