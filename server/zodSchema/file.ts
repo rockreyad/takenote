@@ -19,11 +19,17 @@ export const fileSchema = z.object({
 
 export const filePreviewSchema = z.object({
   name: z.string(),
+  user: z
+    .object({
+      name: z.string()
+    })
+    .optional(),
   container: z.string().optional(),
   mimetype: z.string().optional(),
   size: z.number().optional(),
   key: z.string().optional(),
-  handle: z.string().optional()
+  handle: z.string().optional(),
+  createdAt: z.date().optional()
 });
 
 const fileListSchema = z.object({
