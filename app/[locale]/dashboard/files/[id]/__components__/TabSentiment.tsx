@@ -148,19 +148,19 @@ export default function TabSentiment({
       {
         data: [
           {
-            value: sentimentNeutralValue,
+            value: sentimentNeutralValue.toFixed(2),
             itemStyle: {
               color: colors.Neutral
             }
           },
           {
-            value: sentimentPositiveValue,
+            value: sentimentPositiveValue.toFixed(2),
             itemStyle: {
               color: colors.Positive
             }
           },
           {
-            value: sentimentNegativeValue,
+            value: sentimentNegativeValue.toFixed(2),
             itemStyle: {
               color: colors.Negative
             }
