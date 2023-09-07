@@ -19,6 +19,11 @@ const colors: tColors = {
   Negative: '#DF665A'
 };
 
+const TimeFormatAt = (seconds: number) => {
+  const str = new Date(seconds * 1000).toISOString();
+  return seconds >= 3600 ? str.slice(11, 19) : str.slice(14, 19);
+};
+
 export default function TabSentiment({
   sentimentData,
   speakerDiarization
@@ -32,7 +37,7 @@ export default function TabSentiment({
 
   // console.log('speakerDiarization', speakerDiarization);
   const hours = speakerDiarization?.length
-    ? speakerDiarization?.map((item) => item.end)
+    ? speakerDiarization?.map((item) => TimeFormatAt(item.end))
     : [];
   // console.log("hours", hours);
 
