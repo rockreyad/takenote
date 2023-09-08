@@ -19,6 +19,11 @@ const colors: tColors = {
   Negative: '#DF665A'
 };
 
+const TimeFormatAt = (seconds: number) => {
+  const str = new Date(seconds * 1000).toISOString();
+  return seconds >= 3600 ? str.slice(11, 19) : str.slice(14, 19);
+};
+
 export default function TabSentiment({
   sentimentData,
   speakerDiarization
@@ -32,7 +37,7 @@ export default function TabSentiment({
 
   // console.log('speakerDiarization', speakerDiarization);
   const hours = speakerDiarization?.length
-    ? speakerDiarization?.map((item) => item.end)
+    ? speakerDiarization?.map((item) => TimeFormatAt(item.end))
     : [];
   // console.log("hours", hours);
 
@@ -129,6 +134,8 @@ export default function TabSentiment({
       }, 0)
     : 0;
 
+  const overallSentiment = (sentimentNeutralValue + sentimentPositiveValue + sentimentNegativeValue).toFixed(2);
+
   const SentimentAnalysisOption = {
     tooltip: {
       trigger: 'axis',
@@ -148,19 +155,19 @@ export default function TabSentiment({
       {
         data: [
           {
-            value: sentimentNeutralValue,
+            value: sentimentNeutralValue.toFixed(2),
             itemStyle: {
               color: colors.Neutral
             }
           },
           {
-            value: sentimentPositiveValue,
+            value: sentimentPositiveValue.toFixed(2),
             itemStyle: {
               color: colors.Positive
             }
           },
           {
-            value: sentimentNegativeValue,
+            value: sentimentNegativeValue.toFixed(2),
             itemStyle: {
               color: colors.Negative
             }
@@ -176,6 +183,9 @@ export default function TabSentiment({
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
           Sentiment
         </h2>
+        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
+          Overall Sentiment: <span>{overallSentiment}</span>
+        </h3>
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Analysis
         </h4>
