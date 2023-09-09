@@ -3,6 +3,7 @@
 import { Sentiment, SpeakerDiarization } from '@/types/analyseData';
 import echarts, { EChartsOption } from 'echarts';
 import ReactECharts from 'echarts-for-react';
+import SentimentScore from './SentimentScore';
 
 // prettier-ignore
 const days = [
@@ -184,6 +185,7 @@ export default function TabSentiment({
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Analysis
         </h4>
+        <SentimentScore />
         <ReactECharts option={SentimentAnalysisOption} className="!h-[500px]" />
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Score Distribution
