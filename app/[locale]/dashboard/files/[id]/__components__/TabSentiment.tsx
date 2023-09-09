@@ -134,8 +134,6 @@ export default function TabSentiment({
       }, 0)
     : 0;
 
-  const overallSentiment = (sentimentNeutralValue + sentimentPositiveValue + sentimentNegativeValue).toFixed(2);
-
   const SentimentAnalysisOption = {
     tooltip: {
       trigger: 'axis',
@@ -183,9 +181,6 @@ export default function TabSentiment({
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
           Sentiment
         </h2>
-        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
-          Overall Sentiment: <span>{overallSentiment}</span>
-        </h3>
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Analysis
         </h4>
