@@ -185,7 +185,7 @@ export default function TabSentiment({
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Analysis
         </h4>
-        <SentimentScore />
+        <SentimentScore sentimentData={sentimentData} />
         <ReactECharts option={SentimentAnalysisOption} className="!h-[500px]" />
         <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
           Sentiment Score Distribution
