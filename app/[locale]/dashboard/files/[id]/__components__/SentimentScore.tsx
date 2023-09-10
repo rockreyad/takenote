@@ -23,7 +23,7 @@ export default function SentimentScore({
 
   const score = (positiveCount - negativeCount) * 100 / (sentimentData?.length || 0);
 
-  let chartStyle = { color: (score >= 0 ? "#3d9970" : "#b83638") };
+  let chartStyle = { color: (score >= 0 ? '#3d9970' : '#b83638') };
 
   return (
     <div id='sentiment_score'>
