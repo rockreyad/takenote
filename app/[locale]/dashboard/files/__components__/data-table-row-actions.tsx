@@ -3,6 +3,7 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { Row } from '@tanstack/react-table';
 
+import { jsPDF } from 'jspdf';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -194,6 +195,39 @@ const DownloadModal = ({
     onClose();
   };
 
+  const handleDownloadPDF = async () => {
+    const exportFileName = 'exportFile';
+
+    try {
+      const res = await axios.get('/api/file/download/content', {
+          params: {
+            fileId: file.id
+          }
+        });
+
+      if (res.data.status === 200) {
+        const content = res.data.content;
+
+        const doc = await new jsPDF();
+        doc.text(content, 10, 10);
+        doc.save(exportFileName + '.pdf');
+        
+        toast({
+          title: 'PDF downloaded successfully',
+          description: 'PDF file has been downloaded',
+          color: '#10B981'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'An error occurred',
+        description: 'PDF file could not be downloaded',
+        color: '#EF4444',
+        about: error as string
+      });
+    }
+  }
+
   return (
     <Dialog open>
       <DialogContent>
@@ -207,7 +241,7 @@ const DownloadModal = ({
             <Button
               variant="default"
               className="flex flex-col items-center gap-2 mt-2 h-auto"
-              onClick={() => handleDownload('pdf')}
+              onClick={() => handleDownloadPDF()}
             >
               <FaFilePdf className="w-10 h-10" />
               <label className="uppercase">PDF</label>
