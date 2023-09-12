@@ -53,7 +53,19 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
               <p
                 key={item.name}
                 // href={item.href}
-                onClick={() => scrollTo(item.href, 100)}
+                onClick={() => {
+                  // smooth scroll to the anchor link
+                  const targetElement = document.querySelector(
+                    item.href
+                  ) as HTMLElement;
+                  if (targetElement) {
+                    window.scrollTo({
+                      top: targetElement.offsetTop,
+                      behavior: 'smooth'
+                    });
+                    setMobileMenuOpen(false);
+                  }
+                }}
                 className="cursor-pointer text-sm font-semibold leading-6 text-gray-900 dark:text-white"
               >
                 {item.name}
@@ -106,8 +118,17 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                     <p
                       key={item.name}
                       onClick={() => {
-                        scrollTo(item.href, 100);
-                        setMobileMenuOpen(false);
+                        // smooth scroll to the anchor link
+                        const targetElement = document.querySelector(
+                          item.href
+                        ) as HTMLElement;
+                        if (targetElement) {
+                          window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                          });
+                          setMobileMenuOpen(false);
+                        }
                       }}
                       className="cursor-pointer -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                     >

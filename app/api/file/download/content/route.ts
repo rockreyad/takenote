@@ -7,11 +7,13 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const fileId = searchParams.get('fileId');
 
-  if (!fileId) return NextResponse.json({ error: 'File not found', status: 404 });
+  if (!fileId)
+    return NextResponse.json({ error: 'File not found', status: 404 });
 
   const transcribe = await getTranscribeByIdOrHandleOrFileId(fileId);
 
-  if (!transcribe) return NextResponse.json({ error: 'Transcribe not found!', status: 404 });
+  if (!transcribe)
+    return NextResponse.json({ error: 'Transcribe not found!', status: 404 });
 
   const content = `
     TakeNote Transcription File
