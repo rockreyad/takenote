@@ -2,7 +2,7 @@
 
 import { Sentiment } from '@/types/analyseData';
 import { BsFillTriangleFill } from 'react-icons/bs';
-import './sentiment_score.css';
+import '@/styles/sentiment_score.css';
 
 export default function SentimentScore({
   sentimentData,
