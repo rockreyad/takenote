@@ -13,7 +13,7 @@ export function useGsapContext(scope: any) {
 export const scrollTo = (id: string, offsetY = 0) => {
   if (typeof window === 'undefined') return;
   gsap.to(window, {
-    ease: SlowMo.ease.config(0.5, 0.7, false),
+    ease: SlowMo,
     scrollTo: {
       y: id,
       offsetY

@@ -1,26 +1,26 @@
 /* TODO: refactor code use tailwindcss instead css */
 #sentiment_score {
-  text-align: center;
-  height: 100px;
-  position: absolute;
-  z-index: 10;
-  right: 100px;
+    text-align: center;
+    height: 100px;
+    position: absolute;
+    z-index: 10;
+    right: 100px;
 }
 
 #sentiment_score h4 {
-  font-size: 22px;
-  margin-top: 40px;
-  color: #808596;
+    font-size: 22px;
+    margin-top: 40px;
+    color: #808596;
 }
 
 #sentiment_score svg {
-  font-size: 70px;
-  float: left;
-  color: #3d9970;
+    font-size: 70px;
+    float: left;
+    color: #3d9970;
 }
 
 #sentiment_score span {
-  font-size: 59px;
-  float: left;
-  color: #3d9970;
+    font-size: 59px;
+    float: left;
+    color: #3d9970;
 }

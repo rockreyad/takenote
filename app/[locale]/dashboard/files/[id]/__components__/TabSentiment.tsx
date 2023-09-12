@@ -43,7 +43,8 @@ export default function TabSentiment({
   // console.log("hours", hours);
 
   const transcriptions = speakerDiarization?.length
-    ? speakerDiarization?.map((item) => item.text)
+    ? speakerDiarization
+      ?.map((item) => item.text)
     : [];
   // console.log("transcriptions", transcriptions);
 
@@ -113,25 +114,25 @@ export default function TabSentiment({
   // Set data for Sentiment Graph
   const sentimentNeutralValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Neutral')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Neutral')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
 
   const sentimentPositiveValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Positive')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Positive')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
   const sentimentNegativeValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Negative')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Negative')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
 
   const SentimentAnalysisOption = {

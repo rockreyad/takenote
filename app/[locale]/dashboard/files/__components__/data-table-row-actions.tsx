@@ -200,10 +200,10 @@ const DownloadModal = ({
 
     try {
       const res = await axios.get('/api/file/download/content', {
-        params: {
-          fileId: file.id
-        }
-      });
+          params: {
+            fileId: file.id
+          }
+        });
 
       if (res.data.status === 200) {
         const content = res.data.content;
@@ -211,7 +211,7 @@ const DownloadModal = ({
         const doc = await new jsPDF();
         doc.text(content, 10, 10);
         doc.save(exportFileName + '.pdf');
-
+        
         toast({
           title: 'PDF downloaded successfully',
           description: 'PDF file has been downloaded',
@@ -226,7 +226,7 @@ const DownloadModal = ({
         about: error as string
       });
     }
-  };
+  }
 
   return (
     <Dialog open>
