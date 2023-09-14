@@ -16,6 +16,8 @@ export async function GET(request: NextRequest) {
   if (!transcribe)
     return NextResponse.json({ error: 'Transcribe not found!', status: 404 });
 
+  const fileName = transcribe!.file!.name.split('.')[0];
+
   const content = `
     <h2>TakeNote Transcription File</h2>
     <p>File Name: ${transcribe!.file!.name}</p>
@@ -43,6 +45,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     content: content + speakerDiarizationContent,
+    fileName: fileName,
     status: 200
   });
 }
