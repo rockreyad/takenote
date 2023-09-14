@@ -196,8 +196,6 @@ const DownloadModal = ({
   };
 
   const handleDownloadPDF = async () => {
-    const exportFileName = 'exportFile';
-
     try {
       const res = await axios.get('/api/file/download/content', {
         params: {
@@ -211,7 +209,7 @@ const DownloadModal = ({
         const doc = await new jsPDF();
         doc.html(content, {
           callback: function (doc) {
-            doc.save(exportFileName + '.pdf');
+            doc.save(res.data.fileName + '.pdf');
           },
           margin: [10, 10, 10, 10],
           autoPaging: 'text',
