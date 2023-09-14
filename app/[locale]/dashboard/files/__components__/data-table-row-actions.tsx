@@ -209,8 +209,17 @@ const DownloadModal = ({
         const content = res.data.content;
 
         const doc = await new jsPDF();
-        doc.text(content, 10, 10);
-        doc.save(exportFileName + '.pdf');
+        doc.html(content, {
+          callback: function (doc) {
+            doc.save(exportFileName + '.pdf');
+          },
+          margin: [10, 10, 10, 10],
+          autoPaging: 'text',
+          x: 0,
+          y: 0,
+          width: 190,
+          windowWidth: 675
+        });
 
         toast({
           title: 'PDF downloaded successfully',
