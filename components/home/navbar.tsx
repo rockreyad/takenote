@@ -9,18 +9,19 @@ import { scrollTo } from '@/lib/gsapUtils';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
-const navigation = [
-  { name: 'Home', href: '#navbar' },
-  { name: 'Product', href: '#product' },
-  { name: 'About', href: '#about' },
-  { name: 'Features', href: '#features' },
-  { name: 'FAQ', href: '#faq' },
-  { name: 'Contact', href: '#contact' }
-];
-
 interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
+
+  const navigation = [
+    { name: 'Home', href: '#navbar' },
+    { name: 'Product', href: '#product' },
+    { name: 'About', href: '#about' },
+    { name: 'Features', href: '#features' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { status } = useSession();
   return (
@@ -28,7 +29,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
       <header id="navbar" className="absolute inset-x-0 top-0 z-50">
         {/* Desktop Navbar */}
         <nav
-          className="flex items-center justify-between p-6 lg:px-8"
+          className="flex items-center justify-between p-6 lg:px-8 relative"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
@@ -59,10 +60,10 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                     item.href
                   ) as HTMLElement;
                   if (targetElement) {
-                    window.scrollTo({
-                      top: targetElement.offsetTop,
-                      behavior: 'smooth'
-                    });
+                    if (targetElement) {
+                      // Scroll smoothly to the target element
+                      targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
                     setMobileMenuOpen(false);
                   }
                 }}
@@ -88,7 +89,6 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
 
         <Dialog
           as="div"
-          className="lg:hidden"
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
         >
