@@ -5,10 +5,10 @@ import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 
 import Container from '@/components/container';
-import screenshotExpenses from '@/images/screenshots/expenses.png';
-import screenshotPayroll from '@/images/screenshots/payroll.png';
-import screenshotReporting from '@/images/screenshots/reporting.png';
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png';
+import screenshotExpenses from '@/images/screenshots/Summarise.png';
+import screenshotPayroll from '@/images/screenshots/Transcribe.png';
+import screenshotReporting from '@/images/screenshots/Identify.png';
+import screenshotVatReturns from '@/images/screenshots/Analyse.png';
 import { useGsapContext, useIsomorphicLayoutEffect } from '@/lib/gsapUtils';
 import { Power2, gsap } from 'gsap';
 
