@@ -25,6 +25,11 @@ const TimeFormatAt = (seconds: number) => {
   return seconds >= 3600 ? str.slice(11, 19) : str.slice(14, 19);
 };
 
+const DisplayTranscription = (text: string) => {
+  if (text.length <= 150) return text;
+  return `${text.substring(0, 150)}...`;
+}
+
 export default function TabSentiment({
   sentimentData,
   speakerDiarization
@@ -84,19 +89,19 @@ export default function TabSentiment({
   sentimentData
     ?.map((item) => (item.label === 'Neutral' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[0]?.data.push([idx, val.toFixed(6), transcriptions[idx]]);
+      (series as any)[0]?.data.push([idx, val.toFixed(6), DisplayTranscription(transcriptions[idx])]);
     });
 
   sentimentData
     ?.map((item) => (item.label === 'Positive' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[1]?.data.push([idx, val.toFixed(6), transcriptions[idx]]);
+      (series as any)[1]?.data.push([idx, val.toFixed(6), DisplayTranscription(transcriptions[idx])]);
     });
 
   sentimentData
     ?.map((item) => (item.label === 'Negative' ? item.score : 0))
     ?.forEach(function (val, idx) {
-      (series as any)[2]?.data.push([idx, val.toFixed(6), transcriptions[idx]]);
+      (series as any)[2]?.data.push([idx, val.toFixed(6), DisplayTranscription(transcriptions[idx])]);
     });
   // console.log('series', series);
 
@@ -113,25 +118,25 @@ export default function TabSentiment({
   // Set data for Sentiment Graph
   const sentimentNeutralValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Neutral')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Neutral')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
 
   const sentimentPositiveValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Positive')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Positive')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
   const sentimentNegativeValue = sentimentData?.length
     ? sentimentData
-        ?.filter((item) => item.label === 'Negative')
-        .reduce((acc, current) => {
-          return acc + current.score;
-        }, 0)
+      ?.filter((item) => item.label === 'Negative')
+      .reduce((acc, current) => {
+        return acc + current.score;
+      }, 0)
     : 0;
 
   const SentimentAnalysisOption = {
