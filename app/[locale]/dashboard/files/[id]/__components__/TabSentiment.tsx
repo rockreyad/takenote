@@ -41,9 +41,12 @@ export default function TabSentiment({
   const singleAxis: echarts.SingleAxisComponentOption[] = [];
   const series: echarts.ScatterSeriesOption[] = [];
 
+  const maxPosition = 13;
+  const range = Math.trunc((speakerDiarization?.length || 0) / (maxPosition * 3)) || 1;
+
   // console.log('speakerDiarization', speakerDiarization);
   const hours = speakerDiarization?.length
-    ? speakerDiarization?.map((item) => TimeFormatAt(item.end))
+    ? speakerDiarization?.map((item, index) => (index % range === 0) ? TimeFormatAt(item.end) : '')
     : [];
   // console.log("hours", hours);
 
