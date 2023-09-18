@@ -24,7 +24,7 @@ const DashboardLayout: FunctionComponent<DashboardLayoutProps> = async ({
         <Sidebar />
         <div className="lg:pl-52">
           <Header />
-          <main className="py-10">
+          <main className="py-10" style={{minHeight: '100vh!important'}}>
             <div className="px-4 sm:px-6 lg:px-8 h-full">{children}</div>
           </main>
         </div>
