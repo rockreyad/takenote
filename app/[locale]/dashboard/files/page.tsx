@@ -8,7 +8,6 @@ import { getFiles, getFilesByUserId } from '@/server/api/files';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { USER_ROLE } from '@/server/zodSchema/user';
-
 export const metadata: Metadata = {
   title: 'My Files - TakeNote',
   description: 'A list of files that I have uploaded.'
@@ -22,6 +21,7 @@ const MyFilesPage: FunctionComponent = async () => {
   } else {
     files = await getFilesByUserId(session?.user.id || '');
   }
+
   const tableFiles = files?.map((file) => {
     return {
       id: file.id,
@@ -32,6 +32,8 @@ const MyFilesPage: FunctionComponent = async () => {
       handle: file.handle
     };
   });
+
+  
   return (
     <>
       <div className="space-y-8 h-screen">
