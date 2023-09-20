@@ -66,7 +66,15 @@ const navigation = [
 export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+      <div className='mx-auto max-w-7xl px-6 py-6 gap-2 text-sm md:flex flex-col lg:px-8'>
+        <a href='/terms-of-service' className='cursor-pointer hover:text-gray-400 duration-200 w-max'>
+          <span>Terms of Service</span>
+        </a>
+        <a href='/privacy-policy' className='cursor-pointer hover:text-gray-400 duration-200 w-max'>
+          <span>Privacy Policy</span>
+        </a>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 pb-12 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (
             <a
