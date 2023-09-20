@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
 
     if (data) {
       return NextResponse.json({
-        message: 'Email sent successfully!',
+        message: 'Your message has been sent successfully!',
         status: 200
       });
     }

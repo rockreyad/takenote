@@ -21,13 +21,13 @@ export default function ContactForm() {
       toast({
         title:
           res.data.status === 200
-            ? 'Send contact successfully'
-            : 'Send contact failed',
+            ? 'Send completed'
+            : 'Send failed',
         description: res.data.message
       });
     } catch (error) {
       toast({
-        title: 'Send contact failed',
+        title: 'Send failed',
         description: 'Occurred Exception',
         color: '#EF4444',
         about: error as string
