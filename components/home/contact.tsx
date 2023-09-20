@@ -1,6 +1,48 @@
+'use client';
+
 import { BuildingOffice2Icon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { useState, FormEvent } from 'react';
+import { useToast } from '@/components/ui/use-toast';
+import { Toaster } from '@/components/ui/toaster';
+import axios from 'axios';
 
 export default function Contact() {
+  const { toast } = useToast();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      // Perform renaming logic here
+      const res = await axios.post('/api/contact', {
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        email: email,
+        message: message
+      });
+      toast({
+        title:
+          res.data.status === 200
+            ? 'Send contact successfully'
+            : 'Send contact failed',
+        description: res.data.message
+      });
+    } catch (error) {
+      toast({
+        title: 'Send contact failed',
+        description: 'Occurred Exception',
+        color: '#EF4444',
+        about: error as string
+      });
+    }
+  };
+
   return (
     <div id="contact" className="relative isolate bg-white dark:bg-gray-900">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -112,8 +154,7 @@ export default function Contact() {
           </div>
         </div>
         <form
-          action="/api/contact"
-          method="POST"
+          onSubmit={onSubmit}
           className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -128,9 +169,11 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="text"
+                    onChange={(e) => setFirstName(e.target.value)}
                     name="firstName"
                     id="firstName"
                     autoComplete="given-name"
+                    value={firstName}
                     required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
@@ -146,9 +189,11 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="text"
+                    onChange={(e) => setLastName(e.target.value)}
                     name="lastName"
                     id="lastName"
                     autoComplete="family-name"
+                    value={lastName}
                     required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
@@ -164,9 +209,11 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="email"
+                    onChange={(e) => setEmail(e.target.value)}
                     name="email"
                     id="email"
                     autoComplete="email"
+                    value={email}
                     required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
@@ -182,9 +229,11 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <input
                     type="tel"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     name="phoneNumber"
                     id="phoneNumber"
                     autoComplete="tel"
+                    value={phoneNumber}
                     required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                   />
@@ -200,8 +249,10 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <textarea
                     name="message"
+                    onChange={(e) => setMessage(e.target.value)}
                     id="message"
                     rows={4}
+                    value={message}
                     required
                     className="block w-full rounded-md dark:bg-white/5 border-0 px-3.5 py-2 text-gray-900  dark:text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary/40 dark:focus:ring-primary/10 sm:text-sm sm:leading-6"
                     defaultValue={''}
@@ -219,6 +270,7 @@ export default function Contact() {
             </div>
           </div>
         </form>
+        <Toaster />
       </div>
     </div>
   );
