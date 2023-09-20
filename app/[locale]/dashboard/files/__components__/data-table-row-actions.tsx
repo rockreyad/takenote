@@ -130,7 +130,7 @@ export function DataTableRowActions<TData>({
       )}
       {isDownloadModalOpen && (
         <DownloadModal
-          file={{ id: original.id as string }}
+          file={{ id: original.id as string, title: original.title as string }}
           onClose={() => setIsDownloadModalOpen(false)}
           onDownload={(format) => setDownloadFormat(format)}
         />
@@ -151,6 +151,7 @@ const DownloadModal = ({
 }: {
   file: {
     id: string;
+    title: string;
   };
   onClose: () => void;
   onDownload: (format: string) => void;
@@ -168,7 +169,7 @@ const DownloadModal = ({
         const blob = await res.data;
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'document.docx';
+        link.download = `${file.title}.docx`;
         link.click();
         onDownload(format); // Pass the selected format back to the parent
         toast({
