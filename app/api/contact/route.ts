@@ -1,13 +1,9 @@
 import { env } from '@/env.mjs';
 import resend from '@/lib/resend';
 import { NextRequest, NextResponse } from 'next/server';
+
 export async function POST(request: NextRequest) {
-  const formData = await request.formData();
-  const message = formData.get('message');
-  const email = formData.get('email');
-  const firstName = formData.get('firstName');
-  const lastName = formData.get('lastName');
-  const phoneNumber = formData.get('phoneNumber');
+  const { firstName, lastName, email, phoneNumber, message } = await request.json();
 
   if (!message || !email || !firstName || !lastName || !phoneNumber) {
     return NextResponse.json({
@@ -64,12 +60,8 @@ export async function POST(request: NextRequest) {
     });
 
     if (data) {
-      //TODO: No Success page right Now @low
-      //redirect to success page
-      return NextResponse.redirect(new URL('/', request.nextUrl));
-
       return NextResponse.json({
-        message: 'Email sent successfully!',
+        message: 'Your message has been sent successfully!',
         status: 200
       });
     }
