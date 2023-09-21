@@ -8,10 +8,13 @@ import { ThemeSelector } from './ThemeSelector';
 import { scrollTo } from '@/lib/gsapUtils';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
+
+  const router = useRouter();
 
   const navigation = [
     { name: 'Home', href: '#navbar' },
@@ -55,6 +58,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                 key={item.name}
                 // href={item.href}
                 onClick={() => {
+                  router.push('/')
                   // smooth scroll to the anchor link
                   const targetElement = document.querySelector(
                     item.href
