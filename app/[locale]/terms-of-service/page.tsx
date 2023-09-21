@@ -8,7 +8,7 @@ export default function Privacy() {
     <>
       <div className="bg-white dark:bg-gray-900 overflow-hidden relative before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#98FF24,_transparent_100%)] dark:before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),#7775D6,_transparent_100%)] before:opacity-40 dark:before:opacity-40">
         <Navbar />
-        <Container className="relative isolate pt-24 prose dark:prose-invert lg:prose-xl md:px-6 lg:px-12">
+        <Container className="relative isolate py-24 prose dark:prose-invert lg:prose-xl md:px-6 lg:px-12">
           <h2 className="text-center my-3 md:my-10">Terms of Service</h2>
           <h6 className="font-bold text-white">Data collected</h6>
 
@@ -24,7 +24,6 @@ export default function Privacy() {
               website.
               </li>
               <li>
-              className="text-sm mb-5">
               The term 'TakeNote' or 'us' or 'we' refers to the owner of the
               website. The term 'you' refers to the user or viewer of our website.
               The use of this website is subject to the following terms of use:
