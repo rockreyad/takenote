@@ -49,14 +49,15 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`h-full bg-gray-50 ${inter.className} scroll-smooth`}
+      suppressHydrationWarning={true}
     >
-      <ThemeProviderWrapper>
-        <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning={true}>
+        <ThemeProviderWrapper>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Provider>{children}</Provider>
           </NextIntlClientProvider>{' '}
-        </body>
-      </ThemeProviderWrapper>
+        </ThemeProviderWrapper>
+      </body>
     </html>
   );
 }

@@ -170,15 +170,6 @@ export function PrimaryProduct() {
       aria-label="Features for running your books"
       className="relative overflow-hidden bg-green-600 dark:bg-gray-900 pb-28 pt-20 sm:py-32 mt-32 sm:mt-48"
     >
-      <Image
-        className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
-        // src={backgroundImage}
-        src={''}
-        alt=""
-        width={2245}
-        height={1636}
-        unoptimized
-      />
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2 className="product-title font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
