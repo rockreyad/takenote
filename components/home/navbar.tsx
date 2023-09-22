@@ -122,16 +122,14 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
                     <p
                       key={item.name}
                       onClick={() => {
+                        router.push('/')
                         // smooth scroll to the anchor link
                         const targetElement = document.querySelector(
                           item.href
                         ) as HTMLElement;
                         if (targetElement) {
-                          window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                          });
                           setMobileMenuOpen(false);
+                          targetElement.scrollIntoView({ behavior: 'smooth' });
                         }
                       }}
                       className="cursor-pointer -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
