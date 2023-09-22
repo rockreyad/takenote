@@ -23,7 +23,7 @@ export default function Privacy() {
           <br />
           <h6 className="font-bold">Definitions and interpretation</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol>
               <li className="mb-2">
                 In this privacy policy, the following definitions are used:
@@ -80,11 +80,11 @@ export default function Privacy() {
                 </ol>
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Scope of this privacy policy</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={3}>
               <li className="mb-2">
                 This privacy policy applies only to the actions of TakeNote and
@@ -100,22 +100,22 @@ export default function Privacy() {
                 processed.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Data collected</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={5}>
               <li className="mb-2">
                 We may collect the following Data, which includes personal Data,
                 from you in each case, in accordance with this privacy policy.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">How we collect Data</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={6}>
               <li>
                 We collect Data in the following ways:
@@ -125,11 +125,11 @@ export default function Privacy() {
                 </ol>
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Data that is given to us by you</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={7}>
               <li>
                 TakeNote will collect your Data in a number of ways, for
@@ -147,11 +147,11 @@ export default function Privacy() {
                 </ol>
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Data that is collected automatically</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={8}>
               <li>
                 To the extent that you access the Website, we will collect your
@@ -163,11 +163,11 @@ export default function Privacy() {
                 with its content.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Our use of Data</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={9}>
               <li>
                 Any or all of the above Data may be required by us from time to
@@ -222,11 +222,11 @@ export default function Privacy() {
                 request, to enter into such a contract.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Keeping Data secure</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={13}>
               <li>
                 We will use technical and organisational measures to safeguard
@@ -256,11 +256,11 @@ export default function Privacy() {
                 businesses.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Data retention</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={16}>
               <li>
                 Unless a longer retention period is required or permitted by
@@ -273,11 +273,11 @@ export default function Privacy() {
                 archival media for legal, tax or regulatory purposes.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Your rights</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={18}>
               <li>
                 You have the following rights in relation to your data:
@@ -343,11 +343,11 @@ export default function Privacy() {
                 period for which we hold it.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Links to other websites</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={22}>
               <li>
                 This Website may, from time to time, provide links to other
@@ -358,13 +358,13 @@ export default function Privacy() {
                 websites prior to using them.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">
             Changes of business ownership and control
           </h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={23}>
               <li>
                 TakeNote may, from time to time, expand or reduce our business
@@ -385,11 +385,11 @@ export default function Privacy() {
                 ensuring your privacy is protected.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">General</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={26}>
               <li>
                 You may not transfer any of your rights under this privacy
@@ -417,11 +417,11 @@ export default function Privacy() {
                 English and Welsh courts.
               </li>
             </ol>
-          </p>
+          </div>
           <br />
           <h6 className="font-bold">Changes to this privacy policy</h6>
 
-          <p className="text-sm mb-3">
+          <div className="text-sm mb-3">
             <ol start={30}>
               <li>
                 TakeNote reserves the right to change this privacy policy as we
@@ -431,14 +431,14 @@ export default function Privacy() {
                 on your first use of the Website following the alterations.
               </li>
             </ol>
-          </p>
+          </div>
 
           <br />
 
-          <p className="text-sm mb-3 text-white">
+          <div className="text-sm mb-3 text-white">
             You may contact TakeNote by email at{' '}
             <a href="mailto:contact@TakeNote365.com">contact@TakeNote365.com</a>
-          </p>
+          </div>
 
           <p className="text-sm mb-3 text-center py-6">
             This privacy policy was created on 22 July 2023.

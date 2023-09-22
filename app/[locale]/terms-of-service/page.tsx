@@ -12,7 +12,7 @@ export default function Privacy() {
           <h2 className="text-center my-3 md:my-10">Terms of Service</h2>
           <h6 className="font-bold text-white">Data collected</h6>
 
-          <p className="text-sm mb-5">
+          <div className="text-sm mb-5">
             <ol>
               <li>
                 If you continue to browse and use this website, you are agreeing to
@@ -70,7 +70,7 @@ export default function Privacy() {
               the website is subject to the laws of England, Northern Ireland,
               Scotland and Wales.</li>
             </ol>
-          </p>
+          </div>
         </Container>
       </div>
       <Footer />
