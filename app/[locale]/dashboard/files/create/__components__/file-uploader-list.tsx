@@ -39,7 +39,7 @@ const FilePickerOptions: FileUploader[] = [
   },
   {
     type: 'link',
-    label: 'Share a link to public web address',
+    label: 'Provide a link to to a Youtube video',
     buttonName: 'paste a url',
     Icon: RiLink,
     variant: 'solid'
