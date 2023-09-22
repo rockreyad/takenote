@@ -66,8 +66,8 @@ export default function Privacy() {
                     government entities, trusts and partnerships;
                   </li>
                   <li>
-                    "including" is understood to mean "including without
-                    limitation";
+                    &quot;including&quot; is understood to mean &quot;including without
+                    limitation&quot;;
                   </li>
                   <li>
                     Reference to any statutory provision includes any
@@ -95,7 +95,7 @@ export default function Privacy() {
               </li>
               <li className="mb-2">
                 For purposes of the applicable Data Protection Laws, TakeNote is
-                the "data controller". This means that TakeNote determines the
+                the &quot;data controller&quot;. This means that TakeNote determines the
                 purposes for which, and the manner in which, your Data is
                 processed.
               </li>
@@ -187,10 +187,10 @@ export default function Privacy() {
                 We may use your Data for the above purposes if we deem it
                 necessary to do so for our legitimate interests. If you are not
                 satisfied with this, you have the right to object in certain
-                circumstances (see the section headed "Your rights" below).
+                circumstances (see the section headed &quot;Your rights&quot; below).
               </li>
               <li>
-                For the delivery of direct marketing to you via e-mail, we'll
+                For the delivery of direct marketing to you via e-mail, we&apos;ll
                 need your consent, whether via an opt-in or soft-opt-in:
                 <ol style={{ listStyleType: 'lower-alpha' }}>
                   <li>
@@ -198,20 +198,20 @@ export default function Privacy() {
                     applies when you have previously engaged with us (for
                     example, you contact us to ask us for more details about a
                     particular product/service, and we are marketing similar
-                    products/services). Under "soft opt-in" consent, we will
+                    products/services). Under &quot;soft opt-in&quot; consent, we will
                     take your consent as given unless you opt-out.
                   </li>
                   <li>
                     for other types of e-marketing, we are required to obtain
                     your explicit consent; that is, you need to take positive
                     and affirmative action when consenting by, for example,
-                    checking a tick box that we'll provide.
+                    checking a tick box that we&apos;ll provide.
                   </li>
                   <li>
                     if you are not satisfied with our approach to marketing, you
                     have the right to withdraw consent at any time. To find out
-                    how to withdraw your consent, see the section headed "Your
-                    rights" below.
+                    how to withdraw your consent, see the section headed &quot;Your
+                    rights&quot; below.
                   </li>
                 </ol>
               </li>
@@ -295,7 +295,7 @@ export default function Privacy() {
                     </ol>
                     If we provide you with access to the information we hold
                     about you, we will not charge you for this, unless your
-                    request is "manifestly unfounded or excessive." Where we are
+                    request is &quot;manifestly unfounded or excessive.&quot; Where we are
                     legally permitted to do so, we may refuse your request. If
                     we refuse your request, we will tell you the reasons why.
                   </li>
@@ -309,7 +309,7 @@ export default function Privacy() {
                   </li>
                   <li>
                     Right to restrict our use of your Data - the right to
-                    "block" us from using your Data or limit the way in which
+                    &quot;block&quot; us from using your Data or limit the way in which
                     wecan use it.
                   </li>
                   <li>
@@ -333,8 +333,8 @@ export default function Privacy() {
                 If you are not satisfied with the way a complaint you make in
                 relation to your Data is handled by us, you may be able to refer
                 your complaint to the relevant data protection authority. For
-                the UK, this is the Information Commissioner's Office (ICO). The
-                ICO's contact details can be found on their website at
+                the UK, this is the Information Commissioner&apos;s Office (ICO). The
+                ICO&apos;s contact details can be found on their website at
                 <a href="https://ico.org.uk/">https://ico.org.uk/</a>.
               </li>
               <li>
