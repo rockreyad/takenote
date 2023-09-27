@@ -4,7 +4,7 @@ import { DataTable } from './__components__/data-table';
 import { columns } from './__components__/columns';
 import { FolderOpenIcon } from 'lucide-react';
 import PrimaryButton from './__components__/PrimaryButton';
-import { getFiles, getFilesByUserId } from '@/server/api/files';
+import { getHistory, getHistoryByUserId } from '@/server/api/files';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { USER_ROLE } from '@/server/zodSchema/user';
@@ -18,9 +18,9 @@ const MyFilesPage: FunctionComponent = async () => {
   const session = await getServerSession(authOptions);
   let files;
   if (session?.user.role === USER_ROLE.enum.ADMIN) {
-    files = await getFiles();
+    files = await getHistory();
   } else {
-    files = await getFilesByUserId(session?.user.id || '');
+    files = await getHistoryByUserId(session?.user.id || '');
   }
   const tableFiles = files?.map((file) => {
     return {

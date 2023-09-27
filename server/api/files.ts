@@ -16,6 +16,50 @@ export async function getFiles(take?: number) {
   return files;
 }
 
+export async function getHistoryByUserId(
+  userId: string,
+  includeDeleted: boolean = false,
+  take?: number
+) {
+  let files = await prisma.file.findMany({
+    where: {
+      userId,
+      OR: [
+        { deletedAt: includeDeleted ? { not: null } : null }, // Include deleted files if includeDeleted is true
+        { deletedAt: null }
+      ]
+    },
+    orderBy: {
+      createdAt: 'desc'
+    },
+    take: take || INITIAL_FILE_TAKE,
+    include: {
+      transcribe: true
+    }
+  });
+
+  // files = files.filter(file => file.transcribe !== null)
+
+  return files;
+}
+
+export async function getHistory(take?: number) {
+  let files = await prisma.file.findMany({
+    take: take || INITIAL_FILE_TAKE,
+    where: {
+      deletedAt: null
+    },
+    orderBy: {
+      createdAt: 'desc'
+    }
+  });
+
+  // files = files.filter(file => file.transcribe !== null)
+
+  return files;
+
+}
+
 export async function getFileByIdOrHandle(idOrHandle: string) {
   const file = await prisma.file.findFirst({
     where: {
